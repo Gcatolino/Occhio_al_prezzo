@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author andreapilato
+ * @author andreapilat
  */
 public class DBConnection {
     private static String dbPath = "jdbc:mysql://localhost:3306/sys?zeroDateTimeBehavior=convertToNull";
