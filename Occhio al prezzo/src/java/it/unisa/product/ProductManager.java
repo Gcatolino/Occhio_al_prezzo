@@ -97,6 +97,7 @@ public class ProductManager {
             try{
                 System.out.println("La query "+insertSQL);
                 UtilityVar.execute(conn, insertSQL.toString());
+                
                 conn.commit();
             } catch (SQLException e){
                 System.out.println(e.getMessage());
@@ -146,6 +147,7 @@ public class ProductManager {
                 
                 //Inviamo la Query al DataBase
                 UtilityVar.execute(conn, updateSQL.toString());
+                
                 conn.commit();
             } catch (SQLException e){
                 System.out.println(e.getMessage());
@@ -168,6 +170,7 @@ public class ProductManager {
         try{
             // Otteniamo una Connessione al DataBase
             conn = DBConnection.getConnection();
+            
             /*
              * Prepariamo la stringa SQL per eliminare un record 
              * della tabella Prodotto
@@ -181,6 +184,7 @@ public class ProductManager {
             
             //Inviamo la Query al DataBase
             UtilityVar.execute(conn, deleteSQL.toString());
+            
             conn.commit();
         } finally {
             DBConnection.releaseConnection(conn);
@@ -199,7 +203,7 @@ public class ProductManager {
      * 
      */
     public synchronized ArrayList<Product> getProductsByName(String productName) throws SQLException {
-        ArrayList<Product> products = new ArrayList<Product>();
+        ArrayList<Product> products = new ArrayList<>();
         
         Connection conn = null;
         try {
@@ -258,7 +262,7 @@ public class ProductManager {
      * @return ArrayList contenente il risultato della ricerca.
      */
     public synchronized ArrayList<Product> getSellerProducts(String productStore) throws SQLException {
-        ArrayList<Product> products = new ArrayList<Product>();
+        ArrayList<Product> products = new ArrayList<>();
         
         Connection conn = null;
         try {
