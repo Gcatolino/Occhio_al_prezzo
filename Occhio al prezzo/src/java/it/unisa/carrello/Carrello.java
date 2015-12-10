@@ -24,12 +24,8 @@ public class Carrello {
     }
     
     public void addProdotto(Product prod){
-        for(int i=0; i <= carrello.size(); i++){
-            if(prod.getID() == carrello.get(i).getID())
-                System.out.println("Prodotto già presente nel carrello");
-            else carrello.add(prod);
+        carrello.add(prod);
         }
-    }
     
     public void eliminaProdotto(Product prod){
         for(int i= 0; i <= carrello.size(); i++){
