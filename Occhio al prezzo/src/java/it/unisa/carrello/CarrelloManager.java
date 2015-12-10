@@ -34,7 +34,7 @@ public class CarrelloManager {
         return instance;
     }
     
-    public void calcolaID() throws SQLException{
+    public void calcolaID() throws SQLException,ConnectionException{
         Connection connect = null;
         Statement stmt = null;
         ResultSet rs = null;

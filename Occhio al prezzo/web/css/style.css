@@ -82,14 +82,14 @@ h1,h2,h3,h4,h5,h6,label,p{
   display: inline-block;
 }
 .header{
-	background: url(../images/banner.jpg) no-repeat center;
+	background: url(../images/p2full.jpg) no-repeat center;
 	width:100%;
 	background-size:cover;
-	min-height: 750px;
-	display: block;
+	min-height:1900px;
+	display:block;
 }
 .header-top{
-	background:rgba(0, 0, 0, 0.23);
+	background:rgba(0, 0, 0, 0.50);
 }
 .header-top-in{
 	  padding: 0 2em 0.5em;
@@ -144,6 +144,7 @@ ul.support-right li i.tele{
 .logo  h1 a{
 	text-decoration:none;
 	color:#ff5d56;
+        color: orange;
 }
 .logo{
 	float:left;
@@ -646,7 +647,7 @@ label.line{
 }
 /*----*/
 .content-bottom{
-	  background: url(../images/back.jpg) center ;
+	  
   width: 100%;
   min-height: 335px;
   display: block;
@@ -1043,18 +1044,18 @@ p.footer-class a:hover{
   padding: 0;
 }
 .back{
-	background: url(../images/product.jpg) 0px 0px;
+	background: url(../images/a1.jpg) 0px 0px;
   width: 100%;
   background-size: cover;
-  min-height: 200px;
+  min-height:850px;
   display: block;
   text-align: center;
 }
 .back h2 {
-  color: #fff;
-  font-size: 5em;
-  font-family: 'Roboto Slab', serif;
-  text-align: center;
+  color: orange;
+  font-size: 3em;
+  font-family: initial;
+  text-align: right;
   padding: 1em 0;
 }
 /*----*/
@@ -1433,7 +1434,7 @@ a.add2 i{
   text-align: center;
 }
 .six1 h4{
-	font-size:2.5em;
+	font-size: 2em;
 	color:#ff5d56;
 	font-family: 'Roboto Slab', serif;
 font-weight: 100;	
@@ -1444,8 +1445,8 @@ font-weight: 100;
 	  margin: 0.5em 0;
 }
 .six1 span{
-	font-size:6em;
-	color:#ff5d56;
+	font-size:4em;
+	color:  #080808;
 	font-weight: 100;
 }
 /*--start--*/
@@ -1574,18 +1575,28 @@ width: 29%;
     float:left;
 }
 .bottom-grid1{
-background: url(../images/product2.jpg) center ;
+background: url(../images/pagedefault.jpeg) center ;
   width: 100%;
-  min-height: 311px;
+  min-height: 500px;
   display: block;
   background-size: cover;
   text-align: left;
     padding: 1.5em;
 }
 .fit1 {
-  border: 2px solid #fff;
-  color:#fff;
+  border: white;
+  color: black;
     padding: 3em 9em;
+}
+.fit2 {
+    border: white;
+    color: black;
+    padding-left: 3em 9em; 
+    
+}
+.fit2 h4{
+    font-size: 5em;
+    font-weight: 300;
 }
 .fit1 h3{
 font-size:5em;
