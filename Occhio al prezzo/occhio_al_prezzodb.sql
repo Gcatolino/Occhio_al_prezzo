@@ -109,7 +109,7 @@ CREATE TABLE `Prodotto` (
   `nome` varchar(20) NOT NULL DEFAULT '',
   `taglia` varchar(10) NOT NULL DEFAULT '',
   `prezzo` varchar(7) NOT NULL DEFAULT '',
-  `punto vendita` varchar(20) NOT NULL DEFAULT '',
+  `punto_vendita` varchar(20) NOT NULL DEFAULT '',
   `fk_email` varchar(25) NOT NULL,
   `data` date NOT NULL,
   PRIMARY KEY (`idProdotto`),
