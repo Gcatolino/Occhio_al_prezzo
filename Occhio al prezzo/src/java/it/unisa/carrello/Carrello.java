@@ -5,7 +5,7 @@
  */
 package it.unisa.carrello;
 
-import it.unisa.Product.Product;
+import it.unisa.product.product;
 import java.util.ArrayList;
 
 /**

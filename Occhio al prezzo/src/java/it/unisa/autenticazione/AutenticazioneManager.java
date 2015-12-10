@@ -5,12 +5,13 @@
  */
 package it.unisa.autenticazione;
 
-import it.unisa.Account.Account;
+import it.unisa.account.Account;
 import it.unisa.exception.ConnectionException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import it.unisa.utility.DBConnection;
 
 /**
  *
@@ -29,7 +30,7 @@ public class AutenticazioneManager {
 
     }
     
-    public Account login(String email, String password) throws SQLException {
+    public Account login(String email, String password) throws SQLException, ConnectionException {
         
         Connection connection = null;
         Statement stmt = null;

@@ -4,11 +4,10 @@
  * and open the template in the editor.
  */
 package it.unisa.carrello;
-package it.unisa.exception;
 
-import it.unisa.Product.Product;
+import it.unisa.product.product;
 import it.unisa.exception.ConnectionException;
-import it.unisa.product.DBConnection;
+import it.unisa.utility.DBConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

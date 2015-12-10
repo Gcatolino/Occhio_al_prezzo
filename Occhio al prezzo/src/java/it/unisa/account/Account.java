@@ -1,4 +1,4 @@
-package it.unisa.Account;
+package it.unisa.account;
 
 import java.util.Date;
 
