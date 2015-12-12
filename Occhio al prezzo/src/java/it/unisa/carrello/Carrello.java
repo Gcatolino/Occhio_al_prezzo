@@ -5,7 +5,8 @@
  */
 package it.unisa.carrello;
 
-import it.unisa.product.product;
+
+import it.unisa.prodotto.Prodotto;
 import java.util.ArrayList;
 
 /**
@@ -14,20 +15,29 @@ import java.util.ArrayList;
  */
 public class Carrello {
     
-    private ArrayList<Product> carrello;
+    private ArrayList<Prodotto> carrello;
     private String ID;
     private String email;
 
     public Carrello(){
         
-        carrello = new ArrayList<Product>();
+        carrello = new ArrayList<Prodotto>();
     }
     
-    public void addProdotto(Product prod){
-        carrello.add(prod);
+    public void addProdotto(Prodotto prod){
+        boolean presente = false;
+        
+        for(int i=0; i <= carrello.size(); i++){
+            if(prod.getID() == carrello.get(i).getID())
+                presente = true;
+            else presente = false;
+        }
+        
+        if(presente)
+            carrello.add(prod);
         }
     
-    public void eliminaProdotto(Product prod){
+    public void eliminaProdotto(Prodotto prod){
         for(int i= 0; i <= carrello.size(); i++){
             if(prod.getID() == carrello.get(i).getID())
                 carrello.remove(prod);
@@ -40,12 +50,12 @@ public class Carrello {
            carrello.removeAll(carrello);
     }
     
-    public float getTot(){
-        float totale=0;
+    public double getTot(){
+        double totale=0;
      
-        for(int i=0; i <= carrello.size(); i++){
-               totale += carrello.get(i).getPrice();
-        }
+        for(int i=0; i <= carrello.size(); i++)
+               totale += carrello.get(i).getPrezzo();
+        
         return totale;
     }
     

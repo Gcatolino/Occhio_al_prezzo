@@ -5,8 +5,9 @@
  */
 package it.unisa.carrello;
 
-import it.unisa.product.product;
+
 import it.unisa.exception.ConnectionException;
+import it.unisa.prodotto.Prodotto;
 import it.unisa.utility.DBConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,10 +22,6 @@ public class CarrelloManager {
     
     private static CarrelloManager instance;
     private int IDcarrello;
-    
-    private CarrelloManager(){
-        super();
-    }
     
     public static CarrelloManager getInstance(){
         if(instance == null){
@@ -63,7 +60,7 @@ public class CarrelloManager {
         
     }
     
-    public void add(Carrello car, Product prod) throws SQLException{
+    public void add(Carrello car, Prodotto prod) throws SQLException{
         Connection connect = DBConnection.getConnection();
 
         String sql = "INSERT INTO Composizione (fk_idCarrello,fk_idProdotto) VALUES ('" + car.getID() + "','" + prod.getID() + ")";
@@ -77,7 +74,7 @@ public class CarrelloManager {
         }
     }
     
-    public void deleteProduct(Product prod, Carrello car) throws SQLException, ConnectionException {
+    public void deleteProduct(Prodotto prod, Carrello car) throws SQLException, ConnectionException {
         Connection connect = DBConnection.getConnection();
         
         String sql = "DELETE FROM Composizione WHERE fk_idCarrello =  '"
