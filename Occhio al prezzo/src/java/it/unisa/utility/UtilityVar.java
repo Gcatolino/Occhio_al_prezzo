@@ -46,4 +46,9 @@ public class UtilityVar {
         Statement stmt = connection.createStatement();
         return stmt.executeQuery(query.toString());
     }
+    
+    public static boolean isNull(Object obj){
+        if(obj!=null) return true;
+        else return false;
+    }
 }

@@ -10,7 +10,7 @@ public class Account {
 
     private String nome;
     private String cognome;
-    private Date data_di_nascita;
+    private String data_di_nascita;
     private String domicilio;
     private String comune_di_residenza;
     private String ruolo;
@@ -29,7 +29,7 @@ public class Account {
         return cognome;
     }
 
-    public Date getData_di_nascita() {
+    public String getData_di_nascita() {
         return data_di_nascita;
     }
 
@@ -60,8 +60,9 @@ public class Account {
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
-
-    public void setData_di_nascita(Date data_di_nascita) {
+    
+    /*la data deve essere della forma aaaa-mm-gg*/
+    public void setData_di_nascita(String data_di_nascita) {
         this.data_di_nascita = data_di_nascita;
     }
 
