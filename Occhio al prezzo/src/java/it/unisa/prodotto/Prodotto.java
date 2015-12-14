@@ -27,7 +27,8 @@ public class Prodotto implements Serializable{
     private double prezzo;
     private String puntoVendita;
     private String fkEmail;
-    private Date data;
+    private String data;
+    private String pathImmagine;
 
     public Prodotto() {
         super();
@@ -62,8 +63,12 @@ public class Prodotto implements Serializable{
         this.fkEmail = fkEmail;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
+    }
+    
+    public void setPathImmagine(String pathImmagine) {
+        this.pathImmagine = pathImmagine;
     }
 
     public int getID() {
@@ -94,7 +99,11 @@ public class Prodotto implements Serializable{
         return fkEmail;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
+    }
+    
+    public String getPathImmagine() {
+        return pathImmagine;
     }
 }

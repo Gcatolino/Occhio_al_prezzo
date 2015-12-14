@@ -5,6 +5,7 @@
  */
 package it.unisa.prodotto;
 
+import it.unisa.exception.ValueNullException;
 import it.unisa.utility.DBConnection;
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import it.unisa.utility.UtilityVar;
+import java.util.Objects;
 
 /**
  * ProdottoManager
@@ -28,7 +30,7 @@ public class ProdottoManager {
     /**
      * Il nome della tabella
      */
-    private static final String TABLE_PRODUCT = "Prodotto";
+    private static final String TABELLA_PRODOTTO = "Prodotto";
     
     //  istanza della classe
     private static ProdottoManager instance;
@@ -64,20 +66,21 @@ public class ProdottoManager {
      * @param prodotto
      * 
      * @throws java.sql.SQLException
+     * @throws it.unisa.exception.ValueNullException
      */
-    public synchronized void insert(Prodotto prodotto) throws SQLException {
+    public synchronized void insert(Prodotto prodotto) throws SQLException, ValueNullException {
         try(Connection connessione = DBConnection.getConnection()) {
             /*
              * Prepariamo la stringa SQL per inserire un nuovo record 
              * nella tabella Prodotto
              */
-            StringBuilder insertSQL = new StringBuilder("INSERT INTO ");
-                    insertSQL.append(ProdottoManager.TABLE_PRODUCT);
-                    insertSQL.append(" (idProdotto, marca, nome, taglia, prezzo, ");
-                    insertSQL.append(" punto_vendita, fk_email, data)");
+            if(valoriNonNulli(prodotto)){
+                    
+                StringBuilder insertSQL = new StringBuilder("INSERT INTO ");
+                    insertSQL.append(ProdottoManager.TABELLA_PRODOTTO);
+                    insertSQL.append(" (marca, nome, taglia, prezzo, ");
+                    insertSQL.append(" punto_vendita, fk_email, data, path_immagine)");
                     insertSQL.append(" VALUES ('");
-                    insertSQL.append(prodotto.getID());
-                    insertSQL.append("','");
                     insertSQL.append(prodotto.getMarca());
                     insertSQL.append("','");
                     insertSQL.append(prodotto.getNome());
@@ -91,15 +94,20 @@ public class ProdottoManager {
                     insertSQL.append(prodotto.getFkEmail());
                     insertSQL.append("','");
                     insertSQL.append(prodotto.getData());
+                    insertSQL.append("','");
+                    insertSQL.append(prodotto.getPathImmagine());
                     insertSQL.append("')");
             
-            try{
-                System.out.println("La query "+insertSQL);
-                UtilityVar.execute(connessione, insertSQL.toString());
+                try{
+                    System.out.println("La query "+insertSQL);
+                    UtilityVar.execute(connessione, insertSQL.toString());
                 
-                connessione.commit();
-            } catch (SQLException e){
-                System.out.println(e.getMessage());
+                    connessione.commit();
+                } catch (SQLException e){
+                    System.out.println(e.getMessage());
+                }
+            } else{
+                throw new ValueNullException("Campi NULL o vuoti non sono consentiti");
             }
         }
     }
@@ -114,43 +122,48 @@ public class ProdottoManager {
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
      * @throws java.io.IOException
+     * @throws it.unisa.exception.ValueNullException
      */
-    public synchronized void update(int vecchioIdProdotto, Prodotto prodotto) throws ClassNotFoundException, SQLException, IOException {
+    public synchronized void update(int vecchioIdProdotto, Prodotto prodotto) throws ClassNotFoundException, SQLException, IOException, ValueNullException {
         try (Connection connessione = DBConnection.getConnection()) {
 
             /*
              * Prepariamo la stringa SQL per modificare un record 
              * della tabella Prodotto
              */
-            StringBuilder updateSQL = new StringBuilder("UPDATE ");
-                    updateSQL.append(ProdottoManager.TABLE_PRODUCT );
-                    updateSQL.append(" set idProdotto = ");
-                    updateSQL.append(prodotto.getID());
-                    updateSQL.append(", marca = '");
-                    updateSQL.append(prodotto.getMarca());
-                    updateSQL.append("', nome = '");
-                    updateSQL.append(prodotto.getNome());
-                    updateSQL.append("', taglia = '");
-                    updateSQL.append(prodotto.getTaglia());
-                    updateSQL.append("', prezzo = ");
-                    updateSQL.append(prodotto.getPrezzo());
-                    updateSQL.append(", punto_vendita ='");
-                    updateSQL.append(prodotto.getPuntoVendita());
-                    updateSQL.append("', fk_email = '");
-                    updateSQL.append(prodotto.getFkEmail());
-                    updateSQL.append("'  WHERE idProdotto = ");
-                    updateSQL.append(vecchioIdProdotto);         
+            if(valoriNonNulli(prodotto)){
+                StringBuilder updateSQL = new StringBuilder("UPDATE ");
+                        updateSQL.append(ProdottoManager.TABELLA_PRODOTTO );
+                        updateSQL.append(" set marca = '");
+                        updateSQL.append(prodotto.getMarca());
+                        updateSQL.append("', nome = '");
+                        updateSQL.append(prodotto.getNome());
+                        updateSQL.append("', taglia = '");
+                        updateSQL.append(prodotto.getTaglia());
+                        updateSQL.append("', prezzo = ");
+                        updateSQL.append(prodotto.getPrezzo());
+                        updateSQL.append(", punto_vendita ='");
+                        updateSQL.append(prodotto.getPuntoVendita());
+                        updateSQL.append("', fk_email = '");
+                        updateSQL.append(prodotto.getFkEmail());
+                        updateSQL.append("', path_immagine = '");
+                        updateSQL.append(prodotto.getPathImmagine());
+                        updateSQL.append("'  WHERE idProdotto = ");
+                        updateSQL.append(vecchioIdProdotto);         
                     
-           try{
-                System.out.println("La query "+updateSQL);
+                try{
+                    System.out.println("La query "+updateSQL);
                 
-                //Inviamo la Query al DataBase
-                UtilityVar.execute(connessione, updateSQL.toString());
+                    //Inviamo la Query al DataBase
+                    UtilityVar.execute(connessione, updateSQL.toString());
                 
-                connessione.commit();
-            } catch (SQLException e){
-                System.out.println(e.getMessage());
-            } 
+                    connessione.commit();
+                } catch (SQLException e){
+                    System.out.println(e.getMessage());
+                } 
+            } else{
+                throw new ValueNullException("Campi NULL o vuoti non sono consentiti");     
+            }
         }
     }
     
@@ -175,7 +188,7 @@ public class ProdottoManager {
              * della tabella Prodotto
              */
             StringBuilder deleteSQL = new StringBuilder("DELETE FROM ");
-                    deleteSQL.append(ProdottoManager.TABLE_PRODUCT);
+                    deleteSQL.append(ProdottoManager.TABELLA_PRODOTTO);
                     deleteSQL.append(" WHERE idProdotto = ");
                     deleteSQL.append(idProdotto);
 
@@ -214,7 +227,7 @@ public class ProdottoManager {
              * nella tabella Prodotto, in base al campo "nome"
              */
             StringBuilder querySQL = new StringBuilder("SELECT * FROM ");
-                    querySQL.append(ProdottoManager.TABLE_PRODUCT);
+                    querySQL.append(ProdottoManager.TABELLA_PRODOTTO);
                     querySQL.append(" WHERE nome = '");
                     querySQL.append(nomeProdotto);
                     querySQL.append("'");
@@ -222,23 +235,25 @@ public class ProdottoManager {
             System.out.println("La query "+querySQL);
             
             //Inviamo la Query al DataBase
-            ResultSet result = UtilityVar.executeQuery(connessione,querySQL.toString());
+            ResultSet risultato = UtilityVar.executeQuery(connessione,querySQL.toString());
 
             /*
              * Scorriamo il risultato della query, per ogni tupla viene creato
              * un nuovo oggetto Prodotto, che a sua volta è aggiunto ad un 
              * ArrayList di Prodotto
              */
-            while (result.next()) {
+            while (risultato.next()) {
                 Prodotto prodotto = new Prodotto();
                 
-                prodotto.setID(result.getInt("idProdotto"));
-                prodotto.setMarca(result.getString("marca"));
-                prodotto.setNome(result.getString("nome"));
-                prodotto.setTaglia(result.getString("taglia"));
-                prodotto.setPrezzo(result.getFloat("prezzo"));
-                prodotto.setFkEmail(result.getString("fk_email"));
-                prodotto.setData(result.getDate("data"));
+                prodotto.setID(risultato.getInt("idProdotto"));
+                prodotto.setMarca(risultato.getString("marca"));
+                prodotto.setNome(risultato.getString("nome"));
+                prodotto.setTaglia(risultato.getString("taglia"));
+                prodotto.setPuntoVendita(risultato.getString("punto_vendita"));
+                prodotto.setPrezzo(risultato.getFloat("prezzo"));
+                prodotto.setFkEmail(risultato.getString("fk_email"));
+                prodotto.setData(risultato.getString("data"));
+                prodotto.setPathImmagine(risultato.getString("path_immagine"));
                 
                 prodotti.add(prodotto);
             }
@@ -273,7 +288,7 @@ public class ProdottoManager {
              * nella tabella Prodotto, in base al campo "nome"
              */
             StringBuilder querySQL = new StringBuilder("SELECT * FROM ");
-                    querySQL.append(ProdottoManager.TABLE_PRODUCT);
+                    querySQL.append(ProdottoManager.TABELLA_PRODOTTO);
                     querySQL.append(" WHERE punto_vendita = '");
                     querySQL.append(puntoVenditaProdotto);
                     querySQL.append("'");
@@ -295,9 +310,11 @@ public class ProdottoManager {
                 prodotto.setMarca(risultato.getString("marca"));
                 prodotto.setNome(risultato.getString("nome"));
                 prodotto.setTaglia(risultato.getString("taglia"));
+                prodotto.setPuntoVendita(risultato.getString("punto_vendita"));
                 prodotto.setPrezzo(risultato.getFloat("prezzo"));
                 prodotto.setFkEmail(risultato.getString("fk_email"));
-                prodotto.setData(risultato.getDate("data"));
+                prodotto.setData(risultato.getString("data"));
+                prodotto.setPathImmagine(risultato.getString("path_immagine"));
                 
                 prodotti.add(prodotto);
             }
@@ -308,6 +325,25 @@ public class ProdottoManager {
         
         return prodotti;
     }
-    
+
+    /**
+     * Metodo della classe incaricato di controllare
+     * se ci sono campi NULL dove non sarebbero consentiti 
+     * all'interno del DB.
+     *
+     * @param prodotto
+     * 
+     * @throws 
+     * 
+     * @return true se non ci sono valori NULL, false altrimenti.
+     */
+    private boolean valoriNonNulli(Prodotto prodotto){
+        if(!Objects.isNull(prodotto.getMarca()) && !Objects.isNull(prodotto.getNome()) &&
+                    !Objects.isNull(prodotto.getPuntoVendita()) && !Objects.isNull(prodotto.getTaglia()) &&
+                    (prodotto.getPrezzo() != 0) ){
+            return true;
+        }
+        return false;
+    }
     
 }
