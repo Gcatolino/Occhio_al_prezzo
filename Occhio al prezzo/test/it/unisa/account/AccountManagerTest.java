@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author raffaele donadio
+ * @author raffaele donadiO
  */
 public class AccountManagerTest {
     private Account acc;
