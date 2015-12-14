@@ -126,7 +126,7 @@ public class AccountManager {
                 account.setPassword(rs.getString("password"));
                 account.setNome(rs.getString("nome"));
                 account.setCognome(rs.getString("cognome"));
-                account.setData_di_nascita(rs.getDate("data di nascita").toString());
+                account.setData_di_nascita(rs.getDate("data_di_nascita").toString());
                 account.setDomicilio(rs.getString("domicilio"));
                 account.setComune_di_residenza(rs.getString("comune_di_residenza"));
                 account.setRuolo(rs.getString("ruolo"));
@@ -151,9 +151,9 @@ public class AccountManager {
         /*Assumiamo che:
         L'email non venga modificata*/
         
-        String sql = "UPDATE Account "
+        String sql = "UPDATE Account set "
                 
-                + "', password = '"
+                + " password = '"
                 + account.getPassword()
                 + "', nome = '"
                 + account.getNome()
