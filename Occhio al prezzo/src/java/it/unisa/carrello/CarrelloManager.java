@@ -7,8 +7,10 @@ package it.unisa.carrello;
 
 
 import it.unisa.exception.ConnectionException;
+import it.unisa.exception.ValueNullException;
 import it.unisa.prodotto.Prodotto;
 import it.unisa.utility.DBConnection;
+import it.unisa.utility.UtilityVar;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,65 +32,43 @@ public class CarrelloManager {
         return instance;
     }
     
-    public void calcolaID() throws SQLException,ConnectionException{
-        Connection connect = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        Carrello car = null;
+    public void add(Carrello carrello) throws SQLException,ValueNullException{
         
-        String query = "selct count(*) from Carrello";
+        Connection conn = DBConnection.getConnection();
         
-        try{
-            connect = DBConnection.getConnection();
+        if(!UtilityVar.isNull(carrello.getID()) && !UtilityVar.isNull(carrello.getEmail())){
             
-            if(connect == null){
-                throw new ConnectionException();
+            String sql = "INSERT INTO Carrello (idCarrello,fk_email) VALUES('"
+                         + carrello.getID() + "','" + carrello.getEmail() + "')";
+            
+            try{
+                Statement stmt = conn.createStatement();
+                stmt.executeQuery(sql);
+                conn.commit();
+            } finally {
+                DBConnection.releaseConnection(conn);
             }
-            
-            stmt = connect.createStatement();
-            rs = stmt.executeQuery(query);
-            
-            if(rs.next()){
-                car = new Carrello();
-                int num = Integer.parseInt(rs.getString("*")) + 1;
-                car.setID(String.valueOf(num));
-            } 
-        }finally{
-            DBConnection.releaseConnection(connect);
-        }
-        
-        
+                    
+        }else throw new ValueNullException();
     }
     
-    public void add(Carrello car, Prodotto prod) throws SQLException{
-        Connection connect = DBConnection.getConnection();
-
-        String sql = "INSERT INTO Composizione (fk_idCarrello,fk_idProdotto) VALUES ('" + car.getID() + "','" + prod.getID() + ")";
-
-        try {
-            Statement stmt = connect.createStatement();
-            stmt.executeUpdate(sql);
-            connect.commit();
-        } finally {
-            DBConnection.releaseConnection(connect);
-        }
+    public void deleteCarrello(Carrello carr) throws SQLException, ConnectionException, ValueNullException{
+        Connection conn = DBConnection.getConnection();
+        
+        if(!UtilityVar.isNull(carr)){
+            
+            String sql = "DELETE FROM Carrello WHERE fk_email = '"
+                         + carr.getEmail()
+                         + "'";
+            
+            try{
+                Statement stmt = conn.createStatement();
+                stmt.executeQuery(sql);
+                conn.commit();
+            }finally {
+                DBConnection.releaseConnection(conn);
+            }
+        }else throw new ValueNullException();
     }
     
-    public void deleteProduct(Prodotto prod, Carrello car) throws SQLException, ConnectionException {
-        Connection connect = DBConnection.getConnection();
-        
-        String sql = "DELETE FROM Composizione WHERE fk_idCarrello =  '"
-                        + car.getID()
-                        + "' AND fk_idProdotto = '" 
-                        + prod.getID()
-                        + "'";
-
-                        try {
-                            Statement stmt = connect.createStatement();
-                            stmt.executeUpdate(sql);
-                            connect.commit();
-                        } finally { 
-                            DBConnection.releaseConnection(connect);
-                        }
-    }
 }

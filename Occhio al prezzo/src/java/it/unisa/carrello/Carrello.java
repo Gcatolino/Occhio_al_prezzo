@@ -15,52 +15,11 @@ import java.util.ArrayList;
  */
 public class Carrello {
     
-    private ArrayList<Prodotto> carrello;
     private String ID;
     private String email;
 
     public Carrello(){
         
-        carrello = new ArrayList<Prodotto>();
-    }
-    
-    public void addProdotto(Prodotto prod){
-        boolean presente = false;
-        
-        for(int i=0; i <= carrello.size(); i++){
-            if(prod.getID() == carrello.get(i).getID())
-                presente = true;
-            else presente = false;
-        }
-        
-        if(presente)
-            carrello.add(prod);
-        }
-    
-    public void eliminaProdotto(Prodotto prod){
-        for(int i= 0; i <= carrello.size(); i++){
-            if(prod.getID() == carrello.get(i).getID())
-                carrello.remove(prod);
-            else return;
-        }
-    }
-    
-    public void svuotaCarrello(){
-        if(carrello.size() > 0)
-           carrello.removeAll(carrello);
-    }
-    
-    public double getTot(){
-        double totale=0;
-     
-        for(int i=0; i <= carrello.size(); i++)
-               totale += carrello.get(i).getPrezzo();
-        
-        return totale;
-    }
-    
-    public int getNumeroProdotto(){
-        return carrello.size();
     }
     
     public void setID(String ID){
