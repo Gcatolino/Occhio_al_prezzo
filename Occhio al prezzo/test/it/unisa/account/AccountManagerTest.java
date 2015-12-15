@@ -3,7 +3,12 @@ package it.unisa.account;
 
 import it.unisa.account.Account;
 import it.unisa.account.AccountManager;
+import it.unisa.exception.ConnectionException;
+import it.unisa.exception.ValueNullException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,7 +22,7 @@ import static org.junit.Assert.*;
  */
 public class AccountManagerTest {
     private Account acc;
-    private String email;
+    
     public AccountManagerTest() {
     }
     
@@ -41,11 +46,22 @@ public class AccountManagerTest {
         acc.setComune_di_residenza("salerno");
         acc.setCognome("donadio");
         acc.setData_di_nascita("1993-12-12");
-        email="salernitana22@gmaiil.com";
     }
     
     @After
     public void tearDown() {
+        AccountManager instance = new AccountManager();
+        try {
+            if (instance.getAccountByEmail(acc.getEmail()) != null){
+                
+                instance.deleteAccount(acc);}
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ConnectionException ex) {
+            Logger.getLogger(AccountManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ValueNullException ex) {
+            Logger.getLogger(AccountManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -68,8 +84,8 @@ public class AccountManagerTest {
         System.out.println("add");
         AccountManager instance = new AccountManager();
         instance.add(acc);
-        Account result = instance.getAccountByEmail(email);
-        assertEquals(acc,result);
+        Account result = instance.getAccountByEmail(acc.getEmail());
+        assertEquals(acc.getEmail(),result.getEmail());
         // TODO review the generated test code and remove the default call to fail.
     }
 
@@ -80,8 +96,9 @@ public class AccountManagerTest {
     public void testGetAccountByEmail() throws Exception {
         System.out.println("getAccountByEmail");
         AccountManager instance = new AccountManager();
-        Account result = instance.getAccountByEmail(email);
-        assertEquals(acc, result);
+        instance.add(acc);
+        Account result = instance.getAccountByEmail(acc.getEmail());
+        assertEquals(acc.getEmail(), result.getEmail());
         // TODO review the generated test code and remove the default call to fail.
        
     }
@@ -92,12 +109,10 @@ public class AccountManagerTest {
     @Test
     public void testGetAccoutnByFiltri() throws Exception {
         System.out.println("getAccoutnByFiltri");
-        String domicilio = "mercato san severino";
         AccountManager instance = new AccountManager();
-        ArrayList<Account> expResult = new ArrayList<Account>();
-        expResult.add(acc);
-        ArrayList<Account> result = instance.getAccoutnByFiltri(domicilio);
-        assertEquals(expResult, result);
+        instance.add(acc);
+        ArrayList<Account> result = instance.getAccoutnByFiltri(acc.getDomicilio());
+        assertEquals(1, result.size());
         // TODO review the generated test code and remove the default call to fail.
         
     }
@@ -109,10 +124,11 @@ public class AccountManagerTest {
     public void testModificaAccount() throws Exception {
         System.out.println("modificaAccount");
         AccountManager instance = new AccountManager();
+        instance.add(acc);
         acc.setNome("ciao");
         instance.modificaAccount(acc);
-        Account ac=instance.getAccountByEmail("salernitana22@gmail.com");
-        assertEquals(acc,ac);
+        Account ac=instance.getAccountByEmail(acc.getEmail());
+        assertEquals("ciao",ac.getNome());
         
         
         
@@ -127,8 +143,9 @@ public class AccountManagerTest {
        public void testDeleteAccount() throws Exception {
         System.out.println("deleteAccount");
         AccountManager instance = new AccountManager();
+        instance.add(acc);
         instance.deleteAccount(acc);
-        Account ac=instance.getAccountByEmail("salernitana22@gmail.com");
+        Account ac=instance.getAccountByEmail(acc.getEmail());
         assertEquals(null,ac);
         // TODO review the generated test code and remove the default call to fail.
        

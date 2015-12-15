@@ -51,21 +51,24 @@ public class AccountManager {
                 DBConnection.releaseConnection(connect);
             }
         }
-        else throw new ValueNullException();
+        else { DBConnection.releaseConnection(connect);
+            
+            
+            throw new ValueNullException();
+        }
      } 
     
     public Account getAccountByEmail(String email) throws SQLException, ConnectionException, ValueNullException {
         Statement stmt = null;
         ResultSet rs = null;
-        Connection connection = null;
+        Connection connection = DBConnection.getConnection();;
         Account account = null;
         if(!UtilityVar.isNull(email))
         {
                 
             String query = "select * from Account where email = '" + email + "'";
-
+           
             try {
-                connection = DBConnection.getConnection();
 
                 if (connection == null) {
                     throw new ConnectionException();
@@ -94,7 +97,12 @@ public class AccountManager {
 
             return account;
         }
-        else throw new ValueNullException();
+        else {
+         
+            DBConnection.releaseConnection(connection);
+            throw new ValueNullException();
+            
+        }
  }     
     
     /*NOTA IMPORTANTISSIMA: qui si dovrebbe passare la regione o provincia, pero dopo
@@ -103,15 +111,16 @@ public class AccountManager {
      public ArrayList<Account> getAccoutnByFiltri(String domicilio) throws SQLException, ConnectionException, Exception {
         Statement stmt = null;
         ResultSet rs = null;
-        Connection connection = null;
+        Connection connection = DBConnection.getConnection();;
         Account account = null;
         ArrayList<Account> accounts=new ArrayList<Account>();
         String query = "select * from Account where domicilio = '" + domicilio + "'";
         
+        System.out.println(query);
+        
         if(!UtilityVar.isNull(domicilio))
         {
         try {
-            connection = DBConnection.getConnection();
 
             if (connection == null) {
                 throw new ConnectionException();
@@ -140,11 +149,15 @@ public class AccountManager {
 
         return accounts;
         }
-        else throw new ValueNullException();
+        else {
+            
+            DBConnection.releaseConnection(connection);
+            
+            throw new ValueNullException();}
   }
      
      public void modificaAccount(Account account) throws SQLException, ConnectionException, ValueNullException {
-        Connection connect = DBConnection.getConnection();
+        Connection connection = DBConnection.getConnection();
       
          if(!UtilityVar.isNull(account))
         {
@@ -176,17 +189,21 @@ public class AccountManager {
                 + "'";
 
         try {
-            Statement stmt = connect.createStatement();
+            Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
-            connect.commit();
+            connection.commit();
         } finally {
-            DBConnection.releaseConnection(connect);
+            DBConnection.releaseConnection(connection);
         }
-        }else throw new ValueNullException();
+        }else {
+             DBConnection.releaseConnection(connection);
+             throw new ValueNullException();
+         
+         }
 }
      
     public void deleteAccount(Account account) throws SQLException, ConnectionException, ValueNullException {
-        Connection connect = DBConnection.getConnection();
+        Connection connection = DBConnection.getConnection();
       
         if(!UtilityVar.isNull(account))
         {
@@ -196,13 +213,17 @@ public class AccountManager {
                 + "'";
 
         try {
-            Statement stmt = connect.createStatement();
+            Statement stmt = connection.createStatement();
             stmt.executeUpdate(sql);
-            connect.commit();
+            connection.commit();
         } finally {
-            DBConnection.releaseConnection(connect);
+            DBConnection.releaseConnection(connection);
         }
-         }else throw new ValueNullException();
+         }else {
+            
+            DBConnection.releaseConnection(connection);
+            
+            throw new ValueNullException();}
     }
           
 
