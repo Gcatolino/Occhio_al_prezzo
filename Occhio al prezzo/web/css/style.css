@@ -47,7 +47,6 @@ h1,h2,h3,h4,h5,h6,label,p{
 	margin: 5px 20px 5px 20px ;
 }
 .item_add {
-
 }		
 .grid_1 img{
 	margin-bottom:1em;
@@ -82,18 +81,18 @@ h1,h2,h3,h4,h5,h6,label,p{
   display: inline-block;
 }
 .header{
-	background: url(../images/p2full.jpg) no-repeat center;
+	background: url(../images/shop_online.jpg) no-repeat center;
 	width:100%;
 	background-size:cover;
-	min-height:1900px;
+	min-height:1000px;
 	display:block;
 }
 .header-top{
-	background:rgba(0, 0, 0, 0.50);
+	background:white;
 }
 .header-top-in{
 	  padding: 0 2em 0.5em;
-	background:rgba(225, 225, 225, 0.68);
+	background:white;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
 }
@@ -139,12 +138,14 @@ ul.support-right li i.tele{
 }
 .logo  h1{	
 	font-size:3em;
-	font-family: 'Roboto Slab', serif;
+	font-family: initial;
+        
 }
 .logo  h1 a{
 	text-decoration:none;
 	color:#ff5d56;
         color: orange;
+        
 }
 .logo{
 	float:left;
@@ -222,11 +223,15 @@ ul.support-right li i.tele{
 	  height: 25px;
 	  padding: 0;
 }
+
+
+
+
 /*----*/
 .cssmenu {
 	margin-top: 3px;
 }
-.cssmenu ul {
+.css ul {
 	float: right;
 	padding: 0;
 	margin: 0;
@@ -479,7 +484,7 @@ a.now-in:hover{
 .resp-tab-item{
 	color:#000;
 	font-size: 1.4em;
-	  font-family: 'Roboto Slab', serif;
+	  font-family: initial;
 	cursor: pointer;
 	padding: 6px ;
 	display: inline-block;
@@ -592,8 +597,11 @@ h6.jean{
 span.dollor{
 	float: right;
 	font-size: 2.5em;
-	color:#2c3e50;
-	font-weight: 100;
+	color: black;
+	font-weight: normal;
+        position: absolute;
+        bottom: 0px;
+        top: 290px;
 }
 .social-in {
 	float: right;
@@ -605,10 +613,13 @@ span.dollor{
 	display:inline-block;
 }
 .social li i{
-	  background: url(../images/img-sprite.png) -195px -42px ;
+	  background: url(../images/img-sprite.png) -195px -45px; 
   width: 37px;
-  height: 37px;
-  display: inline-block;
+  height: 40px;
+  position: absolute;
+  bottom: 0px;
+  top: 290px;
+  
 }
 .social li i.text{
 	  background-position:  -249px -45px ;
@@ -634,7 +645,7 @@ span.dollor{
 .sap_tabs h2{
 	color:#000;
 	font-size: 3em;
-	  font-family: 'Roboto Slab', serif;
+	  font-family: initial;
 	  text-align: center;
 	  padding: 0.4em 0 1em;
 }
@@ -830,15 +841,15 @@ ul.wmuSliderPagination{
 }
 /*--footer--*/
 .footer{
-	background: #eeeeee;
+	background: white;
 	border-top:1px solid #000;
-	padding: 4em 0 0;
+	padding: 1em 0 0;
 }
 .footer-top h3,.footer-middle h3{
-	color:#010101;
+	color:black;
 	font-size:2em;
 	border-bottom: 1px solid #010101;
-	font-family: 'Roboto Slab', serif;
+	font-family: initial;
 }
 .footer-top input[type="text"],.footer-top textarea{
 	width: 100%;
@@ -848,8 +859,8 @@ ul.wmuSliderPagination{
 	outline:none;
 	border: 1px solid #141414;
 	-webkit-appearance: none;
-	font-size:0.9em;
-	font-family: 'Roboto Slab', serif;
+	font-size:1.2em;
+	font-family: initial;
 	color:#141414;
 }
 .footer-top input[type="text"]:hover,.footer-top textarea:hover{
@@ -861,24 +872,25 @@ ul.wmuSliderPagination{
 .footer-top input[type="submit"]{
 	width: 40%;
 	font-size: 1em;
-	background: #ff5d56;
+	background:none;
 	padding: 0.5em 1em;
 	text-align: center;
-	color: #fff;
-	border: none;
+	color:black;
+	border:none;
 	outline:none;
 	-webkit-appearance: none;
-	font-family: 'Roboto Slab', serif;
+	font-family: initial;
 	float:right;
-	border:1px solid #ff5d56;
+	border:1px solid ;
 }
 .footer-top input[type="submit"]:hover{
 	background:none;
 	border:1px solid #000;
-	color:#000;
+	color: #000;
 }
 .footer-top form{
 	margin: 2em 0 0;
+        width: 200%;
 }
 /*----*/
 .grid-product{
@@ -1014,6 +1026,8 @@ ul.social-footer li  i.mes-in{
 ul.social-footer {
   padding:1em 0 ;
 }
+
+
  p.footer-class {
  font-size: 1.3em;
   color: #000;
@@ -1021,7 +1035,7 @@ ul.social-footer {
   border-top: 2px solid #000;
   padding: 3em 0 0;
   margin: 3em 0;
-    font-family: 'Roboto Slab', serif;
+    font-family: initial;
 }
 p.footer-class a{
  		text-decoration: none;
@@ -1044,10 +1058,10 @@ p.footer-class a:hover{
   padding: 0;
 }
 .back{
-	background: url(../images/a1.jpg) 0px 0px;
+	background: url(../images/banner.jpg) 0px 0px;
   width: 100%;
   background-size: cover;
-  min-height:850px;
+  min-height:650px;
   display: block;
   text-align: center;
 }
@@ -1905,32 +1919,37 @@ a.add-re:hover{
 }
 .login-left h3, .login-right h3 {
 	color: #ff5d56;
-	font-size: 1.1em;
-	text-transform: uppercase;
-	font-weight: 600;
-	padding-bottom: 0.5em;
-	  font-family: 'Roboto Slab', serif;
+	font-size: 1.3em;
+	font-weight: 600; 
+        padding-bottom: 0.5em;
+	  font-family: initial;
 }
 .login-left p, .login-right p {
 	color: #555;
 	display: block;
-	font-size: 1.1em;
+	font-size: 1.3em;
 	margin: 0 0 1em 0;
 	line-height: 1.8em;
+        font-family: initial;
 
 }
 .acount-btn {
-	background:#ff5d56;
-	color: #FFF;
-	font-size: 0.9em;
-	padding: 0.7em 1.2em;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	-o-transition: 0.5s all;
-	display: inline-block;
-	text-transform: uppercase;
-	border: 1px solid #ff5d56;
+	background: #ff5d56;
+    color: #FFF;
+    font-size: 1.3em;
+    width: 40%;
+    font-weight: 400;
+    padding: 0.5em 1.2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    display: inline-block;
+    border: none;
+    outline: none;
+    font-family: initial;
+    border: 1px solid #ff5d56;
+    text-align: center;
 }
 .acount-btn:hover, .login-right input[type="submit"]:hover{
 	background:none;
@@ -1946,9 +1965,10 @@ a.add-re:hover{
 }
 .login-right span {
 	color: #000;
-	font-size:0.9em;
+	font-size:1.2em;
 	padding-bottom: 0.2em;
 	display: block;
+        font-family: initial;
 }
 .login-right input[type="text"] {
 	border: 1px solid #000;
@@ -1975,20 +1995,24 @@ a.add-re:hover{
 .login-right input[type="submit"] {
 	background:#ff5d56;
 	color: #FFF;
-	font-size: 1em;
+	font-size: 1.3em;
+        width: 40%;
+        font-weight: 400;
 	padding: 0.5em 1.2em;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
 	-moz-transition: 0.5s all;
 	-o-transition: 0.5s all;
 	display: inline-block;
-	text-transform: uppercase;
 	border:none;
 	outline:none;
+        font-family: initial;
 	border: 1px solid #ff5d56;
 }
 a.forgot {
-	font-size: 0.8125em;
+	font-size: 1.2em;
+        font-family: initial;
+       
 }
 .account_grid {
 	  width: 70%;
@@ -2001,15 +2025,14 @@ a.forgot {
 }
 .register h3 {
 	color: #ff5d56;
-	font-size: 1.1em;
-	text-transform: uppercase;
+	font-size: 1.3em;
 	font-weight: 600;
 	padding-bottom: 0.5em;
-	  font-family: 'Roboto Slab', serif;
+	  font-family: initial;
 }
 .register span{
 	color: #000;
-	font-size:0.9em;
+	font-size:1.1em;
 	padding-bottom: 0.2em;
 	display: block;
 	text-transform: uppercase;
@@ -2037,18 +2060,18 @@ a.forgot {
 .register  input[type="submit"] {
 	background: #ff5d56;
 	color:#fff;
-	font-size:1.1em;
+	font-size:1.3em;
 	border:none;
-	width:20%;
+	width:40%;
 	outline:none;	
-	font-weight: 600;
+	font-weight: 400;
 	padding:0.5em 1em;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
 	-moz-transition: 0.5s all;
 	-o-transition: 0.5s all;
-	border: 1px solid #ff5d56;
-	font-family: 'Roboto Slab', serif;
+	border: 0.2px solid #ff5d56;
+	font-family: initial;
 }
 .register input[type="submit"]:hover{
 	background:none;
