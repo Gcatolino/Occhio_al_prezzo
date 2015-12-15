@@ -43,7 +43,7 @@ public class CarrelloManager {
             
             try{
                 Statement stmt = conn.createStatement();
-                stmt.executeQuery(sql);
+                stmt.executeUpdate(sql);
                 conn.commit();
             } finally {
                 DBConnection.releaseConnection(conn);
@@ -63,7 +63,7 @@ public class CarrelloManager {
             
             try{
                 Statement stmt = conn.createStatement();
-                stmt.executeQuery(sql);
+                stmt.executeUpdate(sql);
                 conn.commit();
             }finally {
                 DBConnection.releaseConnection(conn);
