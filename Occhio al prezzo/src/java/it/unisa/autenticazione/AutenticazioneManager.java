@@ -56,9 +56,9 @@ public class AutenticazioneManager {
         account.setRuolo(rs.getString("ruolo"));
         account.setNome(rs.getString("nome"));
         account.setCognome(rs.getString("cognome"));
-        account.setData_di_nascita(rs.getDate("data di nascita"));
+        account.setDataDiNascita(rs.getDate("data_di_nascita"));
         account.setDomicilio(rs.getString("domicilio"));
-        account.setComune_di_residenza(rs.getString("comune di residenza"));
+        account.setComuneDiResidenza(rs.getString("comune_di_residenza"));
 
         }
 

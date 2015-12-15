@@ -39,8 +39,8 @@ public class AccountManager {
             String sql = "INSERT INTO Account (email,password,nome,cognome,data_di_nascita,"
                     + "domicilio,comune_di_residenza,ruolo) VALUES ('" + account.getEmail()
                     + "','" + account.getPassword() + "','" + account.getNome()
-                    + "','" + account.getCognome()+ "','" + "1993-12-12"
-                    +"','" + account.getDomicilio()+ "','" + account.getComune_di_residenza()
+                    + "','" + account.getCognome()+ "','" + account.getDataDiNascita()
+                    +"','" + account.getDomicilio()+ "','" + account.getComuneDiResidenza()
                     +"','"+account.getRuolo()+"')";
 
             try {
@@ -83,9 +83,9 @@ public class AccountManager {
                     account.setPassword(rs.getString("password"));
                     account.setNome(rs.getString("nome"));
                     account.setCognome(rs.getString("cognome"));
-                    account.setData_di_nascita(rs.getDate("data_di_nascita").toString());
+                    account.setDataDiNascita(rs.getDate("data_di_nascita"));
                     account.setDomicilio(rs.getString("domicilio"));
-                    account.setComune_di_residenza(rs.getString("comune_di_residenza"));
+                    account.setComuneDiResidenza(rs.getString("comune_di_residenza"));
                     account.setRuolo(rs.getString("ruolo"));
                 
                     }
@@ -135,9 +135,9 @@ public class AccountManager {
                 account.setPassword(rs.getString("password"));
                 account.setNome(rs.getString("nome"));
                 account.setCognome(rs.getString("cognome"));
-                account.setData_di_nascita(rs.getDate("data_di_nascita").toString());
+                account.setDataDiNascita(rs.getDate("data_di_nascita"));
                 account.setDomicilio(rs.getString("domicilio"));
-                account.setComune_di_residenza(rs.getString("comune_di_residenza"));
+                account.setComuneDiResidenza(rs.getString("comune_di_residenza"));
                 account.setRuolo(rs.getString("ruolo"));
                 accounts.add(account);
                 
@@ -173,11 +173,11 @@ public class AccountManager {
                 + "', cognome = '"
                 + account.getCognome()
                 + "', data_di_nascita = '"
-                + account.getData_di_nascita()
+                + account.getDataDiNascita()
                 + "', domicilio = '"
                 + account.getDomicilio()
                 + "', comune_di_residenza = '"
-                + account.getComune_di_residenza()
+                + account.getComuneDiResidenza()
                 + "', ruolo = '"
                 + account.getRuolo()
                 + "'";
@@ -222,7 +222,6 @@ public class AccountManager {
          }else {
             
             DBConnection.releaseConnection(connection);
-            
             throw new ValueNullException();}
     }
           

@@ -2,6 +2,10 @@ package it.unisa.account;
 
 import java.util.Date;
 
+
+
+
+
 /**
  *
  * @author raffaeledonadio
@@ -10,7 +14,7 @@ public class Account {
 
     private String nome;
     private String cognome;
-    private String data_di_nascita;
+    private Date data_di_nascita;
     private String domicilio;
     private String comune_di_residenza;
     private String ruolo;
@@ -29,7 +33,7 @@ public class Account {
         return cognome;
     }
 
-    public String getData_di_nascita() {
+    public Date getDataDiNascita() {
         return data_di_nascita;
     }
 
@@ -37,7 +41,7 @@ public class Account {
         return domicilio;
     }
 
-    public String getComune_di_residenza() {
+    public String getComuneDiResidenza() {
         return comune_di_residenza;
     }
 
@@ -62,7 +66,7 @@ public class Account {
     }
     
     /*la data deve essere della forma aaaa-mm-gg*/
-    public void setData_di_nascita(String data_di_nascita) {
+    public void setDataDiNascita(Date data_di_nascita) {
         this.data_di_nascita = data_di_nascita;
     }
 
@@ -70,7 +74,7 @@ public class Account {
         this.domicilio = domicilio;
     }
 
-    public void setComune_di_residenza(String comune_di_residenza) {
+    public void setComuneDiResidenza(String comune_di_residenza) {
         this.comune_di_residenza = comune_di_residenza;
     }
 
@@ -85,8 +89,15 @@ public class Account {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    
+    /*è sufficiente che l'email sia uguale affinchè due oggetti di tipo Account
+    siano uguali, questo per definizione del dominio applicativo*/
+    public boolean equals(Object obj) {
+        //System.out.println("passo da qua");
+        if (!(obj instanceof Account))
+            return false;
+        Account temp=(Account)obj;
+        return this.email.equals(temp.email);
+}
     
    
   

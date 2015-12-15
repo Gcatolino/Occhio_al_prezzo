@@ -6,9 +6,14 @@
 package it.unisa.utility;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * UtilityVar
@@ -50,5 +55,20 @@ public class UtilityVar {
     public static boolean isNull(Object obj){
         if(obj==null) return true;
         else return false;
+    }
+    public static Date getDateSqlByString(String str) 
+    {
+    // Dichiaro il formato in cui la data dovrà essere
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    // Creo una java.util.Date a partire dalla stringa 
+    java.util.Date date=null;
+        try {
+            date = sdf.parse(str);
+        } catch (ParseException ex) {
+            Logger.getLogger(UtilityVar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    // Converto la date in un formato utilizzabile in MySQL              
+    java.sql.Date sqlDate = new Date(date.getTime());
+    return sqlDate;
     }
 }

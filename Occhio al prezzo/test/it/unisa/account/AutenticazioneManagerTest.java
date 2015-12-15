@@ -1,12 +1,16 @@
+package it.unisa.account;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.unisa.autenticazione.tester;
+
 
 import it.unisa.account.Account;
+import it.unisa.account.AccountManager;
 import it.unisa.autenticazione.AutenticazioneManager;
+import it.unisa.utility.UtilityVar;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,10 +48,9 @@ public class AutenticazioneManagerTest {
      */
     @Test
     public void testGetInstance() {
-        System.out.println("getInstance");
-        AutenticazioneManager expResult = AutenticazioneManager.getInstance();
-        AutenticazioneManager result = AutenticazioneManager.getInstance();
-        assertEquals(expResult, result);
+         System.out.println("getInstance");
+        AccountManager result = AccountManager.getInstance();
+        assertNotNull(result);
     }
 
     /**
@@ -56,11 +59,23 @@ public class AutenticazioneManagerTest {
     @Test
     public void testLogin() throws Exception {
         System.out.println("login");
-        String email = "miao@gmail.com";
-        String password = "baobao";
-        AutenticazioneManager instance = new AutenticazioneManager();
-        Account expResult = instance.login(email, password);
-        Account result = instance.login(email, password);
-        assertEquals(expResult.getEmail(), result.getEmail());
+         Account acc;
+        acc=new Account();
+        acc.setNome("raffaele");
+        acc.setEmail("prova");
+        acc.setPassword("1111");
+        acc.setDomicilio("mercato san severino");
+        acc.setRuolo("venditore");
+        acc.setComuneDiResidenza("salerno");
+        acc.setCognome("donadio");
+        acc.setDataDiNascita(UtilityVar.getDateSqlByString("1993-12-12"));
+        String email = "prova";
+        String password = "1111";
+        AccountManager instance = AccountManager.getInstance();
+        instance.add(acc);
+        AutenticazioneManager inst=AutenticazioneManager.getInstance();
+        Account result = inst.login(email, password);
+        assertEquals(result, acc);
+        instance.deleteAccount(acc);
     }  
 }
