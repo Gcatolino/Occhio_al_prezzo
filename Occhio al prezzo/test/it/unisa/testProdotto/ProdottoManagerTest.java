@@ -9,8 +9,10 @@ import it.unisa.exception.ValueNullException;
 import it.unisa.prodotto.Prodotto;
 import it.unisa.prodotto.ProdottoManager;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,10 +26,12 @@ import static org.junit.Assert.*;
  * @author andreapilato
  */
 public class ProdottoManagerTest {
+    private Prodotto prodotto;
+    private int idUltimoProdottoPrimaDiInserimento;
     
     public ProdottoManagerTest() {
+        
     }
-    
     @BeforeClass
     public static void setUpClass() {
     }
@@ -37,11 +41,38 @@ public class ProdottoManagerTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws Exception{
+        prodotto = new Prodotto();
+        prodotto.setMarca("RIO MARE");
+        prodotto.setNome("Tonno");
+        prodotto.setTaglia("3");
+        prodotto.setPrezzo(4.29);
+        prodotto.setPuntoVendita("Carrefour");
+        prodotto.setFkEmail("a@gmail.com");
+        prodotto.setData("2015-12-15");
+        prodotto.setPathImmagine("C:\\\\immagini");
+        
+        idUltimoProdottoPrimaDiInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
     }
     
     @After
     public void tearDown() {
+        try {
+            int idUltimoProdotto = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+            if(idUltimoProdotto > idUltimoProdottoPrimaDiInserimento){
+                try {
+                    ProdottoManager.getInstance().delete(idUltimoProdotto);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ProdottoManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProdottoManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(ProdottoManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdottoManagerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
      /**
@@ -60,25 +91,13 @@ public class ProdottoManagerTest {
      *
      */
     @Test
-    public void testInsert() {
+    public void testInsert() throws Exception{
+        System.out.println("insert");
         
-            System.out.println("insert");
-            
-            Prodotto prodotto = new Prodotto();
-            
-            prodotto.setMarca("Bauli");
-            prodotto.setNome("Pandoro");
-            prodotto.setTaglia("1");
-            prodotto.setPrezzo(3.99);
-            prodotto.setPuntoVendita("Carrefour");
-            prodotto.setFkEmail("a@gmail.com");
-            prodotto.setData("2016-12-12");
-            prodotto.setPathImmagine("C:\\\\immagini");
-        try {
-            ProdottoManager.getInstance().insert(prodotto);
-        } catch (SQLException | ValueNullException ex) {
-            Logger.getLogger(ex.getMessage());
-        }
+        ProdottoManager.getInstance().insert(prodotto);
+        Prodotto inserito = ProdottoManager.getInstance().ricercaUltimoProdottoInserito();
+        
+        assertEquals(prodotto.getNome(),inserito.getNome());
     }
     
      /**
@@ -87,44 +106,45 @@ public class ProdottoManagerTest {
      * 
      */
     @Test
-    public void testUpdate() {
+    public void testUpdate() throws Exception {
+        int idProdottoDaAggiornare;
         System.out.println("update");
         
-        int idProdottoDaAggiornare = 1;
-        Prodotto prodotto = new Prodotto();
+        ProdottoManager.getInstance().insert(prodotto);
+        prodotto.setNome("Pesce");
         
-        prodotto.setMarca("Bauli");
-        prodotto.setNome("Pandoro");
-        prodotto.setTaglia("1");
-        prodotto.setPrezzo(4.99);
-        prodotto.setPuntoVendita("Carrefour");
-        prodotto.setFkEmail("a@gmail.com");
-        prodotto.setData("2015-12-12");
-        prodotto.setPathImmagine("C:\\\\immagini");
-       
-        try {
-            ProdottoManager.getInstance().update(idProdottoDaAggiornare, prodotto);
-        } catch (ClassNotFoundException | SQLException | IOException | ValueNullException ex) {
-            Logger.getLogger(ex.getMessage());
-        }
+        idProdottoDaAggiornare = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+        
+        ProdottoManager.getInstance().update(idProdottoDaAggiornare, prodotto);
+        Prodotto aggiornato = ProdottoManager.getInstance().ricercaUltimoProdottoInserito();
+        
+        assertEquals("Pesce", aggiornato.getNome());
+        
     }
     
      /**
      * Test di delete della classe ProdottoManager.
      * 
-     * \
+     * 
      */
     @Test
-    public void testDelete() {
+    public void testDelete() throws Exception {
+        int idProdottoDaEliminare;
+        int idUltimoProdottoPrimaInserimento;
+        int idUltimoProdottoDopoInserimento;
+        
         System.out.println("delete");
         
-        int idProdottoDaEliminare = 5;
+        idUltimoProdottoPrimaInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+        ProdottoManager.getInstance().insert(prodotto);
         
-        try {
-            ProdottoManager.getInstance().delete(idProdottoDaEliminare);
-        } catch (ClassNotFoundException | SQLException | IOException ex) {
-            Logger.getLogger(ex.getMessage());
-        }
+        idProdottoDaEliminare = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+        ProdottoManager.getInstance().delete(idProdottoDaEliminare);
+        
+        idUltimoProdottoDopoInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+        
+        assertEquals(idUltimoProdottoDopoInserimento, idUltimoProdottoPrimaInserimento);
+        
     }
     
     /**
@@ -133,23 +153,16 @@ public class ProdottoManagerTest {
      * 
      */
     @Test
-    public void testRicercaProdottiPerNome() {
+    public void testRicercaProdottiPerNome() throws Exception {
         System.out.println("ricercaProdottiPerNome");
         
         ArrayList<Prodotto> prodotti;
-        String nomeProdottoDaRicerca = "Birra";
+        String nomeProdottoDaRicerca = prodotto.getNome();
         
-        try {
-            prodotti = ProdottoManager.getInstance().ricercaProdottiPerNome(nomeProdottoDaRicerca);
-            
-            for(Prodotto p : prodotti){
-                assertEquals(p.getNome(), nomeProdottoDaRicerca);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ex.getMessage());
-        }
-        
-        
+        ProdottoManager.getInstance().insert(prodotto);
+        prodotti = ProdottoManager.getInstance().ricercaProdottiPerNome(nomeProdottoDaRicerca);
+ 
+        assertTrue(!prodotti.isEmpty());
     }
     
     /**
@@ -158,20 +171,15 @@ public class ProdottoManagerTest {
      * 
      */
     @Test
-    public void testRicercaProdottiPerPuntoVendita() {
+    public void testRicercaProdottiPerPuntoVendita() throws Exception{
         System.out.println("ricercaProdottiPerPuntoVendita");
         
         ArrayList<Prodotto> prodotti;
-        String puntoVendita = "Carrefour";
+        String puntoVendita = prodotto.getPuntoVendita();
         
-        try {
-            prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(puntoVendita);
-            
-            for(Prodotto p : prodotti){
-                assertEquals(p.getPuntoVendita(), puntoVendita);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ex.getMessage());
-        }
+        ProdottoManager.getInstance().insert(prodotto);
+        prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(puntoVendita);
+        
+        assertTrue(!prodotti.isEmpty());
     }
 }

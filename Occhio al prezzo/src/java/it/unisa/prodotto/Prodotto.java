@@ -5,8 +5,9 @@
  */
 package it.unisa.prodotto;
 
+import it.unisa.utility.UtilityVar;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Prodotto
@@ -27,7 +28,7 @@ public class Prodotto implements Serializable{
     private double prezzo;
     private String puntoVendita;
     private String fkEmail;
-    private String data;
+    private Date data;
     private String pathImmagine;
 
     public Prodotto() {
@@ -64,9 +65,12 @@ public class Prodotto implements Serializable{
     }
 
     public void setData(String data) {
-        this.data = data;
+        this.data = UtilityVar.parseData(data);
     }
     
+    public void setData(Date data){
+        this.data = data;
+    }
     public void setPathImmagine(String pathImmagine) {
         this.pathImmagine = pathImmagine;
     }
@@ -99,7 +103,7 @@ public class Prodotto implements Serializable{
         return fkEmail;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
     

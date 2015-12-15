@@ -105,6 +105,8 @@ public class ProdottoManager {
                     connessione.commit();
                 } catch (SQLException e){
                     System.out.println(e.getMessage());
+                } finally {
+                DBConnection.releaseConnection(connessione);
                 }
             } else{
                 throw new ValueNullException("Campi NULL o vuoti non sono consentiti");
@@ -146,8 +148,10 @@ public class ProdottoManager {
                         updateSQL.append(prodotto.getPuntoVendita());
                         updateSQL.append("', fk_email = '");
                         updateSQL.append(prodotto.getFkEmail());
-                        updateSQL.append("', path_immagine = '");
-                        updateSQL.append(prodotto.getPathImmagine());
+                        updateSQL.append("', fk_email = '");
+                        updateSQL.append(prodotto.getFkEmail());
+                        updateSQL.append("', data = '");
+                        updateSQL.append(prodotto.getData());
                         updateSQL.append("'  WHERE idProdotto = ");
                         updateSQL.append(vecchioIdProdotto);         
                     
@@ -157,10 +161,12 @@ public class ProdottoManager {
                     //Inviamo la Query al DataBase
                     UtilityVar.execute(connessione, updateSQL.toString());
                 
-                    connessione.commit();
+                    connessione.commit(); 
                 } catch (SQLException e){
                     System.out.println(e.getMessage());
-                } 
+                } finally {
+                DBConnection.releaseConnection(connessione);
+                }
             } else{
                 throw new ValueNullException("Campi NULL o vuoti non sono consentiti");     
             }
@@ -243,19 +249,7 @@ public class ProdottoManager {
              * ArrayList di Prodotto
              */
             while (risultato.next()) {
-                Prodotto prodotto = new Prodotto();
-                
-                prodotto.setID(risultato.getInt("idProdotto"));
-                prodotto.setMarca(risultato.getString("marca"));
-                prodotto.setNome(risultato.getString("nome"));
-                prodotto.setTaglia(risultato.getString("taglia"));
-                prodotto.setPuntoVendita(risultato.getString("punto_vendita"));
-                prodotto.setPrezzo(risultato.getFloat("prezzo"));
-                prodotto.setFkEmail(risultato.getString("fk_email"));
-                prodotto.setData(risultato.getString("data"));
-                prodotto.setPathImmagine(risultato.getString("path_immagine"));
-                
-                prodotti.add(prodotto);
+                prodotti.add(riempiRisultato(risultato));
             }
 
         } finally {
@@ -304,19 +298,7 @@ public class ProdottoManager {
              * ArrayList di Prodotto
              */
             while (risultato.next()) {
-                Prodotto prodotto = new Prodotto();
-                
-                prodotto.setID(risultato.getInt("idProdotto"));
-                prodotto.setMarca(risultato.getString("marca"));
-                prodotto.setNome(risultato.getString("nome"));
-                prodotto.setTaglia(risultato.getString("taglia"));
-                prodotto.setPuntoVendita(risultato.getString("punto_vendita"));
-                prodotto.setPrezzo(risultato.getFloat("prezzo"));
-                prodotto.setFkEmail(risultato.getString("fk_email"));
-                prodotto.setData(risultato.getString("data"));
-                prodotto.setPathImmagine(risultato.getString("path_immagine"));
-                
-                prodotti.add(prodotto);
+                prodotti.add(riempiRisultato(risultato));
             }
 
         } finally {
@@ -325,7 +307,41 @@ public class ProdottoManager {
         
         return prodotti;
     }
+      
+    /**
+     * Metodo della classe incaricato di ricercare l'ultimo
+     * prodotto inserito all'interno del DB.
+     *
+     * @throws java.sql.SQLException
+     * 
+     * @return ultimo prodotto inserito.
+     */
+    public synchronized Prodotto ricercaUltimoProdottoInserito() throws SQLException {
+        Prodotto p = new Prodotto();
+        Connection connessione = null;
+        try {
+            // Otteniamo una Connessione al DataBase
+            connessione = DBConnection.getConnection();
 
+            /*
+             * Prepariamo la stringa SQL per ricercare i record 
+             * nella tabella Prodotto, in base al campo "nome"
+             */
+            StringBuilder querySQL = new StringBuilder("SELECT * FROM ");
+                    querySQL.append(ProdottoManager.TABELLA_PRODOTTO);
+                    querySQL.append(" ORDER BY idProdotto DESC LIMIT 1");
+            
+            //Inviamo la Query al DataBase
+            ResultSet risultato = UtilityVar.executeQuery(connessione,querySQL.toString());
+            if(risultato.next()){
+                p = riempiRisultato(risultato);
+                risultato.close();
+            }
+            return p;
+        } finally {
+            DBConnection.releaseConnection(connessione);
+        }
+    }
     /**
      * Metodo della classe incaricato di controllare
      * se ci sono campi NULL dove non sarebbero consentiti 
@@ -346,4 +362,20 @@ public class ProdottoManager {
         return false;
     }
     
+    
+    private Prodotto riempiRisultato (ResultSet risultato) throws SQLException{
+        Prodotto prodotto = new Prodotto();
+        risultato.getInt("idProdotto");
+        prodotto.setID(risultato.getInt("idProdotto"));
+        prodotto.setMarca(risultato.getString("marca"));
+        prodotto.setNome(risultato.getString("nome"));
+        prodotto.setTaglia(risultato.getString("taglia"));
+        prodotto.setPuntoVendita(risultato.getString("punto_vendita"));
+        prodotto.setPrezzo(risultato.getFloat("prezzo"));
+        prodotto.setFkEmail(risultato.getString("fk_email"));
+        prodotto.setData(risultato.getDate("data"));
+        prodotto.setPathImmagine(risultato.getString("path_immagine"));
+
+        return prodotto;
+    }
 }

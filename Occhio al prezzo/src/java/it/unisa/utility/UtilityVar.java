@@ -56,19 +56,23 @@ public class UtilityVar {
         if(obj==null) return true;
         else return false;
     }
-    public static Date getDateSqlByString(String str) 
-    {
-    // Dichiaro il formato in cui la data dovrà essere
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    // Creo una java.util.Date a partire dalla stringa 
-    java.util.Date date=null;
+    
+    /**
+     * Metodo della classe incaricato di eseguire 
+     * il parse della data, da String a sql.Date.
+     *
+     * @return data di tipo sql.Date
+     */
+    public static Date parseData(String data) {
+        java.sql.Date dataSql = null;
         try {
-            date = sdf.parse(str);
+            SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date dataUtil = formatoData.parse(data);
+            dataSql = new Date(dataUtil.getTime());            
         } catch (ParseException ex) {
-            Logger.getLogger(UtilityVar.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
-    // Converto la date in un formato utilizzabile in MySQL              
-    java.sql.Date sqlDate = new Date(date.getTime());
-    return sqlDate;
+        
+        return dataSql;
     }
 }
