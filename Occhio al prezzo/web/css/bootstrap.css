@@ -129,6 +129,11 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
+  background: white;
+  border: none;      
+  color: #269abc;       
+  font-weight: bold;          
+ 
 }
 button[disabled],
 html input[disabled] {

@@ -4,6 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+
 body{
 	background:#fff;
 	font-family: 'Lato', sans-serif;
@@ -32,6 +33,7 @@ h1,h2,h3,h4,h5,h6,label,p{
 	float:left;
 	margin: 5px 20px 5px 20px ;
 }
+
 
 .itemContainer a{
 	text-decoration:none;
@@ -159,7 +161,51 @@ ul.support-right li i.tele{
 .skyblue{
 	float:left;
 }
-/*----*/
+/*----Login*/
+
+.table-editable {    
+  position: static;
+  font-style: initial;
+  align-self: auto;
+  font-size: 19px;
+  min-height:500px;
+  
+  .glyphicon {
+    font-size: 50px;
+  }
+}
+
+
+.table-remove {
+  color: #700;
+  cursor: pointer;
+  
+  &:hover {
+    color: #f00;
+  }
+}
+
+.table-up, .table-down {
+  color: #007;
+  cursor: pointer;
+  
+  &:hover {
+    color: #00f;
+  }
+}
+
+.table-add {
+  color: #070;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 0;
+  
+  &:hover {
+    color: #0b0;
+  }
+}
+/*----fine login*/
 .search-in{
 	float: left;
 	 width: 4%;
@@ -660,7 +706,7 @@ label.line{
 .content-bottom{
 	  
   width: 100%;
-  min-height: 335px;
+  min-height: 250px;
   display: block;
   background-size: cover;
   text-align: center;
@@ -854,7 +900,7 @@ ul.wmuSliderPagination{
 .footer-top input[type="text"],.footer-top textarea{
 	width: 100%;
 	padding: 0.5em 1em;
-	margin: 0.7em 0;
+	margin: 1.0em 0;
 	background: none;
 	outline:none;
 	border: 1px solid #141414;
@@ -1951,7 +1997,7 @@ a.add-re:hover{
     border: 1px solid #ff5d56;
     text-align: center;
 }
-.acount-btn:hover, .login-right input[type="submit"]:hover{
+.acount-:hover, .login-right input[type="submit"]:hover{
 	background:none;
 	text-decoration:none;
 	border: 1px solid #000;
