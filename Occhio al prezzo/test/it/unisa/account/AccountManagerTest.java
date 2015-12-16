@@ -73,7 +73,7 @@ public class AccountManagerTest {
         acc.setRuolo("venditore");
         acc.setComuneDiResidenza("salerno");
         acc.setCognome("donadio");
-        acc.setDataDiNascita(UtilityVar.getDateSqlByString("1993-12-12"));
+        acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         
         AccountManager instance =  AccountManager.getInstance();
         instance.add(acc);
@@ -98,7 +98,7 @@ public class AccountManagerTest {
         acc.setRuolo("venditore");
         acc.setComuneDiResidenza("salerno");
         acc.setCognome("donadio");
-        acc.setDataDiNascita(UtilityVar.getDateSqlByString("1993-12-12"));
+        acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         //---------------------------------
         AccountManager instance =  AccountManager.getInstance();
         instance.add(acc);
@@ -124,7 +124,7 @@ public class AccountManagerTest {
         acc.setRuolo("venditore");
         acc.setComuneDiResidenza("salerno");
         acc.setCognome("donadio");
-        acc.setDataDiNascita(UtilityVar.getDateSqlByString("1993-12-12"));
+        acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         AccountManager instance = AccountManager.getInstance();
         instance.add(acc);
         ArrayList<Account> expResult = new ArrayList<Account>();
@@ -153,7 +153,7 @@ public class AccountManagerTest {
         acc.setRuolo("venditore");
         acc.setComuneDiResidenza("salerno");
         acc.setCognome("donadio");
-        acc.setDataDiNascita(UtilityVar.getDateSqlByString("1993-12-12"));
+        acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         AccountManager instance =  AccountManager.getInstance();
         instance.add(acc);
         acc.setNome("ciao");
@@ -184,7 +184,7 @@ public class AccountManagerTest {
         acc.setRuolo("venditore");
         acc.setComuneDiResidenza("salerno");
         acc.setCognome("donadio");
-        acc.setDataDiNascita(UtilityVar.getDateSqlByString("1993-12-12"));
+        acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         AccountManager instance =  AccountManager.getInstance();
         instance.deleteAccount(acc);
         Account ac=instance.getAccountByEmail(email);

@@ -68,7 +68,7 @@ public class AutenticazioneManagerTest {
         acc.setRuolo("venditore");
         acc.setComuneDiResidenza("salerno");
         acc.setCognome("donadio");
-        acc.setDataDiNascita(UtilityVar.getDateSqlByString("1993-12-12"));
+        acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         String email = "prova";
         String password = "1111";
         AccountManager instance = AccountManager.getInstance();
