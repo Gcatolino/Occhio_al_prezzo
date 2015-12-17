@@ -1,14 +1,13 @@
 <%-- 
-    Document   : registrazione
-    Created on : 17-dic-2015, 11.01.52
+    Document   : login
+    Created on : 17-dic-2015, 15.13.59
     Author     : gemmacatolino
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
 <head>
-<title> Crea account </title>
+<title>Registrazione su Occhio al prezzo.it</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -30,6 +29,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
 <!--//slider-script-->
+
+
 <script src="js/simpleCart.min.js"> </script>
 </head>
 <body> 
@@ -39,12 +40,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="header-top-in grid-1">
 				<ul class="support">
-					<li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
-								
+					<li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>			
 				</ul>
 				<ul class=" support-right">
 					<li ><a href="login.jsp" ><i class="men"> </i>Login</a></li>
-					<li ><a href="registrazione.jsp"><i class="tele"> </i>Crea account</a></li>			
+					<li ><a href="registrazione.jsp" ><i class="tele"> </i>Crea Account</a></li>			
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
@@ -52,13 +52,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-bottom bottom-com">
 			<div class="container">			
 				<div class="logo">
-					<h1><a href="index.jsp"><img src="images/occhio3_.png"  ></a></h1>
+					<h1><a href="index.jsp"></a><img src="images/occhio3_.png"  ></h1>
 				</div>
 				<div class="top-nav">
 				<!-- start header menu -->
 		<ul class="megamenu skyblue menu-in">
 			<li><a  href="index.jsp">Home</a></li>
-			
 				
 						
 				<li><a  href="#">Cerca prodotti</a>
@@ -93,10 +92,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</script>
 
 					<!---->
-				<div class="cart box_1">
+					<div class="cart box_1">
 						<a href="carrello.jsp">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> oggetti)</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Carrello vuoto</a></p>
@@ -114,57 +113,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---->
 
 <div class="back">
-   
+    
 </div>
 		<!---->
 		<div class="container">
-		<div class="register">
-		<h3>Registrazione</h3>
-		  	  <form id="registrationForm" class="form-horizontal" method="POST" action="addAccountServlet"/> 
-				
-					
-					<div class="mation">
-					<div>
-						<span id="nome">Nome</span>
-						<input type="text"> 
-					</div>
-					<div>
-						<span id="cognome">Cognome</span>
-						<input type="text"> 
-					 </div>
-					 <div>
-						 <span id="email">Email </span>
-						 <input type="text">
-						 </div>
-						 <div>
-							<span id="password">Password</span>
-								<input type="password">						 
-					</div>
-                                             <div>
-							<span>Conferma Password</span>
-								<input type="password">						 
-					</div>
-                                             <div>
-							<span id="domiclio">Domicilio</span>
-								<input type="text">						 
-					</div>
-                                             <div>
-							<span id="data_di_nascita">Data di nascita</span>
-								<input type="text">						 
-					</div>
-                                             <div>
-							<span id="comune_di_residenza">Comune di Residenza</span>
-								<input type="text">						 
-					</div>
-					 </div>
-				     <input type="submit" id="register" value="Registrati"> 
-				</form>
-				
-				
-		   </div>
+		<div class="account_grid">
+			   <div class=" login-right">
+			  	<h3>Accedi</h3>
+				<p>Se hai un account effettua il login</p>
+                                <form action="">
+				  <div>
+					<span>Email</span>
+					<input type="text"> 
+				  </div>
+				  <div>
+					<span>Password</span>
+					<input type="password"> 
+				  </div>
+                                    <input  type="submit" value="Login ">
+				  
+				  
+			    </form>
+                                <a class="forgot" href="#">Password dimenticata?</a>
+			   </div>	
+			    <div class=" login-left">
+			  	 <h3>Sei nuovo utente?  </h3>
+				 <p>Crea un account sul nostro sito e potrai scoprire i prodotti in offerta!</p>
+				 <a class="acount-btn" href="registrazione.jsp">Crea Account</a>
+			   </div>
+			
+			 </div>
+		
 			</div>
 			<!---->
-					
+				
 <!---->
 	<div class="footer">
 		<div class="container">
@@ -183,13 +165,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<input type="submit" value="Invia" >
 						
 					</form>
-
-			</div>
-			<div class="clearfix"> </div>
-	 <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                        </div>
+                       <div class="clearfix"> </div>         
+                      <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
                       <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
-                </div>
-	</div>
+                      
+                      
+        </div>
+        </div>
+			
 <!---->
 </body>
 </html>

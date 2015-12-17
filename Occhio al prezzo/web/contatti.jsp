@@ -1,6 +1,6 @@
 <%-- 
-    Document   : registrazione
-    Created on : 17-dic-2015, 11.01.52
+    Document   : contatti
+    Created on : 17-dic-2015, 15.15.50
     Author     : gemmacatolino
 --%>
 
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Crea account </title>
+<title>Occhio al prezzo _ Contatti :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -30,45 +30,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
 <!--//slider-script-->
+
+
 <script src="js/simpleCart.min.js"> </script>
 </head>
 <body> 
 <!--header-->	
-<div class=" header-product">
-	<div class="header-top com">
+<div class="header">
+	<div class="header-top">
 		<div class="container">
-			<div class="header-top-in grid-1">
+			<div class="header-top-in">
+				
 				<ul class="support">
 					<li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
 								
 				</ul>
 				<ul class=" support-right">
 					<li ><a href="login.jsp" ><i class="men"> </i>Login</a></li>
-					<li ><a href="registrazione.jsp"><i class="tele"> </i>Crea account</a></li>			
+					<li ><a href="registrazione.jsp" ><i class="tele"> </i>Crea account</a></li>			
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
-		</div>
+			</div>
 			<div class="header-bottom bottom-com">
 			<div class="container">			
 				<div class="logo">
-					<h1><a href="index.jsp"><img src="images/occhio3_.png"  ></a></h1>
+					<a href="index.jsp"></a><img src="images/occhio3_.png"  >
 				</div>
 				<div class="top-nav">
+                               
+                       
 				<!-- start header menu -->
 		<ul class="megamenu skyblue menu-in">
 			<li><a  href="index.jsp">Home</a></li>
 			
-				
-						
-				<li><a  href="#">Cerca prodotti</a>
-				
-				</li>
+			
+                        
+                        <li><a href="#">Cerca prodotti</a>
+        			</li>
+                              
+                        
 				
 				<li><a  href="contatti.jsp">Contatti</a>
 					
 				</li>
-		 </ul> 
+		 </ul>
+
 		 <!---->
 		 <div class="search-in" >
 			<div class="search" >
@@ -78,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</form>
 							<div class="close-in"><img src="images/close.png" alt="" /></div>
 					</div>
-						<div class="right"><button> </button></div>
+						<div class="right"><button></button></div>
 				</div>
 						<script type="text/javascript">
 							$('.search').hide();
@@ -93,102 +100,71 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</script>
 
 					<!---->
-				<div class="cart box_1">
+					<div class="cart box_1">
 						<a href="carrello.jsp">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity"  class="simpleCart_quantity"></span> oggetti)</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Carrello vuoto</a></p>
+						<p><a href="javascript:;" class="simpleCart_empty">Svuota carrello </a></p>
 						<div class="clearfix"> </div>
 					</div>
 
+<div class="clearfix"> </div>
 					<!---->
 				</div>
-				<div class="clearfix"> </div>
+	
 			</div>
+			<div class="clearfix"> </div>
 		</div>
 		</div>
-		
-	</div>
-<!---->
 
-<div class="back">
-   
+	
 </div>
+<!---->
 		<!---->
 		<div class="container">
-		<div class="register">
-		<h3>Registrazione</h3>
-		  	  <form id="registrationForm" class="form-horizontal" method="POST" action="addAccountServlet"/> 
-				
+			<div class="contact">
+			
+				<div class=" contact-top-in">
+					<h3>Info</h3>
+					<div class="map">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37494223.23909492!2d103!3d55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x453c569a896724fb%3A0x1409fdf86611f613!2sRussia!5e0!3m2!1sen!2sin!4v1415776049771"></iframe>
+					</div>
 					
-					<div class="mation">
-					<div>
-						<span id="nome">Nome</span>
-						<input type="text"> 
-					</div>
-					<div>
-						<span id="cognome">Cognome</span>
-						<input type="text"> 
-					 </div>
-					 <div>
-						 <span id="email">Email </span>
-						 <input type="text">
-						 </div>
-						 <div>
-							<span id="password">Password</span>
-								<input type="password">						 
-					</div>
-                                             <div>
-							<span>Conferma Password</span>
-								<input type="password">						 
-					</div>
-                                             <div>
-							<span id="domiclio">Domicilio</span>
-								<input type="text">						 
-					</div>
-                                             <div>
-							<span id="data_di_nascita">Data di nascita</span>
-								<input type="text">						 
-					</div>
-                                             <div>
-							<span id="comune_di_residenza">Comune di Residenza</span>
-								<input type="text">						 
-					</div>
-					 </div>
-				     <input type="submit" id="register" value="Registrati"> 
-				</form>
-				
-				
-		   </div>
-			</div>
-			<!---->
 					
+				<div class=" contact-top">
+					<h3>Contattaci</h3>
+					<form>
+						<div>
+							<span>Nome </span>		
+							<input type="text" value="" >						
+						</div>
+						<div>
+							<span> Email </span>		
+							<input type="text" value="" >						
+						</div>
+						<div>
+							<span>Oggetto</span>		
+							<input type="text" value="" >	
+						</div>
+						<div>
+							<span>Messaggio</span>		
+							<textarea> </textarea>	
+						</div>
+						<input type="submit" value="Invio" >	
+						</form>
+				</div>
+		
+		</div>
+	</div>
 <!---->
 	<div class="footer">
 		<div class="container">
-			<div class="col-md-4 footer-top">
-				<h3>Contattaci</h3>
-				<form>
-						
-						<input type="text" value="Inserisci il nome*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci il nome';}">
-						
-						<input type="text" value="Inserisci email*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci email*';}">
-						
-						<input type="text" value="Inserisci il tuo numero*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci il tuo numero';}">
-					
-						<textarea cols="10" rows="4" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Inserisci il messaggio';}">Inserisci il messaggio*</textarea>
-						
-							<input type="submit" value="Invia" >
-						
-					</form>
-
-			</div>
 			<div class="clearfix"> </div>
-	 <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
-                </div>
+			<p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                        <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
+		</div>
 	</div>
 <!---->
 </body>

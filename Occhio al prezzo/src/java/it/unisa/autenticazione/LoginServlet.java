@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
             Account a=m.login(email, password);
             if(a==null){
                 out.print("<h1>Account non registrato</h1>");
-                RequestDispatcher rs = request.getRequestDispatcher("index.html");
+                RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
             }
             else{
                 HttpSession session = request.getSession();

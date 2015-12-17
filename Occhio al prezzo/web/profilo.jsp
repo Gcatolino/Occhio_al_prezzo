@@ -1,6 +1,6 @@
 <%-- 
-    Document   : registrazione
-    Created on : 17-dic-2015, 11.01.52
+    Document   : profilo
+    Created on : 17-dic-2015, 15.14.58
     Author     : gemmacatolino
 --%>
 
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Crea account </title>
+<title>Amberegul A Ecommerce Category Flat Bootstrap Responsive Website Template | About :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -30,7 +30,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
 <!--//slider-script-->
+
 <script src="js/simpleCart.min.js"> </script>
+
 </head>
 <body> 
 <!--header-->	
@@ -44,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 				<ul class=" support-right">
 					<li ><a href="login.jsp" ><i class="men"> </i>Login</a></li>
-					<li ><a href="registrazione.jsp"><i class="tele"> </i>Crea account</a></li>			
+					<li ><a href="registrazione.jsp" ><i class="tele"> </i>Crea Account</a></li>			
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
@@ -58,7 +60,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- start header menu -->
 		<ul class="megamenu skyblue menu-in">
 			<li><a  href="index.jsp">Home</a></li>
-			
 				
 						
 				<li><a  href="#">Cerca prodotti</a>
@@ -93,13 +94,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</script>
 
 					<!---->
-				<div class="cart box_1">
+					<div class="cart box_1">
 						<a href="carrello.jsp">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Carrello vuoto</a></p>
+						<p><a href="javascript:;" class="simpleCart_empty">Svuota carrello</a></p>
 						<div class="clearfix"> </div>
 					</div>
 
@@ -113,83 +114,128 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!---->
 
-<div class="back">
-   
-</div>
 		<!---->
-		<div class="container">
-		<div class="register">
-		<h3>Registrazione</h3>
-		  	  <form id="registrationForm" class="form-horizontal" method="POST" action="addAccountServlet"/> 
-				
-					
-					<div class="mation">
-					<div>
-						<span id="nome">Nome</span>
-						<input type="text"> 
-					</div>
-					<div>
-						<span id="cognome">Cognome</span>
-						<input type="text"> 
-					 </div>
-					 <div>
-						 <span id="email">Email </span>
-						 <input type="text">
-						 </div>
-						 <div>
-							<span id="password">Password</span>
-								<input type="password">						 
-					</div>
-                                             <div>
-							<span>Conferma Password</span>
-								<input type="password">						 
-					</div>
-                                             <div>
-							<span id="domiclio">Domicilio</span>
-								<input type="text">						 
-					</div>
-                                             <div>
-							<span id="data_di_nascita">Data di nascita</span>
-								<input type="text">						 
-					</div>
-                                             <div>
-							<span id="comune_di_residenza">Comune di Residenza</span>
-								<input type="text">						 
-					</div>
-					 </div>
-				     <input type="submit" id="register" value="Registrati"> 
-				</form>
-				
-				
-		   </div>
-			</div>
-			<!---->
-					
-<!---->
-	<div class="footer">
-		<div class="container">
-			<div class="col-md-4 footer-top">
-				<h3>Contattaci</h3>
-				<form>
-						
-						<input type="text" value="Inserisci il nome*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci il nome';}">
-						
-						<input type="text" value="Inserisci email*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci email*';}">
-						
-						<input type="text" value="Inserisci il tuo numero*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci il tuo numero';}">
-					
-						<textarea cols="10" rows="4" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Inserisci il messaggio';}">Inserisci il messaggio*</textarea>
-						
-							<input type="submit" value="Invia" >
-						
-					</form>
+                <div class="container">
+  
+  
+  <div id="table" class="table-editable">
+    
+    <table class="table">
+        <tr>
+            <th>
+                Impostazioni account
+            </th>
+        </tr>
+      <tr>
+        <td contenteditable="false">Nome</td>
+        <td contenteditable="true">Alfredo</td>
+        <td>
+            <form>
+                <input type="button" value="Modifica">
+            </form>
+        </td>
+      </tr>
+            <tr>
+        <td contenteditable="false">Cognome</td>
+        <td contenteditable="true">Santoro</td>
+        <td>
+            <form>
+                <input type="button" value="Modifica">
+        </td>
+            </tr>
+                        <tr>
+        <td contenteditable="false">Email</td>
+        <td contenteditable="true">alfredo.santorouni@gmail.com</td>
+        <td>
+            <form>
+                <input type="button" value="Modifica">
+        </td>
+            </tr>
+    <tr>
+        <td contenteditable="false">Password</td>
+        
+        <td contenteditable="true">Alfredo7</td>
+        <td>
+            <form>
+                <input type="button" value="Modifica">
+        </td>
+            </tr>
+                                    <tr>
+        <td contenteditable="false">Domicilio</td>
+        <td contenteditable="true">Salerno</td>
+        <td>
+            <form>
+                <input type="button" value="Modifica">
+        </td>
+            </tr>
+                                    <tr>
+        <td contenteditable="false">Data di nascita</td>
+        <td contenteditable="true">22/02/1994</td>
+        <td>
+            <form>
+                <input type="button" value="Modifica">
+        </td>
+            </tr>
+                                    <tr>
+        <td contenteditable="false">Provincia</td>
+        <td contenteditable="true">Salerno</td>
+        <td>
+            <form>
+                <input type="button" value="Modifica">
+        </td>
+            </tr>
+                                    <tr>
+        <td contenteditable="false">Indirizzo</td>
+        <td contenteditable="true">via premuda 35</td>
+        <td>
+            <form>
+                <input type="button" value="Modifica">
+        </td>
+            </tr>
+                                    <tr>
+        <td contenteditable="false">Numero di telefono</td>
+        <td contenteditable="true">+39 389 1997352</td>
+        <td>
+            
+            <form>
+                <input class="b-mod" type="button" value="Modifica">
+        </td>
+            </tr>
 
+
+
+
+
+            
+      <!-- This is our clonable table line -->
+      <tr class="hide">
+        <td contenteditable="true">Untitled</td>
+        <td contenteditable="true">undefined</td>
+        
+        <td>
+          <span class="table-up glyphicon glyphicon-arrow-up"></span>
+          <span class="table-down glyphicon glyphicon-arrow-down"></span>
+        </td>
+      </tr>
+      
+      
+    </table>
+  </div>  
+                    <div>                  
+  <button id="export-btn" class="btn btn-primary">Elimina Account</button>
+  </div>
+  <p id="export"></p>
+</div>
+		
+			<!---->
+						<div class="content-bottom">
+			<div class="container">
+			
+<label class="line1"> </label>
 			</div>
-			<div class="clearfix"> </div>
-	 <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
-                </div>
-	</div>
+		</div>
+<!---->
+
 <!---->
 </body>
 </html>

@@ -54,11 +54,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-top-in">
 				
 				<ul class="support">
-					<li ><a href="mailto:info@gmail.com" ><i > </i>info@gmail.com</a></li>
-					<li ><span ><i class="tele-in"> </i>0 462 261 61 61</span></li>			
+					<li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
+								
 				</ul>
 				<ul class=" support-right">
-					<li ><a href="account.html" ><i class="men"> </i>Login</a></li>
+					<li ><a href="login.jsp" ><i class="men"> </i>Login</a></li>
 					<li ><a href="registrazione.jsp" ><i class="tele"> </i>Crea account</a></li>			
 				</ul>
 				<div class="clearfix"> </div>
@@ -67,7 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-bottom bottom-com">
 			<div class="container">			
 				<div class="logo">
-					<h1><a href="index.jsp"></a><img src="images/occhio3_.png"  ></h1>
+					<a href="index.jsp"></a><img src="images/occhio3_.png" >
 				</div>
 				<div class="top-nav">
                                
@@ -83,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                               
                         
 				
-				<li><a  href="contact.html">Contatti</a>
+				<li><a  href="contatti.jsp">Contatti</a>
 					
 				</li>
 		 </ul>
@@ -113,7 +113,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					<!---->
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="carrello.jsp">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity"  class="simpleCart_quantity"></span> oggetti)</div>
 							<img src="images/cart.png" alt=""/></h3>
@@ -485,8 +485,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                        <div class="clearfix"> </div>         
                       <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-                      <p><a  href="index.html"> <img src="images/occhio3.png" class="img-responsive" alt=""/></a>
-                      </p>
+                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
                       
                       
         </div>

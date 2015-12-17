@@ -1,6 +1,6 @@
 <%-- 
-    Document   : registrazione
-    Created on : 17-dic-2015, 11.01.52
+    Document   : carrello
+    Created on : 17-dic-2015, 15.17.40
     Author     : gemmacatolino
 --%>
 
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Crea account </title>
+<title>Amberegul A Ecommerce Category Flat Bootstrap Responsive Website Template | Checkout :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -28,8 +28,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="js/megamenu.js"></script>
-<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
-<!--//slider-script-->
+<script>€(document).ready(function(){€(".megamenu").megamenu();});</script>
+
+
 <script src="js/simpleCart.min.js"> </script>
 </head>
 <body> 
@@ -39,12 +40,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="header-top-in grid-1">
 				<ul class="support">
-					<li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
+					<li ><a href="mailto:info@example.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
 								
 				</ul>
 				<ul class=" support-right">
 					<li ><a href="login.jsp" ><i class="men"> </i>Login</a></li>
-					<li ><a href="registrazione.jsp"><i class="tele"> </i>Crea account</a></li>			
+					<li ><a href="registrazione.jsp" ><i class="tele"> </i>Create an Account</a></li>			
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
@@ -60,8 +61,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a  href="index.jsp">Home</a></li>
 			
 				
-						
-				<li><a  href="#">Cerca prodotti</a>
+					
+                        <li><a  href="#">Cerca prodotti</a>
 				
 				</li>
 				
@@ -93,10 +94,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</script>
 
 					<!---->
-				<div class="cart box_1">
-						<a href="carrello.jsp">
+					<div class="cart box_1">
+						<a href="carello.jspl">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> Oggetti)</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Carrello vuoto</a></p>
@@ -112,59 +113,103 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 	</div>
 <!---->
-
+<div class="container">
+	
+</div>
 <div class="back">
-   
+	
 </div>
 		<!---->
-		<div class="container">
-		<div class="register">
-		<h3>Registrazione</h3>
-		  	  <form id="registrationForm" class="form-horizontal" method="POST" action="addAccountServlet"/> 
+		<div class="product">
+			<div class="container">
+				<div class="col-md-3 product-price">
+					  
 				
+				<!---->
+				<div class="product-bottom">
 					
-					<div class="mation">
-					<div>
-						<span id="nome">Nome</span>
-						<input type="text"> 
-					</div>
-					<div>
-						<span id="cognome">Cognome</span>
-						<input type="text"> 
-					 </div>
-					 <div>
-						 <span id="email">Email </span>
-						 <input type="text">
-						 </div>
-						 <div>
-							<span id="password">Password</span>
-								<input type="password">						 
-					</div>
-                                             <div>
-							<span>Conferma Password</span>
-								<input type="password">						 
-					</div>
-                                             <div>
-							<span id="domiclio">Domicilio</span>
-								<input type="text">						 
-					</div>
-                                             <div>
-							<span id="data_di_nascita">Data di nascita</span>
-								<input type="text">						 
-					</div>
-                                             <div>
-							<span id="comune_di_residenza">Comune di Residenza</span>
-								<input type="text">						 
-					</div>
-					 </div>
-				     <input type="submit" id="register" value="Registrati"> 
-				</form>
+					<div class="product-go">
+						
+							
+								
+							<div class="clearfix"> </div>
+							</div>
+							<div class="product-go">
+						
+							
+								
+							<div class="clearfix"> </div>
+							</div>
+							<div class="product-go">
+						
+							
+								
+							<div class="clearfix"> </div>
+							</div>
+				</div>
+
+				</div>
+				<!---->
+				<div class="col-md-9 product-price1">
+				<div class="check-out">	 
+			
+		 <div class=" cart-items">
+			 <h3>Carrello </h3>
+				<script>$(document).ready(function(c) {
+					$('.close1').on('click', function(c){
+						$('.cart-header').fadeOut('slow', function(c){
+							$('.cart-header').remove();
+						});
+						});	  
+					});
+			   </script>
+			<script>$(document).ready(function(c) {
+					$('.close2').on('click', function(c){
+						$('.cart-header1').fadeOut('slow', function(c){
+							$('.cart-header1').remove();
+						});
+						});	  
+					});
+			   </script>
 				
-				
-		   </div>
+				  <div class="in-check" >
+		  <ul class="unit">
+			<li><span>Item</span></li>
+			<li><span>Product Name</span></li>		
+			<li><span>Unit Price</span></li>
+			
+			<li> </li>
+			<div class="clearfix"> </div>
+		  </ul>
+		  <ul class="cart-header">
+		   <div class="close1"> </div>
+			<li class="ring-in"><a href="#" ><img src="images/f1.jpg" class="img-responsive" alt=""></a>
+			</li>
+			<li><span>Woo Dress</span></li>
+			<li><span>$ 60.00</span></li>
+			
+			<div class="clearfix"> </div>
+			</ul>
+ <ul class=" cart-header1">
+		   <div class="close2"> </div>
+			<li class="ring-in"><a href="#" ><img src="images/f2.jpg" class="img-responsive" alt=""></a>
+			</li>
+			<li><span>Woo Dress</span></li>
+			<li><span>$ 60.00</span></li>
+			<div class="clearfix"> </div>
+			</ul>
+		</div>
+			 </div>
+					  
+		 </div>
+		 
+
+				</div>
+				<div class="clearfix"> </div>
 			</div>
+		</div>
 			<!---->
-					
+				
 <!---->
 	<div class="footer">
 		<div class="container">
@@ -185,11 +230,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</form>
 
 			</div>
+			
+			
 			<div class="clearfix"> </div>
-	 <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+			<p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
                       <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
                 </div>
-	</div>
+		</div>
 <!---->
 </body>
 </html>
