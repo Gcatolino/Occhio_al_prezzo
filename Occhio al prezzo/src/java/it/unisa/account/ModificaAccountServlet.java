@@ -27,8 +27,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author  raffaele donadio
  */
 
-@WebServlet(name = "modificaAccountServlet", urlPatterns = {"it/unisa/servlet/modificaAccountServlet"})
-public class ModificaAccountServlet1 extends HttpServlet {
+@WebServlet(name = "modificaAccountServlet", urlPatterns = {"/modificaAccountServlet"})
+public class ModificaAccountServlet extends HttpServlet {
 
  /*
         NOTA SUPER SUPER IMPORTANTISSIMA!!!!!!!!!!!!!!!!!!!!!!!!!!!

@@ -37,7 +37,7 @@ import javax.servlet.http.HttpSession;
  * @author  raffaele donadio
  */
 
-@WebServlet(name = "addAccountServlet", urlPatterns = {"it/unisa/servlet/addAccountServlet"})
+@WebServlet(name = "addAccountServlet", urlPatterns = {"/addAccountServlet"})
 public class AddAccountServlet extends HttpServlet {
 
 
@@ -55,9 +55,9 @@ public class AddAccountServlet extends HttpServlet {
         
         /*il ruolo non lo settiamo perchè di default è un utente*/
         
-        acc.setComuneDiResidenza(request.getParameter("comune"));
+        acc.setComuneDiResidenza(request.getParameter("comune_di_residenza"));
         acc.setCognome(request.getParameter("cognome"));
-        acc.setDataDiNascita(UtilityVar.parseData(request.getParameter("data")));
+        acc.setDataDiNascita(UtilityVar.parseData(request.getParameter("data_di_nascita")));
         
         AccountManager instance =  AccountManager.getInstance();
         try {

@@ -31,7 +31,7 @@ import javax.servlet.http.HttpSession;
  * @author  raffaele donadio
  */
 
-@WebServlet(name = "deleteAccountServlet", urlPatterns = {"it/unisa/servlet/deleteAccountServlet"})
+@WebServlet(name = "deleteAccountServlet", urlPatterns = {"/deleteAccountServlet"})
 public class DeleteAccountServlet extends HttpServlet {
 
 

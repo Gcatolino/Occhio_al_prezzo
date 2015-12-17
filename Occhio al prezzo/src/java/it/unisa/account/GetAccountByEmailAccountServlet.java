@@ -31,7 +31,7 @@ import javax.servlet.http.HttpSession;
  * @author  raffaele donadio
  */
 
-@WebServlet(name = "getAccountByEmailAccountServlet", urlPatterns = {"it/unisa/servlet/getAccountByEmailAccountServlet"})
+@WebServlet(name = "getAccountByEmailAccountServlet", urlPatterns = {"/getAccountByEmailAccountServlet"})
 public class GetAccountByEmailAccountServlet extends HttpServlet {
 
 
