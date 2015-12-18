@@ -10,15 +10,18 @@ import it.unisa.exception.ValueNullException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import javax.jws.WebService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.annotation.WebServlet;
 
 /**
  *
  * @author Antonio
  */
+@WebServlet(name="DeleteCarrello")
 public class DeleteCarrelloServlet extends HttpServlet{
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -29,12 +32,12 @@ public class DeleteCarrelloServlet extends HttpServlet{
         PrintWriter out = response.getWriter();
         
         String ID = request.getParameter("ID");
-        String email = request.getParameter("email");
+        String fk_email = request.getParameter("fk_email");
         
         try{
             Carrello carr = new Carrello();
             carr.setID(ID);
-            carr.setEmail(email);
+            carr.setEmail(fk_email);
             
             CarrelloManager.getInstance().deleteCarrello(carr);
         }catch(SQLException ex){

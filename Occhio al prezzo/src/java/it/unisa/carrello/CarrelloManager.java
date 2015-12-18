@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,7 +24,6 @@ import java.sql.Statement;
 public class CarrelloManager {
     
     private static CarrelloManager instance;
-    private int IDcarrello;
     
     public static CarrelloManager getInstance(){
         if(instance == null){
@@ -51,6 +51,102 @@ public class CarrelloManager {
                     
         }else throw new ValueNullException();
     }
+    
+    public void addProdotto(Prodotto prod, Carrello car) throws SQLException, ConnectionException, ValueNullException{
+        Connection conn = DBConnection.getConnection();
+        
+        
+        if(!UtilityVar.isNull(prod.getID()) && !UtilityVar.isNull(car.getID())){
+            
+            String sql = "INSERT INTO Composizione (fk_idCarrello, fk_idProdotto) VALUES ('"
+                         + car.getID() + "','" + prod.getID() + "')";
+            
+            try{
+                Statement st = conn.createStatement();
+                st.executeUpdate(sql);
+                conn.commit();
+            } finally{
+                DBConnection.releaseConnection(conn);
+            }
+            
+        }
+        
+    }
+    
+    public ArrayList<Prodotto> visualizzaCarrello(Carrello carr) throws SQLException, ConnectionException, ValueNullException{
+        Connection conn = DBConnection.getConnection();
+        Prodotto prod = null;
+        ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
+        
+        if(!UtilityVar.isNull(carr)){
+            
+            String sql = "SELECT fk_idProdotto FROM Composizione WHERE fk_idCarrello= '" + carr.getID() + "'";
+            
+            try{
+                
+                Statement st = conn.createStatement();
+                ResultSet rs  = st.executeQuery(sql);
+                
+                if(rs.next()){
+                    prod = new Prodotto();
+                    prod.setID(rs.getInt("fk_idProdotto"));
+                    prodotti.add(prod);
+                }
+            }finally{
+                DBConnection.releaseConnection(conn);
+            }
+            
+            return prodotti;
+        }else  {
+            DBConnection.releaseConnection(conn);
+            throw new ValueNullException();
+        }
+    }
+    
+    public void eliminaProdotto(Prodotto prod) throws SQLException, ConnectionException, ValueNullException{
+        Connection conn = DBConnection.getConnection();
+        
+        if(!UtilityVar.isNull(prod)){
+            
+            String sql = "DELETE FROM Composizione WHERE fk_idProdotto = '"
+                         + prod.getID() + "'";
+            
+            try{
+                Statement st = conn.createStatement();
+                st.executeUpdate(sql);
+                conn.commit();
+                
+            }finally{
+                DBConnection.releaseConnection(conn);
+            }
+        }else{
+            DBConnection.releaseConnection(conn);
+            throw new ValueNullException();
+        }
+    }
+    
+    public void svuotaCarrello(Carrello carr) throws SQLException,ConnectionException, ValueNullException{
+        Connection conn = DBConnection.getConnection();
+        
+        if(!UtilityVar.isNull(carr)){
+            
+            String sql = "DELETE FROM Composizione WHERE fk_idCarrello = '"
+                          + carr.getID() + "'";
+            
+            try{
+                Statement st = conn.createStatement();
+                st.executeUpdate(sql);
+                conn.commit();
+            }finally{
+                DBConnection.releaseConnection(conn);
+            }
+                    
+        }else{
+            DBConnection.releaseConnection(conn);
+            throw new ValueNullException();
+        }
+    }
+    
     
     public void deleteCarrello(Carrello carr) throws SQLException, ConnectionException, ValueNullException{
         Connection conn = DBConnection.getConnection();

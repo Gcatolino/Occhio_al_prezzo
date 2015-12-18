@@ -14,11 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.annotation.WebServlet;
 
 /**
  *
  * @author Antonio
  */
+@WebServlet(name = "AddCarrello")
 public class AddCarrelloServlet extends HttpServlet{
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -32,12 +34,12 @@ public class AddCarrelloServlet extends HttpServlet{
             String ID = request.getParameter("ID");
             
             HttpSession session = request.getSession();
-            String email = (String) session.getAttribute("email");
+            String fk_email = (String) session.getAttribute("fk_email");
             
             Carrello car = new Carrello();
             
             car.setID(ID);
-            car.setEmail(email);
+            car.setEmail(fk_email);
             
             CarrelloManager.getInstance().add(car);
             
