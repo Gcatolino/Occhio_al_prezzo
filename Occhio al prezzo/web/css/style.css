@@ -86,7 +86,7 @@ h1,h2,h3,h4,h5,h6,label,p{
 	background: url(../images/shop_online.jpg) no-repeat center;
 	width:100%;
 	background-size:cover;
-	min-height:1000px;
+	min-height:950px;
 	display:block;
 }
 .header-top{
@@ -115,6 +115,7 @@ ul.support-right{
 	font-size: 1em;
 	text-decoration: none;
 	color:#000;
+        margin: 1.5em 0.7em 1.2em;
 	vertical-align:top;
 }
 ul.support li a:hover,ul.support-right li a:hover{
@@ -550,10 +551,11 @@ a.now-in:hover{
 	margin: 0 0.5em 0;
 }
 .resp-tab-active{
-	background:#000;
+	
 	text-shadow: none;
-	color:#fff;
-	border: 2px solid #000;
+	background: #ff5d56;
+        color: #FFF;
+	border: white;
 }
 .resp-tabs-container {
 	padding: 0px;
@@ -691,7 +693,7 @@ span.dollor{
 .sap_tabs h2{
 	color:#000;
 	font-size: 3em;
-	  font-family: initial;
+	  font-family: 'Roboto Slab', serif;
 	  text-align: center;
 	  padding: 0.4em 0 1em;
 }
@@ -894,8 +896,7 @@ ul.wmuSliderPagination{
 .footer-top h3,.footer-middle h3{
 	color:black;
 	font-size:2em;
-	border-bottom: 1px solid #010101;
-	font-family: initial;
+	font-family: 'Roboto Slab', serif;
 }
 .footer-top input[type="text"],.footer-top textarea{
 	width: 100%;
@@ -906,7 +907,7 @@ ul.wmuSliderPagination{
 	border: 1px solid #141414;
 	-webkit-appearance: none;
 	font-size:1.2em;
-	font-family: initial;
+	font-family: 'Roboto Slab', serif;
 	color:#141414;
 }
 .footer-top input[type="text"]:hover,.footer-top textarea:hover{
@@ -918,14 +919,14 @@ ul.wmuSliderPagination{
 .footer-top input[type="submit"]{
 	width: 40%;
 	font-size: 1em;
-	background:none;
 	padding: 0.5em 1em;
 	text-align: center;
-	color:black;
+	background: #ff5d56;
+        color: #FFF;
 	border:none;
 	outline:none;
 	-webkit-appearance: none;
-	font-family: initial;
+        font-family: 'Roboto Slab', serif;
 	float:right;
 	border:1px solid ;
 }

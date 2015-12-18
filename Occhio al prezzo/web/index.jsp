@@ -78,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			
                         
-                        <li><a href="#">Cerca prodotti</a>
+                        <li><a href="login.jsp">Cerca prodotti</a>
         			</li>
                               
                         
@@ -145,6 +145,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  		<h3>Occhio al prezzo</h3>
 	        <img src="images/p1.jpg" class="img-responsive" alt="">
 		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <br>
+                    <br>                  
                 </div>
                 <div class="col-md-4 sidebar">
 	  		      <h3>Testimonianze</h3>
@@ -479,7 +481,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 						<textarea cols="10" rows="4" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Inserisci il messaggio';}">Inserisci il messaggio*</textarea>
 						
-							<input type="submit" value="Invia" >
+							<input type="submit" value="Invia" style="float:left;">
 						
 					</form>
                         </div>
