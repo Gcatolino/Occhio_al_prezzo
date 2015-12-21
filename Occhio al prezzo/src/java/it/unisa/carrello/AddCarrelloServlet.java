@@ -20,7 +20,7 @@ import javax.servlet.annotation.WebServlet;
  *
  * @author Antonio
  */
-@WebServlet(name = "AddCarrello")
+@WebServlet(name = "addCarrelloServlet", urlPatterns = {"/addCarrelloServlet"})
 public class AddCarrelloServlet extends HttpServlet{
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
