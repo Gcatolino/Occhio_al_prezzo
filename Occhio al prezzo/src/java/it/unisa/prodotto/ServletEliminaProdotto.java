@@ -5,7 +5,6 @@
  */
 package it.unisa.prodotto;
 
-import it.unisa.servlet.*;
 import it.unisa.prodotto.ProdottoManager;
 import java.io.IOException;
 import java.io.PrintWriter;

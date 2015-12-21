@@ -5,7 +5,6 @@
  */
 package it.unisa.prodotto;
 
-import it.unisa.servlet.*;
 import it.unisa.account.Account;
 import it.unisa.exception.ValueNullException;
 import it.unisa.prodotto.Prodotto;
