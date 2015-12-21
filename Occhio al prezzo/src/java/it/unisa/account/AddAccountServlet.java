@@ -52,13 +52,12 @@ public class AddAccountServlet extends HttpServlet {
         acc.setEmail(request.getParameter("email"));
         acc.setPassword(request.getParameter("password"));
         acc.setDomicilio(request.getParameter("domicilio"));
-        
         /*il ruolo non lo settiamo perchè di default è un utente*/
-        
         acc.setComuneDiResidenza(request.getParameter("comune_di_residenza"));
         acc.setCognome(request.getParameter("cognome"));
         acc.setDataDiNascita(UtilityVar.parseData(request.getParameter("data_di_nascita")));
-        
+        acc.setRuolo("utente");
+        System.out.println(acc.getEmail()+"  "+acc.getRuolo()+"  "+acc.getPassword());
         AccountManager instance =  AccountManager.getInstance();
         try {
             instance.add(acc);

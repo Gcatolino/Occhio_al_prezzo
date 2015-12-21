@@ -38,13 +38,11 @@ public class DeleteAccountServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          
-        HttpSession session=request.getSession();
-        String email=(String)session.getAttribute("email");
-        String ruolo=(String)session.getAttribute("ruolo");
+        
+        String email=request.getParameter("email");
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();
-        if(!ruolo.equals("admin"))
-        {
+    
        
        
         AccountManager instance =  AccountManager.getInstance();
@@ -66,12 +64,11 @@ public class DeleteAccountServlet extends HttpServlet {
             }
         
          
-    }else{
-     out.print("<h1> non hai i permessi/h1>"); 
+    
  
 }
 
     }
     
-}
+
    

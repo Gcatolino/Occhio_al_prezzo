@@ -52,14 +52,15 @@ public class GetAccountByFiltriAccountServlet extends HttpServlet {
             accounts = instance.getAccoutnByFiltri(domicilio);
             String temp="";
             for(Account a : accounts){
-            temp+="email:<br>"+a.getEmail()+
-                            "nome:<br>"+a.getNome()+
-                            "cognome:<br>"+a.getCognome()+
-                            "residenza:<br>"+a.getComuneDiResidenza()+
-                            "domicilio:<br>"+a.getDomicilio()+
-                            "ruolo:<br>"+a.getRuolo()+
-                            "nascita:<br>"+a.getDataDiNascita()+
-                            "<br><hr>";
+            temp+="<tr><td>"+a.getEmail()+"</td>"+
+                            "<td>"+a.getNome()+"</td>"+
+                            "<td>"+a.getCognome()+"</td>"+
+                            "<td>"+a.getComuneDiResidenza()+"</td>"+
+                            "<td>"+a.getDomicilio()+"</td>"+
+                            "<td>"+a.getRuolo()+"</td>"+
+                            "<td>"+a.getDataDiNascita()+"</td>"+
+                            "<td>"+"<a href='deleteAccountServlet?email="+a.getEmail()+"'>elimina</a>"+"</td>"+
+                            "</tr>";
             }
             out.print(temp);
             

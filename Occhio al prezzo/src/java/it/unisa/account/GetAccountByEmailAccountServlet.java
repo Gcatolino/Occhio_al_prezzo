@@ -18,6 +18,8 @@ import it.unisa.exception.ValueNullException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +41,9 @@ public class GetAccountByEmailAccountServlet extends HttpServlet {
             throws ServletException, IOException {
          
         
-        response.setContentType("text/html");  
+        //response.setContentType("text/html"); 
+        response.setContentType("text/html");
+  
         PrintWriter out=response.getWriter();
         String email=request.getParameter("email");
         AccountManager instance =  AccountManager.getInstance();
@@ -52,14 +56,17 @@ public class GetAccountByEmailAccountServlet extends HttpServlet {
             String domicilio = acc.getDomicilio();
             String ruolo = acc.getRuolo();
             String nascita = acc.getDataDiNascita().toString();
-            out.print("<h1>"+"email:<br>"+email+
-                            "nome:<br>"+nome+
-                            "cognome:<br>"+cognome+
-                            "residenza:<br>"+residenza+
-                            "domicilio:<br>"+domicilio+
-                            "ruolo:<br>"+ruolo+
-                            "nascita:<br>"+nascita+
-                            "</h1>");
+           
+            
+            out.print( "<tr><td>"+email+"</td>"+
+                            "<td>"+nome+"</td>"+
+                            "<td>"+cognome+"</td>"+
+                            "<td>"+residenza+"</td>"+
+                            "<td>"+domicilio+"</td>"+
+                            "<td>"+ruolo+"</td>"+
+                            "<td>"+nascita+"</td>"+
+                            "<td>"+"<a href='deleteAccountServlet?email="+email+"'>elimina</a>"+"</td>"+
+                            "</tr>");
         } catch (SQLException ex) {
             out.print("<h1>errore database</h1>");
         } catch (ValueNullException ex) {
@@ -73,6 +80,10 @@ public class GetAccountByEmailAccountServlet extends HttpServlet {
          
     }
 
-    
- 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    response.setContentType("text/html");  
+        PrintWriter out=response.getWriter();
+        out.print("ciao");
+    }
 }
