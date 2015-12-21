@@ -121,14 +121,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   <div class=" login-right">
 			  	<h3>Accedi</h3>
 				<p>Se hai un account effettua il login</p>
-                                <form method="POST" action="loginServlet">
+                                <form method="POST" id="email" action="loginServlet">
 				  <div>
 					<span>Email</span>
-					<input type="text"> 
+					<input name="email" type="text"> 
 				  </div>
 				  <div>
 					<span>Password</span>
-					<input type="password"> 
+					<input name="password" type="password"> 
 				  </div>
                                     <input  type="submit" value="Login ">
 				  

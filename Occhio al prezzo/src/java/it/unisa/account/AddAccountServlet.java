@@ -54,7 +54,7 @@ public class AddAccountServlet extends HttpServlet {
         acc.setDomicilio(request.getParameter("domicilio"));
         
         /*il ruolo lo settiamo perchè di default è un utente*/
-        acc.setRuolo("account");
+        acc.setRuolo("utente");
         
         acc.setComuneDiResidenza(request.getParameter("comune"));
         acc.setCognome(request.getParameter("cognome"));

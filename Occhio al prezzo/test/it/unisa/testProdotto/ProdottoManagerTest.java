@@ -62,8 +62,6 @@ public class ProdottoManagerTest {
             if(idUltimoProdotto > idUltimoProdottoPrimaDiInserimento){
                 try {
                     ProdottoManager.getInstance().delete(idUltimoProdotto);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(ProdottoManagerTest.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
                     Logger.getLogger(ProdottoManagerTest.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {

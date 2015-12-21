@@ -4,18 +4,14 @@
     Author     : gemmacatolino
 --%>
 
+<%@page import="it.unisa.account.Account"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<%
-    if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "") || (session.getAttribute("password") == null) || (session.getAttribute("password") == "") || (session.getAttribute("ruolo")!="utente")) {
-       %>
-        <script type="text/javascript">
-           location.href="login.jsp";
-        </script>
-    <%}
-%>
+        <%
+            Account account = ((Account) session.getAttribute("account"));
+        %>
 <title>Amberegul A Ecommerce Category Flat Bootstrap Responsive Website Template | About :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -54,9 +50,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 				<ul class=" support-right">
                     <c:choose>
-                        <c:when test="${sessionScope.Account != null}">
+                        <c:when test="${sessionScope.email != null}">
                             
-                            <li ><a><i class="title"> </i>Ciao ${sessionScope.account.nome}!</a></li>
+                            <li ><a><i class="title"> </i>Ciao ${sessionScope.email}!</a></li>
                             
                               <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
                             

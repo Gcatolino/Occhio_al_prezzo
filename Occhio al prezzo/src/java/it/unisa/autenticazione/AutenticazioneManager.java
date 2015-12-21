@@ -38,7 +38,7 @@ public class AutenticazioneManager {
         Account account = null;
 
         String query = "select * from Account where email='" + email + "' and password='" + password + "'";
-
+        System.out.println("La query è: " +query);
         try{
             connection = DBConnection.getConnection();
 

@@ -116,7 +116,7 @@ public class AccountManager {
         ArrayList<Account> accounts=new ArrayList<Account>();
         String query = "select * from Account where domicilio = '" + domicilio + "'";
         
-        System.out.println(query);
+       
         
         if(!UtilityVar.isNull(domicilio))
         {

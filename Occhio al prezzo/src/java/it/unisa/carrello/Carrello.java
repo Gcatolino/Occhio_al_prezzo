@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Carrello {
     
     private String ID;
-    private String email;
+    private String fk_email;
 
     public Carrello(){
         
@@ -31,10 +31,10 @@ public class Carrello {
     }
     
     public void setEmail(String email){
-        this.email = email;
+        this.fk_email = email;
     }
     
     public String getEmail(){
-        return email;
+        return fk_email;
     }
 }

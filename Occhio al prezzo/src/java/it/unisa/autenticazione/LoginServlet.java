@@ -26,14 +26,13 @@ import javax.servlet.http.HttpSession;
  * @author  michele galiano
  */
 
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+@WebServlet(name = "LoginServlet", urlPatterns = {"/loginServlet"})
 public class LoginServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
-        
+       
         response.setContentType("text/html");  
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -52,10 +51,11 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("email", email);  // just a marker object
                 session.setAttribute("ruolo", r);
                 if(r.equalsIgnoreCase("admin")){
-                    RequestDispatcher rs = request.getRequestDispatcher("adminLoggato.jsp");
-                    rs.forward(request,response);
+                    response.sendRedirect("adminLoggato.jsp");
+                    //RequestDispatcher rs = request.getRequestDispatcher("adminLoggato.jsp");
+                    //rs.forward(request,response);
                 } 
-                else 
+                else {
                     if(r.equalsIgnoreCase("venditore")){
                         RequestDispatcher rs = request.getRequestDispatcher("venditoreLoggato.jsp");
                         rs.forward(request,response);
@@ -64,6 +64,7 @@ public class LoginServlet extends HttpServlet {
                         RequestDispatcher rs = request.getRequestDispatcher("utenteLoggato.jsp");
                         rs.forward(request,response);
                     }
+                }
                 out.print("login effettuato");
             }
             
@@ -72,5 +73,15 @@ public class LoginServlet extends HttpServlet {
         } catch (ConnectionException ex) {
              out.print("<h1>errore connessione</h1>");
         }
+    }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        this.doPost(request, response);
+    }
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        this.doPost(request, response);   
     }
 }
