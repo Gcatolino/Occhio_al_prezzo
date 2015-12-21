@@ -1,13 +1,21 @@
 <%-- 
     Document   : index
     Created on : 17-dic-2015, 10.56.55
-    Author     : gemmacatolino
+    Author     : alfredosantoro
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<%
+    if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "") || (session.getAttribute("password") == null) || (session.getAttribute("password") == "") || (session.getAttribute("ruolo")!="utente")) {
+       %>
+        <script type="text/javascript">
+           location.href="login.jsp";
+        </script>
+    <%}
+%>
 <title>Occhio al prezzo.it: volantino prodotti</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -58,25 +66,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								
 				</ul>
 				<ul class=" support-right">
-					<li ><a href="login.jsp" ><i class="men"> </i>Login</a></li>
-					<li ><a href="registrazione.jsp" ><i class="tele"> </i>Crea account</a></li>			
-				</ul>
+                  <c:choose>
+                      <c:when test="${sessionScope.account != null}">
+                            
+                            <li ><a><i class="title"> </i>Ciao ${sessionScope.account.nome}!</a></li>
+                            
+                              <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
+                            
+                        </c:when>
+                    </c:choose>
+                                </ul>
 				<div class="clearfix"> </div>
 			</div>
 			</div>
 			<div class="header-bottom bottom-com">
 			<div class="container">			
 				<div class="logo">
-					<h1><a href="index.jsp"><img src="images/occhio3_.png"  ></a></h1>
+                                    <h1><a href="utenteLoggato.jsp"><img src="images/occhio3_.png"  ></a></h1>
 				</div>
 				<div class="top-nav">
                                
                        
 				<!-- start header menu -->
 		<ul class="megamenu skyblue menu-in">
-			<li><a  href="index.jsp">Home</a></li>
+                    <li><a  href="utenteLoggato.jsp">Home</a></li>
                         
-                        <li><a><button>Cerca prodotti</button></a>
+                          <li><a><button>Cerca prodotti</button></a>
                         </li>
                           <div class="search-in" >
 			<div class="search" >
@@ -98,9 +113,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							$('.close-in').click(function(){
 							$('.search').hide();
 							});
-						</script>
-                
+						</script>            
                                        
+                        <li>
+                            <a href="profilo.jsp">Profilo</a>
+                        </li>
                         
                          <li><a  href="contatti.jsp">Contatti</a>
 					
@@ -488,7 +505,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                        <div class="clearfix"> </div>         
                       <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
+                      <a  href="utenteLoggato.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
                       
                       
         </div>

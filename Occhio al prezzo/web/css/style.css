@@ -115,6 +115,7 @@ ul.support-right{
 	font-size: 1em;
 	text-decoration: none;
 	color:#000;
+        display: inline-block;
         margin: 1.5em 0.7em 1.2em;
 	vertical-align:top;
 }
@@ -129,6 +130,10 @@ ul.support li i,ul.support-right li i{
 	vertical-align: middle;
 	margin: 0 3px 0 0;
 	  
+}
+ld{
+        display: inline-block; 
+    margin: 1.0em 0.7em 1.0em;
 }
  ul.support li i.tele-in{
 	background-position:-128px -9px;
@@ -214,12 +219,13 @@ ul.support-right li i.tele{
 }
 .search{
 	position: absolute;
-	top: 67px;
+        top: 65px;
+        left: 0px;
 	display: block;
 	z-index: 100;
-	background:#000;
+	background: #C4C3C3;
 	width: 306px;
-	  right: 0;
+	right: 0px;
 	 padding: 1em;
 }
 .search input[type=text]{
@@ -1690,6 +1696,7 @@ font-size:5em;
   padding: 0.3em 0;
 }
 
+
 .available ul li{
 	list-style:none;
 	padding:0 0.5em 0 0;
@@ -1969,7 +1976,7 @@ a.add-re:hover{
 	font-size: 1.3em;
 	font-weight: 600; 
         padding-bottom: 0.5em;
-	  font-family: initial;
+        font-family: 'Roboto Slab', serif;
 }
 .login-left p, .login-right p {
 	color: #555;
@@ -1977,7 +1984,7 @@ a.add-re:hover{
 	font-size: 1.3em;
 	margin: 0 0 1em 0;
 	line-height: 1.8em;
-        font-family: initial;
+        font-family: 'Roboto Slab', serif;
 
 }
 .acount-btn {
@@ -2015,7 +2022,7 @@ a.add-re:hover{
 	font-size:1.2em;
 	padding-bottom: 0.2em;
 	display: block;
-        font-family: initial;
+        font-family: 'Roboto Slab', serif;
 }
 .login-right input[type="text"] {
 	border: 1px solid #000;
@@ -2058,7 +2065,7 @@ a.add-re:hover{
 }
 a.forgot {
 	font-size: 1.2em;
-        font-family: initial;
+        font-family: 'Roboto Slab', serif;
        
 }
 .account_grid {
@@ -2075,13 +2082,14 @@ a.forgot {
 	font-size: 1.3em;
 	font-weight: 600;
 	padding-bottom: 0.5em;
-	  font-family: initial;
+        font-family: 'Roboto Slab', serif;
 }
 .register span{
 	color: #000;
 	font-size:1.1em;
 	padding-bottom: 0.2em;
 	display: block;
+        font-family: 'Roboto Slab', serif;    
 	text-transform: uppercase;
 }
 .register input[type="text"] {
@@ -2089,6 +2097,7 @@ a.forgot {
 	outline:none;
 	width: 100%;
 	font-size:0.9em;
+        font-family: 'Roboto Slab',serif;
 	padding:10px;
 }
 .register input[type="text"]:hover {

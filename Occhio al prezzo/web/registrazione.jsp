@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="top-nav">
 				<!-- start header menu -->
 		<ul class="megamenu skyblue menu-in">
-			<li><a  href="index.jsp">Home</a></li>
+                    <li><a  href="utenteLoggato.jsp">Home</a></li>
 			
 				
 						
@@ -150,7 +150,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
                                              <div>
 							<span id="data_di_nascita">Data di nascita</span>
-								<input type="text">						 
+								<input type="text" placeholder="anno-mese-giorno">						 
 					</div>
                                              <div>
 							<span id="comune_di_residenza">Comune di Residenza</span>

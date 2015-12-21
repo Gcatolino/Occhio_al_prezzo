@@ -8,6 +8,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%
+    if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "") || (session.getAttribute("password") == null) || (session.getAttribute("password") == "") || (session.getAttribute("ruolo")!="utente")) {
+       %>
+        <script type="text/javascript">
+           location.href="login.jsp";
+        </script>
+    <%}
+%>
 <title>Amberegul A Ecommerce Category Flat Bootstrap Responsive Website Template | About :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -45,8 +53,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								
 				</ul>
 				<ul class=" support-right">
-					<li ><a href="login.jsp" ><i class="men"> </i>Login</a></li>
-					<li ><a href="registrazione.jsp" ><i class="tele"> </i>Crea Account</a></li>			
+                    <c:choose>
+                        <c:when test="${sessionScope.Account != null}">
+                            
+                            <li ><a><i class="title"> </i>Ciao ${sessionScope.account.nome}!</a></li>
+                            
+                              <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
+                            
+                        </c:when>
+                    </c:choose>
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
@@ -54,24 +69,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-bottom bottom-com">
 			<div class="container">			
 				<div class="logo">
-					<h1><a href="index.jsp"><img src="images/occhio3_.png"  ></a></h1>
+                                    <h1><a href="utenteLoggato.jsp"><img src="images/occhio3_.png"  ></a></h1>
 				</div>
 				<div class="top-nav">
 				<!-- start header menu -->
 		<ul class="megamenu skyblue menu-in">
-			<li><a  href="index.jsp">Home</a></li>
+                    <li><a  href="utenteLoggato.jsp">Home</a></li>
 				
 						
-				<li><a  href="#">Cerca prodotti</a>
-				
-				</li>
-				
-				<li><a  href="contatti.jsp">Contatti</a>
-					
-				</li>
-		 </ul> 
-		 <!---->
-		 <div class="search-in" >
+				  <li><a><button>Cerca prodotti</button></a>
+                        </li>
+                          <div class="search-in" >
 			<div class="search" >
 						<form>
 							<input type="text" value="Keywords" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Keywords';}" class="text">
@@ -79,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</form>
 							<div class="close-in"><img src="images/close.png" alt="" /></div>
 					</div>
-						<div class="right"><button> </button></div>
+						
 				</div>
 						<script type="text/javascript">
 							$('.search').hide();
@@ -92,6 +100,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							$('.search').hide();
 							});
 						</script>
+				
+				<li><a  href="contatti.jsp">Contatti</a>
+					
+				</li>
+		 </ul> 
+		 <!---->
+		
 
 					<!---->
 					<div class="cart box_1">
@@ -128,79 +143,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </tr>
       <tr>
         <td contenteditable="false">Nome</td>
-        <td contenteditable="true">Alfredo</td>
-        <td>
-            <form>
-                <input type="button" value="Modifica">
-            </form>
-        </td>
+        <td contenteditable="true" id="nome"></td>
+        
       </tr>
             <tr>
         <td contenteditable="false">Cognome</td>
-        <td contenteditable="true">Santoro</td>
-        <td>
-            <form>
-                <input type="button" value="Modifica">
-        </td>
+        <td contenteditable="true" id="cognome"></td>
+        
             </tr>
                         <tr>
         <td contenteditable="false">Email</td>
-        <td contenteditable="true">alfredo.santorouni@gmail.com</td>
-        <td>
-            <form>
-                <input type="button" value="Modifica">
-        </td>
+        <td contenteditable="true" id="email"></td>
+        
             </tr>
     <tr>
         <td contenteditable="false">Password</td>
         
-        <td contenteditable="true">Alfredo7</td>
-        <td>
-            <form>
-                <input type="button" value="Modifica">
-        </td>
+        <td contenteditable="true" id="password"></td>
+       
             </tr>
                                     <tr>
         <td contenteditable="false">Domicilio</td>
-        <td contenteditable="true">Salerno</td>
-        <td>
-            <form>
-                <input type="button" value="Modifica">
-        </td>
+        <td contenteditable="true" id="domiclio"></td>
+        
             </tr>
                                     <tr>
         <td contenteditable="false">Data di nascita</td>
-        <td contenteditable="true">22/02/1994</td>
-        <td>
-            <form>
-                <input type="button" value="Modifica">
-        </td>
+        <td contenteditable="true" id="data_di_nascita"></td>
+        
             </tr>
-                                    <tr>
-        <td contenteditable="false">Provincia</td>
-        <td contenteditable="true">Salerno</td>
-        <td>
-            <form>
-                <input type="button" value="Modifica">
-        </td>
-            </tr>
-                                    <tr>
-        <td contenteditable="false">Indirizzo</td>
-        <td contenteditable="true">via premuda 35</td>
-        <td>
-            <form>
-                <input type="button" value="Modifica">
-        </td>
-            </tr>
-                                    <tr>
-        <td contenteditable="false">Numero di telefono</td>
-        <td contenteditable="true">+39 389 1997352</td>
-        <td>
-            
-            <form>
-                <input class="b-mod" type="button" value="Modifica">
-        </td>
-            </tr>
+                 
+                 
+                 
 
 
 
@@ -221,8 +195,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       
     </table>
   </div>  
-                    <div>                  
-  <button id="export-btn" class="btn btn-primary">Elimina Account</button>
+                    
+    <div>                  
+  
+       <ul class=" left">
+				
+           <ld><a href="#"> <img src="images/deleteuser.png" ></a></ld>
+     
+         <ld><a  href="impostazioniProfilo.jsp"> <img src="images/mod.png" ></a></ld> 
+     </ul>
+       
+                       
+
   </div>
   <p id="export"></p>
 </div>

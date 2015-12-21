@@ -1,13 +1,23 @@
 <%-- 
-    Document   : login
-    Created on : 17-dic-2015, 15.13.59
-    Author     : gemmacatolino
+    Document   : impostazioniProfilo
+    Created on : 20-dic-2015, 13.06.26
+    Author     : Alfredo
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Registrazione su Occhio al prezzo.it</title>
+<%
+    if ((session.getAttribute("email") == null) || (session.getAttribute("email") == "") || (session.getAttribute("password") == null) || (session.getAttribute("password") == "") || (session.getAttribute("ruolo")!="utente")) {
+       %>
+        <script type="text/javascript">
+           location.href="login.jsp";
+        </script>
+    <%}
+%>
+<title> Crea account </title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -29,8 +39,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
 <!--//slider-script-->
-
-
 <script src="js/simpleCart.min.js"> </script>
 </head>
 <body> 
@@ -40,11 +48,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="header-top-in grid-1">
 				<ul class="support">
-					<li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>			
+					<li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
+								
 				</ul>
 				<ul class=" support-right">
-					<li ><a href="login.jsp" ><i class="men"> </i>Login</a></li>
-					<li ><a href="registrazione.jsp" ><i class="tele"> </i>Crea Account</a></li>			
+                   <c:choose>
+                        <c:when test="${sessionScope.Account != null}">
+                            
+                            <li ><a><i class="title"> </i>Ciao ${sessionScope.account.nome}!</a></li>
+                            
+                              <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
+                            
+                        </c:when>
+                    </c:choose>			
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
@@ -52,12 +68,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header-bottom bottom-com">
 			<div class="container">			
 				<div class="logo">
-					<h1><a href="index.jsp"><img src="images/occhio3_.png"  ></a></h1>
+                                    <h1><a href="utenteLoggato.jsp"><img src="images/occhio3_.png"  ></a></h1>
 				</div>
 				<div class="top-nav">
 				<!-- start header menu -->
 		<ul class="megamenu skyblue menu-in">
-			<li><a  href="index.jsp">Home</a></li>
+                    <li><a  href="utenteLoggato.jsp">Home</a></li>
+			
 				
 						
 				  <li><a><button>Cerca prodotti</button></a>
@@ -83,19 +100,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							$('.search').hide();
 							});
 						</script>
+                                 <li>
+                            <a href="profilo.jsp">Profilo</a>
+                        </li>
 				
 				<li><a  href="contatti.jsp">Contatti</a>
 					
 				</li>
 		 </ul> 
 		 <!---->
-		
+		 
 
 					<!---->
-					<div class="cart box_1">
+				<div class="cart box_1">
 						<a href="carrello.jsp">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> oggetti)</div>
+							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Carrello vuoto</a></p>
@@ -112,68 +132,59 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!---->
 
-<div class="back">
-    
-</div>
 		<!---->
 		<div class="container">
-		<div class="account_grid">
-			   <div class=" login-right">
-			  	<h3>Accedi</h3>
-				<p>Se hai un account effettua il login</p>
-                                <form action="">
-				  <div>
-					<span>Email</span>
-					<input type="text"> 
-				  </div>
-				  <div>
-					<span>Password</span>
-					<input type="password"> 
-				  </div>
-                                    <input  type="submit" value="Login ">
-				  
-				  
-			    </form>
-                                <a class="forgot" href="#">Password dimenticata?</a>
-			   </div>	
-			    <div class=" login-left">
-			  	 <h3>Sei nuovo utente?  </h3>
-				 <p>Crea un account sul nostro sito e potrai scoprire i prodotti in offerta!</p>
-				 <a class="acount-btn" href="registrazione.jsp">Crea Account</a>
-			   </div>
-			
-			 </div>
-		
+		<div class="register">
+		<h3>Modifica dati personali</h3>
+		  	  <form id="registrationForm" class="form-horizontal" method="POST" action="addAccountServlet"/> 
+				
+					
+					<div class="mation">
+					<div>
+						<span id="nome">Nome</span>
+						<input type="text" id="nome"> 
+					</div>
+					<div>
+						<span id="cognome">Cognome</span>
+						<input type="text" id="cognome"> 
+					 </div>
+					 <div>
+						 <span id="email">Email </span>
+                                                 <input type="text" id="email"> 
+						 </div>
+						 <div>
+							<span id="password">Password</span>
+                                                        <input type="password" id="password">						 
+					</div>
+                                             <div>
+							<span>Conferma Password</span>
+                                                        <input type="password" id="password">						 
+					</div>
+                                             <div>
+							<span id="domiclio">Domicilio</span>
+                                                        <input type="text" id="domiclio">						 
+					</div>
+                                             <div>
+							<span id="data_di_nascita">Data di nascita</span>
+								<input type="text" id="data_di_nascita">						 
+					</div>
+                                             <div>
+							<span id="comune_di_residenza">Comune di Residenza</span>
+                                                        <input type="text" id="comune_di_residenza">						 
+					</div>
+					 </div>
+				     <input type="submit" id="register" value="Modifica"> 
+				</form>
+				
+				
+		   </div>
 			</div>
 			<!---->
-				
-<!---->
-	<div class="footer">
-		<div class="container">
-			<div class="col-md-4 footer-top">
-				<h3>Contattaci</h3>
-				<form>
-						
-						<input type="text" value="Inserisci il nome*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci il nome';}">
-						
-						<input type="text" value="Inserisci email*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci email*';}">
-						
-						<input type="text" value="Inserisci il tuo numero*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci il tuo numero';}">
 					
-						<textarea cols="10" rows="4" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Inserisci il messaggio';}">Inserisci il messaggio*</textarea>
-						
-							<input type="submit" value="Invia" >
-						
-					</form>
-                        </div>
-                       <div class="clearfix"> </div>         
-                      <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
-                      
-                      
-        </div>
-        </div>
-			
+<!---->
+	
 <!---->
 </body>
 </html>
+
+
