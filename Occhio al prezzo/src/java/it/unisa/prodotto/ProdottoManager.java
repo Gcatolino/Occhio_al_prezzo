@@ -121,12 +121,11 @@ public class ProdottoManager {
      * @param vecchioIdProdotto
      * @param prodotto
      * 
-     * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
      * @throws java.io.IOException
      * @throws it.unisa.exception.ValueNullException
      */
-    public synchronized void update(int vecchioIdProdotto, Prodotto prodotto) throws ClassNotFoundException, SQLException, IOException, ValueNullException {
+    public synchronized void update(int vecchioIdProdotto, Prodotto prodotto) throws  SQLException, IOException, ValueNullException {
         try (Connection connessione = DBConnection.getConnection()) {
 
             /*
@@ -148,10 +147,10 @@ public class ProdottoManager {
                         updateSQL.append(prodotto.getPuntoVendita());
                         updateSQL.append("', fk_email = '");
                         updateSQL.append(prodotto.getFkEmail());
-                        updateSQL.append("', fk_email = '");
-                        updateSQL.append(prodotto.getFkEmail());
                         updateSQL.append("', data = '");
                         updateSQL.append(prodotto.getData());
+                        updateSQL.append("', path_immagine= '");
+                        updateSQL.append(prodotto.getPathImmagine());
                         updateSQL.append("'  WHERE idProdotto = ");
                         updateSQL.append(vecchioIdProdotto);         
                     
@@ -168,6 +167,7 @@ public class ProdottoManager {
                 DBConnection.releaseConnection(connessione);
                 }
             } else{
+                controlla(prodotto);
                 throw new ValueNullException("Campi NULL o vuoti non sono consentiti");     
             }
         }
@@ -183,7 +183,7 @@ public class ProdottoManager {
      * @throws java.sql.SQLException
      * @throws java.io.IOException
      */
-    public synchronized void delete(int idProdotto) throws ClassNotFoundException, SQLException, IOException {
+    public synchronized void delete(int idProdotto) throws SQLException, IOException {
         Connection connessione = null;
         try{
             // Otteniamo una Connessione al DataBase
@@ -263,13 +263,13 @@ public class ProdottoManager {
      * Metodo della classe incaricato di ricercare Prodotti
      * inseriti all'interno del DB, da parte di un venditore.
      *
-     * @param puntoVenditaProdotto
+     * @param fkEmail
      * 
      * @throws java.sql.SQLException
      * 
      * @return ArrayList contenente il risultato della ricerca.
      */
-    public synchronized ArrayList<Prodotto> ricercaProdottiPerPuntoVendita(String puntoVenditaProdotto) throws SQLException {
+    public synchronized ArrayList<Prodotto> ricercaProdottiPerPuntoVendita(String fkEmail) throws SQLException {
         ArrayList<Prodotto> prodotti = new ArrayList<>();
         
         Connection connessione = null;
@@ -283,8 +283,8 @@ public class ProdottoManager {
              */
             StringBuilder querySQL = new StringBuilder("SELECT * FROM ");
                     querySQL.append(ProdottoManager.TABELLA_PRODOTTO);
-                    querySQL.append(" WHERE punto_vendita = '");
-                    querySQL.append(puntoVenditaProdotto);
+                    querySQL.append(" WHERE fk_email = '");
+                    querySQL.append(fkEmail);
                     querySQL.append("'");
 
             System.out.println("La query "+querySQL);
@@ -342,6 +342,35 @@ public class ProdottoManager {
             DBConnection.releaseConnection(connessione);
         }
     }
+    
+    public synchronized Prodotto ricercaProdottoPerID(int idProdotto) throws SQLException {
+        Prodotto p = new Prodotto();
+        Connection connessione = null;
+        try {
+            // Otteniamo una Connessione al DataBase
+            connessione = DBConnection.getConnection();
+
+            /*
+             * Prepariamo la stringa SQL per ricercare i record 
+             * nella tabella Prodotto, in base al campo "nome"
+             */
+            StringBuilder querySQL = new StringBuilder("SELECT * FROM ");
+                    querySQL.append(ProdottoManager.TABELLA_PRODOTTO);
+                    querySQL.append(" WHERE idProdotto = '");
+                    querySQL.append(idProdotto);
+                    querySQL.append("'");
+            
+            //Inviamo la Query al DataBase
+            ResultSet risultato = UtilityVar.executeQuery(connessione,querySQL.toString());
+            if(risultato.next()){
+                p = riempiRisultato(risultato);
+                risultato.close();
+            }
+            return p;
+        } finally {
+            DBConnection.releaseConnection(connessione);
+        }
+    }
     /**
      * Metodo della classe incaricato di controllare
      * se ci sono campi NULL dove non sarebbero consentiti 
@@ -377,5 +406,23 @@ public class ProdottoManager {
         prodotto.setPathImmagine(risultato.getString("path_immagine"));
 
         return prodotto;
+    }
+    
+    private void controlla(Prodotto prodotto){
+        if(prodotto.getNome() == null)
+            System.out.println("nome null");
+        if(prodotto.getMarca()== null)
+            System.out.println("marca null");
+        if(prodotto.getData()== null)
+            System.out.println("data null");
+        if(prodotto.getFkEmail() == null)
+            System.out.println("fk null");
+        if(prodotto.getPrezzo() == 0)
+            System.out.println("prezzo null");
+        if(prodotto.getPuntoVendita() == null)
+            System.out.println("punto vendita null");
+        if(prodotto.getTaglia()== null)
+            System.out.println("taglia null");
+        
     }
 }
