@@ -46,32 +46,35 @@ public class AddAccountServlet extends HttpServlet {
          
         
         response.setContentType("text/html");  
-        PrintWriter out=response.getWriter();
-        Account acc=new Account();
+        PrintWriter out = response.getWriter();
+        Account acc = new Account();
         acc.setNome(request.getParameter("nome"));
         acc.setEmail(request.getParameter("email"));
         acc.setPassword(request.getParameter("password"));
         acc.setDomicilio(request.getParameter("domicilio"));
-        /*il ruolo non lo settiamo perchè di default è un utente*/
-        acc.setComuneDiResidenza(request.getParameter("comune_di_residenza"));
+        
+        /*il ruolo lo settiamo perchè di default è un utente*/
+        acc.setRuolo("account");
+        
+        acc.setComuneDiResidenza(request.getParameter("comune"));
         acc.setCognome(request.getParameter("cognome"));
-        acc.setDataDiNascita(UtilityVar.parseData(request.getParameter("data_di_nascita")));
-        acc.setRuolo("utente");
+        String temp = request.getParameter("nascita");
+        String data = temp.substring(6) + "-" + temp.substring(3, 5) + "-" + temp.substring(0, 2);
+        acc.setDataDiNascita(UtilityVar.parseData(data));
+        //acc.setDataDiNascita(UtilityVar.parseData(request.getParameter("nascita")));
         System.out.println(acc.getEmail()+"  "+acc.getRuolo()+"  "+acc.getPassword());
+        
         AccountManager instance =  AccountManager.getInstance();
         try {
             instance.add(acc);
-            out.print("<h1>account registrato correttamente</h1>");
+            out.print("<h1>Registrazione avvenuta con successo</h1>");
+            RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
+            rs.forward(request, response);
         } catch (SQLException ex) {
             out.print("<h1>errore database</h1>");
         } catch (ValueNullException ex) {
             
             out.print("<h1>non hai inserito qualche valore</h1>");
-        }
-        
-         
+        }    
     }
-
-    
- 
 }

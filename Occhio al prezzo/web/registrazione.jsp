@@ -61,16 +61,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 				
 						
-				<li><a  href="#">Cerca prodotti</a>
-				
-				</li>
-				
-				<li><a  href="contatti.jsp">Contatti</a>
-					
-				</li>
-		 </ul> 
-		 <!---->
-		 <div class="search-in" >
+				<li><a><button>Cerca prodotti</button></a>
+                        </li>
+                          <div class="search-in" >
 			<div class="search" >
 						<form>
 							<input type="text" value="Keywords" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Keywords';}" class="text">
@@ -78,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</form>
 							<div class="close-in"><img src="images/close.png" alt="" /></div>
 					</div>
-						<div class="right"><button> </button></div>
+						
 				</div>
 						<script type="text/javascript">
 							$('.search').hide();
@@ -91,6 +84,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							$('.search').hide();
 							});
 						</script>
+				
+				<li><a  href="contatti.jsp">Contatti</a>
+					
+				</li>
+		 </ul> 
+		 <!---->
+		 
 
 					<!---->
 				<div class="cart box_1">
@@ -120,47 +120,148 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="register">
 		<h3>Registrazione</h3>
-		  	  <form id="registrationForm" class="form-horizontal" method="POST" action="addAccountServlet"/> 
+		  	  <form id="registrationForm" name="modulo" class="form-horizontal" method="POST" action="addAccountServlet"/> 
 				
 					
 					<div class="mation">
 					<div>
 						<span id="nome">Nome</span>
-						<input type="text"> 
+						<input type="text" name="nome"> 
 					</div>
 					<div>
 						<span id="cognome">Cognome</span>
-						<input type="text"> 
+						<input type="text" name="cognome"> 
 					 </div>
 					 <div>
 						 <span id="email">Email </span>
-						 <input type="text">
-						 </div>
-						 <div>
-							<span id="password">Password</span>
-								<input type="password">						 
+						 <input type="text" name="email">
+                                        </div>
+                                        <div>
+                                                <span id="password">Password</span>
+                                                <input type="password" name="password">						 
 					</div>
-                                             <div>
-							<span>Conferma Password</span>
-								<input type="password">						 
+                                        <div>
+                                                <span>Conferma Password</span>
+                                                <input type="password" name="conferma">						 
 					</div>
-                                             <div>
-							<span id="domiclio">Domicilio</span>
-								<input type="text">						 
+                                        <div>
+                                                <span id="domiclio">Domicilio</span>
+                                                <input type="text" name="domicilio">						 
 					</div>
-                                             <div>
-							<span id="data_di_nascita">Data di nascita</span>
-								<input type="text" placeholder="anno-mese-giorno">						 
+                                        <div>
+                                                <span id="data_di_nascita">Data di nascita</span>
+                                                <input type="text" placeholder="gg/mm/aaaa" name="nascita">						 
 					</div>
-                                             <div>
-							<span id="comune_di_residenza">Comune di Residenza</span>
-								<input type="text">						 
+                                        <div>
+                                                <span id="comune_di_residenza">Comune di Residenza</span>
+                                                <input type="text" name="comune">						 
 					</div>
-					 </div>
-				     <input type="submit" id="register" value="Registrati"> 
+                                        </div>
+                                    <input type="button" id="register" value="Registrati" onClick="Modulo()"> 
 				</form>
 				
-				
+		<script>
+                        <!--
+                        function Modulo() {
+                        // Variabili associate ai campi del modulo
+                        var nome = document.modulo.nome.value;
+                        var cognome = document.modulo.cognome.value;
+                        var email = document.modulo.email.value;
+                        var password = document.modulo.password.value;
+                        var conferma = document.modulo.conferma.value;
+                        var domicilio = document.modulo.domicilio.value;
+                        var nascita = document.modulo.nascita.value;
+                        var comune = document.modulo.comune.value;
+ 
+                        // Espressione regolare dell'email
+                        var email_reg_exp = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
+                        
+                        //Effettua il controllo sul campo NOME
+                        if ((nome == "") || (nome == "undefined")) {
+                            alert("Il campo Nome è obbligatorio.");
+                            document.modulo.nome.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo COGNOME
+                        else if ((cognome == "") || (cognome == "undefined")) {
+                            alert("Il campo Cognome è obbligatorio.");
+                            document.modulo.cognome.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo PASSWORD
+                        else if ((password == "") || (password == "undefined")) {
+                            alert("Il campo Password è obbligatorio.");
+                            document.modulo.password.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo CONFERMA PASSWORD
+                        else if ((conferma == "") || (conferma == "undefined")) {
+                            alert("Il campo Conferma Password è obbligatorio.");
+                            document.modulo.conferma.focus();
+                            return false;
+                        }
+                        //Verifica l'uguaglianza tra i campi PASSWORD e CONFERMA PASSWORD
+                        else if (password != conferma) {
+                            alert("La password confermata è diversa da quella scelta, controllare.");
+                            document.modulo.conferma.value = "";
+                            document.modulo.conferma.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo DOMICILIO
+                        else if ((domicilio == "") || (domicilio == "undefined")) {
+                            alert("Il campo Domicilio è obbligatorio.");
+                            document.modulo.domicilio.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo DATA DI NASCITA
+                        else if (document.modulo.nascita.value.substring(2,3) != "/" ||
+                                 document.modulo.nascita.value.substring(5,6) != "/" ||
+                                 isNaN(document.modulo.nascita.value.substring(0,2)) ||
+                                 isNaN(document.modulo.nascita.value.substring(3,5)) ||
+                                 isNaN(document.modulo.nascita.value.substring(6,10))) {
+                             
+                            alert("Inserire nascita in formato gg/mm/aaaa");
+                            document.modulo.nascita.value = "";
+                            document.modulo.nascita.focus();
+                            return false;
+                        }
+                        else if (document.modulo.nascita.value.substring(0,2) > 31) {
+                            alert("Impossibile utilizzare un valore superiore a 31 per i giorni");
+                            document.modulo.nascita.select();
+                            return false;
+                        }
+                        else if (document.modulo.nascita.value.substring(3,5) > 12) {
+                            alert("Impossibile utilizzare un valore superiore a 12 per i mesi");
+                            document.modulo.nascita.value = "";
+                            document.modulo.nascita.focus();
+                            return false;
+                        }
+                        else if (document.modulo.nascita.value.substring(6,10) < 1900) {
+                            alert("Impossibile utilizzare un valore inferiore a 1900 per l'anno");
+                            document.modulo.nascita.value = "";
+                            document.modulo.nascita.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo COMUNE
+                        else if ((comune == "") || (comune == "undefined")) {
+                            alert("Il campo Comune è obbligatorio.");
+                            document.modulo.comune.focus();
+                            return false;
+                        }
+                        else if (!email_reg_exp.test(email) || (email == "") || (email == "undefined")) {
+                            alert("Inserire un indirizzo email corretto.");
+                            document.modulo.email.select();
+                            return false;
+                        }
+                        //INVIA IL MODULO
+                        else {
+                            //document.modulo.action = "addAccountServlet";
+                            document.modulo.submit();
+                        }
+                    }
+                    //-->
+                </script>
+                
 		   </div>
 			</div>
 			<!---->

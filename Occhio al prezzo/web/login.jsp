@@ -121,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   <div class=" login-right">
 			  	<h3>Accedi</h3>
 				<p>Se hai un account effettua il login</p>
-                                <form action="">
+                                <form method="POST" action="loginServlet">
 				  <div>
 					<span>Email</span>
 					<input type="text"> 

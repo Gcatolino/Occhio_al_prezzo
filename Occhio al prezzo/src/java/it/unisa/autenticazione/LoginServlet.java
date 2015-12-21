@@ -35,20 +35,35 @@ public class LoginServlet extends HttpServlet {
          
         
         response.setContentType("text/html");  
-         String email = request.getParameter("email");
-         String password = request.getParameter("password");
-         AutenticazioneManager m=AutenticazioneManager.getInstance();
-         PrintWriter out=response.getWriter();
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        AutenticazioneManager m = AutenticazioneManager.getInstance();
+        PrintWriter out=response.getWriter();
         try {
-            Account a=m.login(email, password);
-            if(a==null){
-                out.print("<h1>Account non registrato</h1>");
+            Account a = m.login(email, password);
+            if(a == null){
+                out.print("<h1>Non sei ancora registrato. Cosa aspetti a farlo?</h1>");
                 RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+                rs.forward(request, response);
             }
             else{
                 HttpSession session = request.getSession();
+                String r = a.getRuolo();
                 session.setAttribute("email", email);  // just a marker object
-                session.setAttribute("ruolo", a.getRuolo());
+                session.setAttribute("ruolo", r);
+                if(r.equalsIgnoreCase("admin")){
+                    RequestDispatcher rs = request.getRequestDispatcher("adminLoggato.jsp");
+                    rs.forward(request,response);
+                } 
+                else 
+                    if(r.equalsIgnoreCase("venditore")){
+                        RequestDispatcher rs = request.getRequestDispatcher("venditoreLoggato.jsp");
+                        rs.forward(request,response);
+                    }
+                    else{
+                        RequestDispatcher rs = request.getRequestDispatcher("utenteLoggato.jsp");
+                        rs.forward(request,response);
+                    }
                 out.print("login effettuato");
             }
             
@@ -57,9 +72,5 @@ public class LoginServlet extends HttpServlet {
         } catch (ConnectionException ex) {
              out.print("<h1>errore connessione</h1>");
         }
-         
     }
-
-    
- 
 }
