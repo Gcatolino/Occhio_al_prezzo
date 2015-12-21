@@ -74,105 +74,119 @@
             }
         </script>
         <div class="header-top">
-            <div class="container">
-                <div class="header-top-in">
+		<div class="container">
+			<div class="header-top-in">
+				
+				<ul class="support">
+					<li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
+				</ul>
+                                <ul class=" support-right">
+                                         <c:choose>    
+                                            <c:when test="${sessionScope.email != null}">
+                                                <li><a><span>Ciao ${sessionScope.account.email}!</span></a></li>
+                                                
+                                                <li><a href="logout.jsp"><span class="title">Logout</span></a></li>
+                                            </c:when>
+                                        </c:choose>	
+				</ul>
+				<div class="clearfix"> </div>
+			</div>
+			</div>
+			<div class="header-bottom bottom-com">
+			<div class="container">			
+				<div class="logo">
+					<h1><a href="index.html"></a><img src="images/occhio3_.png"  ></h1>
+				</div>
+				<div class="top-nav">
+                               
+                       
+				<!-- start header menu -->
+		<ul class="megamenu skyblue menu-in">
+			<li><a  href="venditoreLoggato.jsp">Home</a></li>
+			
+			
+                        
+                        <li><a href="gestioneProdotti.jsp">Gestione prodotti</a>
+        			</li>
+                              
+		 </ul>
 
-                    <ul class="support">
-                        <li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
-                    </ul>
-                    <ul class=" support-right">
-                        <c:choose>
-                            <c:when test="${sessionScope.email != null}">
+		 <!---->
+				</div>
+	
+			</div>
+			
+		</div>
+                            <br>
+                            <div style="text-align: center;">
+                                <a>
+                                    <span style="font-size:2em;" class="glyphicon glyphicon-plus-sign" aria-hidden="true" onclick="location.href = 'inserimentoProdotto.jsp'" >
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="panel-body">
+                                <table  width="60%" align="center" >
+                                    <thead class="sottolineato">
+                                    <th>&nbsp;Marca&nbsp;</th>
+                                    <th>Nome&nbsp;</th>		
+                                    <th>Taglia&nbsp;</th>
+                                    <th>Prezzo&nbsp;</th>
+                                    <th>Punto Vendita&nbsp;</th>
+                                    <th>Data&nbsp;</th>
+                                    <th>Path Immagine</th>
+                                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    </thead>
 
-                                <li ><a><i class="title"> </i>Ciao ${sessionScope.email}!</a></li>
+                                    <% for (Prodotto prodotto : prodotti) {%>
+                                    <tr class="sottolineato">
+                                        <td>&nbsp;<%= prodotto.getMarca()%>&nbsp;</td>
+                                        <td><%= prodotto.getNome()%>&nbsp;</td>		
+                                        <td><%= prodotto.getTaglia()%>&nbsp;</td>
+                                        <td><%= formatoNumeri.format(prodotto.getPrezzo())%>&nbsp;</td>
+                                        <td><%= prodotto.getPuntoVendita()%>&nbsp;</td>
+                                        <td><%= prodotto.getData()%>&nbsp;</td>
+                                        <td><%= prodotto.getPathImmagine()%>&nbsp;</td>
+                                        <td><img SRC="<%=prodotto.getPathImmagine()%>" width="50" height="70"></td>
 
-                                <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
-
-                            </c:when>
-                        </c:choose>		
-                    </ul>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-            <div class="header-bottom bottom-com">
-                <div class="container">			
-                    <div class="logo">
-                        <h1><a href="index.html"></a><img src="images/occhio3_.png"  ></h1>
-                    </div>
-                    <div class="top-nav">
-
-
-                        <!-- start header menu -->
-                        <ul class="megamenu skyblue menu-in">
-                            <li><a  href="venditoreLoggato.jsp">Home</a></li>
-
-
-
-                            <li><a href="gestioneProdotti.jsp">Gestione prodotti</a>
-                            </li>
-
-                        </ul>
-
-                        <!---->
-                    </div>
-
-                </div>
-
-            </div>
-            <br>
-            <div style="text-align: center;">
-                <a>
-                    <span style="font-size:2em;" class="glyphicon glyphicon-plus-sign" aria-hidden="true" onclick="location.href = 'inserimentoProdotto.jsp'" >
-                    </span>
-                </a>
-            </div>
-            <div class="panel-body">
-                <table  width="60%" align="center" >
-                    <thead>
-                    <th>Marca</th>
-                    <th>Nome</th>		
-                    <th>Taglia</th>
-                    <th>Prezzo</th>
-                    <th>Punto Vendita</th>
-                    <th>Data</th>
-                    <th>Path Immagine</th>
-                    </thead>
-
-                    <% for (Prodotto prodotto : prodotti) {%>
-                    <tr>
-                        <td><%= prodotto.getMarca()%></td>
-                        <td><%= prodotto.getNome()%></td>		
-                        <td><%= prodotto.getTaglia()%></td>
-                        <td><%= formatoNumeri.format(prodotto.getPrezzo())%>
-                        <td><%= prodotto.getPuntoVendita()%></td>
-                        <td><%= prodotto.getData()%></td>
-                        <td><%= prodotto.getPathImmagine()%></td>
-                        <td><img SRC="<%=prodotto.getPathImmagine()%>" width="50" height="70"></td>
-
-
-                        <td width="20px"> 
-                            <a>
-                                <span style="font-size:1.5em;" class="glyphicon glyphicon-edit" aria-hidden="true" onclick="location.href = '<%= "modificaProdotto.jsp?idProdotto=" + prodotto.getID()%>'" >
-                                </span>
-                            </a>
-                        </td>
-                        <td>
-                            &nbsp;&nbsp;&nbsp;
-                        </td>
-                        <td width="20px">
-                            <a>
-                                <span style="font-size:1.5em;" class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href = '<%= "ServletEliminaProdotto?idProdotto=" + prodotto.getID()%>'" >
-                                </span>
-                            </a>
-                        </td>
-                        <td>
-                            &nbsp;&nbsp;
-                        </td>
-                    </tr>
-                    <% }%>
-                </table>
-            </div>
+                                        
+                                        <td width="20px"> 
+                                            <a>
+                                                    <span style="font-size:1.5em;" class="glyphicon glyphicon-edit" aria-hidden="true" onclick="location.href = '<%= "modificaProdotto.jsp?idProdotto=" + prodotto.getID()%>'" >
+                                                    </span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            &nbsp;&nbsp;&nbsp;
+                                        </td>
+                                        <td width="20px">
+                                            <a>
+                                            <span style="font-size:1.5em;" class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href = '<%= "ServletEliminaProdotto?idProdotto=" + prodotto.getID()%>'" >
+                                            </span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            &nbsp;&nbsp;
+                                        </td>
+                                    </tr>
+                                    <% }%>
+                                </table>
+                            </div>
+		</div>
+                                 <div class="footer">
+		<div class="container">
+			<div class="col-md-4 footer-top">
+				
+                        </div>
+                       <div class="clearfix"> </div>         
+                      <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
+                      
+                      
         </div>
-
-
-
+        </div>
+			
+<!---->

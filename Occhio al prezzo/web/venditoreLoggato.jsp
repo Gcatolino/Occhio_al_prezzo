@@ -53,56 +53,69 @@
     <body> 
         <!--header-->	
         <%
-            Account account = ((Account) session.getAttribute("account"));
+            Account account =  ((Account) session.getAttribute("account"));   
+            session.setAttribute("messaggio", "");
         %>
         <div class="header">
-            <div class="header-top">
-                <div class="container">
-                    <div class="header-top-in">
+	<div class="header-top">
+		<div class="container">
+			<div class="header-top-in">
+				
+				<ul class="support">
+					<li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i> </i>occhio_al_prezzo@gmail.com</a></li>
+				</ul>
+                                <ul class=" support-right">
+                                        <c:choose>    
+                                            <c:when test="${sessionScope.email != null}">
+                                                <li><a><span>Ciao ${sessionScope.account.email}!</span></a></li>
+                                                
+                                                <li><a href="logout.jsp"><span class="title">Logout</span></a></li>
+                                            </c:when>
+                                        </c:choose>		
+				</ul>
+				<div class="clearfix"> </div>
+			</div>
+			</div>
+			<div class="header-bottom bottom-com">
+			<div class="container">			
+				<div class="logo">
+					<h1><a href="index.html"></a><img src="images/occhio3_.png"  ></h1>
+				</div>
+				<div class="top-nav">
+                               
+                       
+				<!-- start header menu -->
+		<ul class="megamenu skyblue menu-in">
+			<li><a  href="venditoreLoggato.jsp">Home</a></li>
+			
+			
+                        
+                        <li><a href="gestioneProdotti.jsp">Gestione prodotti</a>
+        			</li>
+		</ul>
+		 <!---->
+				</div>
+	
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		</div>
 
-                        <ul class="support">
-                            <li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
-                        </ul>
-                        <ul class=" support-right">
-                            <c:choose>
-                                <c:when test="${sessionScope.email != null}">
-
-                                    <li ><a><i class="title"> </i>Ciao ${sessionScope.email}!</a></li>
-
-                                    <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
-
-                                </c:when>
-                            </c:choose>		
-                        </ul>
-                        <div class="clearfix"> </div>
-                    </div>
-                </div>
-                <div class="header-bottom bottom-com">
-                    <div class="container">			
-                        <div class="logo">
-                            <h1><a href="index.html"></a><img src="images/occhio3_.png"  ></h1>
+	
+</div>
+                   <div class="footer">
+		<div class="container">
+			<div class="col-md-4 footer-top">
+				
                         </div>
-                        <div class="top-nav">
-
-
-                            <!-- start header menu -->
-                            <ul class="megamenu skyblue menu-in">
-                                <li><a  href="venditoreLoggato.jsp">Home</a></li>
-
-
-
-                                <li><a href="gestioneProdotti.jsp">Gestione prodotti</a>
-                                </li>
-
-                            </ul>
-
-                            <!---->
-                        </div>
-
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-
-
+                       <div class="clearfix"> </div>         
+                      <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
+                      
+                      
         </div>
+        </div>
+			
+<!---->
+</body>
+</html>

@@ -67,7 +67,7 @@ public class ServletModificaProdotto extends HttpServlet {
             ProdottoManager.getInstance().update(idProdotto, prodotto);
             
             session.setAttribute("messaggio", "Prodotto modificato correttamente");
-            response.sendRedirect("/web/gestioneProdotti.jsp");
+            response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
             } catch (SQLException ex) {
                 out.print("<h1> errore database </h1>");
             } catch (ValueNullException ex) {

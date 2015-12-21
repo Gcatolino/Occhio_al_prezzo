@@ -76,134 +76,125 @@
         %>
         <!--header-->	
         <div>
-            <div class="header-top">
-                <div class="container">
-                    <div class="header-top-in">
+	<div class="header-top">
+		<div class="container">
+			<div class="header-top-in">
+				
+				<ul class="support">
+					<li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
+				</ul>
+                                <ul class=" support-right">
+                                         <c:choose>    
+                                            <c:when test="${sessionScope.email != null}">
+                                                <li><a><span>Ciao ${sessionScope.account.email}!</span></a></li>
+                                                
+                                                <li><a href="logout.jsp"><span class="title">Logout</span></a></li>
+                                            </c:when>
+                                        </c:choose>		
+				</ul>
+				<div class="clearfix"> </div>
+			</div>
+			</div>
+			<div class="header-bottom bottom-com">
+			<div class="container">			
+				<div class="logo">
+					<h1><a href="index.html"></a><img src="images/occhio3_.png"  ></h1>
+				</div>
+				<div class="top-nav">
+                               
+                       
+				<!-- start header menu -->
+		<ul class="megamenu skyblue menu-in">
+			<li><a  href="venditoreLoggato.jsp">Home</a></li>
+			
+			
+                        
+                        <li><a href="gestioneProdotti.jsp">Gestione prodotti</a>
+        			</li>
 
-                        <ul class="support">
-                            <li ><a href="mailto:occhio_al_prezzo@gmail.com" ><i > </i>occhio_al_prezzo@gmail.com</a></li>
-                        </ul>
-                        <ul class=" support-right">
-                            <c:choose>
-                                <c:when test="${sessionScope.email != null}">
+		 </ul>
 
-                                    <li ><a><i class="title"> </i>Ciao ${sessionScope.email}!</a></li>
+		 <!---->
+				</div>
+	
+			</div>
+			
+		</div>
+        <div class="main-content" id="content">
 
-                                    <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
+                <div class="row">
 
-                                </c:when>
-                            </c:choose>			
-                        </ul>
-                        <div class="clearfix"> </div>
-                    </div>
-                </div>
-                <div class="header-bottom bottom-com">
-                    <div class="container">			
-                        <div class="logo">
-                            <h1><a href="index.html"></a><img src="images/occhio3_.png"  ></h1>
-                        </div>
-                        <div class="top-nav">
+                    <div class="col-sm-1"></div>
 
+                    <div class="col-sm-10">
 
-                            <!-- start header menu -->
-                            <ul class="megamenu skyblue menu-in">
-                                <li><a  href="venditoreLoggato.jsp">Home</a></li>
-
-
-
-                                <li><a href="gestioneProdotti.jsp">Gestione prodotti</a>
-                                </li>
-
-                            </ul>
-
-                            <!---->
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="main-content" id="content">
-
-                    <div class="row">
-
-                        <div class="col-sm-1"></div>
-
-                        <div class="col-sm-10">
-
-                            <div class="panel center-block">
+                        <div class="panel center-block">
+                            <br>
+                            <div class="col-lg-offset-5">
+                                <h1>Inserisci Prodotto</h1>
                                 <br>
-                                <div class="col-lg-offset-4">
-                                    <h1>Inserisci Prodotto</h1>
+                            </div>
+                            <div>
+                                <form class="form-horizontal" method="POST" action="ServletInserimentoProdotto" onSubmit="return controlla();">
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-5 col-lg-6">
+                                        <table width="90%" align="center">
+                                            <tr><td>
+                                                    <p>Marca:</p>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"></span>
+                                                        <input class="text" name="marca" type="text" required>
+                                                    </div>
+                                                    <br>
+                                                    <p>Nome:</p>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"></span>
+                                                        <input class="text" name="nome" type="text" required>
+                                                    </div>
+                                                    <br>
+                                                    <p>Taglia:</p>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"></span>
+                                                        <input class="text" name="taglia" type="number" step="any" onBlur="isnum(this)" required>
+                                                    </div>
+                                                    <br>
+                                                    <p>Prezzo:</p>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"></span>
+                                                        <input class="text" name="prezzo" type="number" step="any" onBlur="isnum(this)" required>
+                                                    </div>
+                                                    <br>
+                                                    <p>Punto Vendita:</p>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"></span>
+                                                        <input class="text" name="punto_vendita" type="text" required>
+                                                    </div>
+                                                    <br>
+                                                    <p>Data:</p>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"></span>
+                                                        <input class="text" name="data" type="date" required>
+                                                    </div>
+                                                    <br>
+                                                    <p>Path Immagine:</p>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"></span>
+                                                        <input class="text" name="path_immagine" type="text">
+                                                    </div>
+                                                    <br>
+                                                    <div>
+                                    <input id="btn" type="submit" class="col-lg-offset-1" value="Inserisci"> 
+                                    <br>
                                     <br>
                                 </div>
-                                <div>
-                                    <form class="form-horizontal" method="POST" action="ServletInserimentoProdotto" onSubmit="return controlla();">
-                                        <div class="form-group">
-                                            <div class="col-lg-offset-4 col-lg-6">
-                                                <table width="90%" align="center">
-                                                    <tr><td>
-                                                            <p>Marca:</p>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"></span>
-                                                                <input class="text" name="marca" type="text" required>
-                                                            </div>
-                                                            <br>
-                                                            <br>
-                                                            <p>Nome:</p>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"></span>
-                                                                <input class="text" name="nome" type="text" required>
-                                                            </div>
-                                                            <br>
-                                                            <br>
-                                                            <p>Taglia:</p>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"></span>
-                                                                <input class="text" name="taglia" type="number" step="any" onBlur="isnum(this)" required>
-                                                            </div>
-                                                            <br>
-                                                            <br>
-                                                            <p>Prezzo:</p>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"></span>
-                                                                <input class="text" name="prezzo" type="number" step="any" onBlur="isnum(this)" required>
-                                                            </div>
-                                                            <br>
-                                                            <br>
-                                                            <p>Punto Vendita:</p>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"></span>
-                                                                <input class="text" name="punto_vendita" type="text" required>
-                                                            </div>
-                                                            <br>
-                                                            <br>
-                                                            <p>Data:</p>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"></span>
-                                                                <input class="text" name="data" type="date" required>
-                                                            </div>
-                                                            <br>
-                                                            <br>
-                                                            <p>Path Immagine:</p>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"></span>
-                                                                <input class="text" name="path_immagine" type="text">
-                                                            </div>
-                                                            <br>
-                                                            <br>
-                                                            <div>
-                                                                <input type="submit" class="col-lg-offset-2" value="Inserisci"> 
-                                                                <br>
-                                                                <br>
-                                                            </div>
-                                                        </td></tr>
-                                                </table>
+                                                </td></tr>
+                                        </table>
 
-                                            </div>
-
-                                    </form>
-                                </div>
-
+                                    </div>
+                                        
+                                </form>
+                              </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -212,5 +203,17 @@
 
                 </div>
             </div>
+                                            <div class="footer">
+		<div class="container">
+			<div class="col-md-4 footer-top">
+				
+                        </div>
+                       <div class="clearfix"> </div>         
+                      <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
+                      
+                      
+        </div>
+        </div>
     </body>
 </html>

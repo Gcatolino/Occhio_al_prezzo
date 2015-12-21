@@ -66,7 +66,7 @@ public class ServletInserimentoProdotto extends HttpServlet {
             System.out.println(prodotto);
             ProdottoManager.getInstance().insert(prodotto);
             session.setAttribute("messaggio", "Prodotto inserito correttamente");
-            response.sendRedirect("/web/gestioneProdotti.jsp");
+            response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
         } catch (SQLException ex) {
             out.print("<h1> errore database </h1>");
         } catch (ValueNullException ex) {

@@ -43,7 +43,7 @@ public class ServletEliminaProdotto extends HttpServlet {
         try {
             ProdottoManager.getInstance().delete(idProdottoEliminare);
             session.setAttribute("messaggio", "Prodotto eliminato con successo");
-            response.sendRedirect("/web/gestioneProdotti.jsp");
+            response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
         } catch (SQLException ex) {
             out.print("<h1> errore database </h1>");
         }

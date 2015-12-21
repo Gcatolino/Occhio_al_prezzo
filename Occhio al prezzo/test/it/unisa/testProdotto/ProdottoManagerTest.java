@@ -91,7 +91,7 @@ public class ProdottoManagerTest {
     @Test
     public void testInsert() throws Exception{
         System.out.println("insert");
-        
+        setUp();
         ProdottoManager.getInstance().insert(prodotto);
         Prodotto inserito = ProdottoManager.getInstance().ricercaUltimoProdottoInserito();
         
@@ -173,10 +173,10 @@ public class ProdottoManagerTest {
         System.out.println("ricercaProdottiPerPuntoVendita");
         
         ArrayList<Prodotto> prodotti;
-        String puntoVendita = prodotto.getPuntoVendita();
+        String fkEmail = prodotto.getFkEmail();
         
         ProdottoManager.getInstance().insert(prodotto);
-        prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(puntoVendita);
+        prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(fkEmail);
         
         assertTrue(!prodotti.isEmpty());
     }
