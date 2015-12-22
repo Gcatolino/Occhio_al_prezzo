@@ -50,6 +50,9 @@ public class GetAccountByFiltriAccountServlet extends HttpServlet {
         try {
             
             accounts = instance.getAccoutnByFiltri(domicilio);
+            if(accounts.size()==0) {out.print("nessunrisultato");
+            return;
+            }
             String temp="";
             for(Account a : accounts){
             temp+="<tr><td>"+a.getEmail()+"</td>"+
@@ -59,19 +62,20 @@ public class GetAccountByFiltriAccountServlet extends HttpServlet {
                             "<td>"+a.getDomicilio()+"</td>"+
                             "<td>"+a.getRuolo()+"</td>"+
                             "<td>"+a.getDataDiNascita()+"</td>"+
-                            "<td>"+"<a href='deleteAccountServlet?email="+a.getEmail()+"'>elimina</a>"+"</td>"+
+                           // "<td>"+"<a href='deleteAccountServlet?email="+a.getEmail()+"'>elimina</a>"+"</td>"+
+                            "<td><button  type='submit' name='ciao' OnClick='deleteAccount2(this)' value='"+a.getEmail()+"'>elimina</button></td>"+
                             "</tr>";
             }
             out.print(temp);
             
         } catch (SQLException ex) {
-            out.print("<h1>errore database</h1>");
+            out.print("ERDB");
         } catch (ValueNullException ex) {
             
-            out.print("<h1>non hai inserito qualche valore</h1>");
+            out.print("NOVAL");
         }
         catch (ConnectionException ex) {
-                out.print("<h1errore di connessione</h1>");
+                out.print("ERCON");
             }
         catch (Exception ex) {
                 Logger.getLogger(GetAccountByFiltriAccountServlet.class.getName()).log(Level.SEVERE, null, ex);

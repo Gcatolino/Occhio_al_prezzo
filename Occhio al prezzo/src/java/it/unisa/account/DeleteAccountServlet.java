@@ -18,7 +18,6 @@ import it.unisa.exception.ValueNullException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,17 +52,15 @@ public class DeleteAccountServlet extends HttpServlet {
            
                 instance.deleteAccount(acc);
             
-            out.print("<h1>account eliminato correttamente</h1>");
-            RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
-            rs.forward(request, response);
+            out.print("SI");
         } catch (SQLException ex) {
-            out.print("<h1>errore database</h1>");
+            out.print("ERDB");
         } catch (ValueNullException ex) {
             
-            out.print("<h1>non hai inserito qualche valore</h1>");
+            out.print("NOVAL");
         }
         catch (ConnectionException ex) {
-                out.print("<h1errore di connessione</h1>");
+                out.print("ERCON");
             }
         
          

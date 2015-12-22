@@ -11,7 +11,14 @@
     <head>
         <%
             Account account = ((Account) session.getAttribute("account"));
+            
+            if((account==null) || (!account.getRuolo().equals("admin"))){
+            
         %>
+        <script type="text/javascript">
+            location.href="index.jsp";
+            </script>
+            <%} %>
 
         <title>Occhio al prezzo.it: volantino prodotti</title>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -84,33 +91,70 @@
             {
                 paragrafo = document.getElementById(id);
                 paragrafo.style.color = excolore
+               
             }
-            function delet()
+             function cambia(){
+              tab = document.getElementById("tab");
+             tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>";
+                  
+            }
+             function cambia2(){
+              tab2 = document.getElementById("tab2");
+             tab2.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>";
+                  
+            }
+            function deleteAccount(puls)
             {
-
-                /*if(tab.hasChildNodes())
-                 {   alert("ci siamo")
-                 figli=tab.childNodes;
-                 for(i=0;i<figli.length;i++){
-                 tab.removeChild(figli[1])
-                 alert("rimosso");
-                 }
-                 } */
+                
+                //tab = document.getElementById("tab").innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>";
+                email=puls.value;
+                httpRequest = new XMLHttpRequest();
+                httpRequest.open("GET","deleteAccountServlet?email="+email, false);
+                alert("accout eliminato correttamente");
+                tab = document.getElementById("tab");
+                tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr><span style='color:red'>account eliminato correttamente</span>";
+                setTimeout(cambia,2000);   
+                httpRequest.send(null);
             }
+            function deleteAccount2(puls)
+            {
+              
+                //tab = document.getElementById("tab").innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>";
+                email=puls.value;
+                httpRequest = new XMLHttpRequest();
+                httpRequest.open("GET","deleteAccountServlet?email="+email, false);
+                alert("accout eliminato correttamente");
+                tab2 = document.getElementById("tab2");
+                tab2.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr><span style='color:red'>account eliminato correttamente</span>";
+                setTimeout(cambia2,2000);   
+                httpRequest.send(null);
+            }
+           
+
+            
             function ajaxFunction(par)
             {
-                tab = document.getElementById("tab").innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>";
+             
+                //tab = document.getElementById("tab").innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>";
+             
                 httpRequest = new XMLHttpRequest();
                 httpRequest.onreadystatechange = function ()
                 {
 
                     if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                        tab.innerHTML = "   <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>";
+                       tab = document.getElementById("tab");
+                        tab.innerHTML = "   <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>";
 
                         result = httpRequest.responseText;
-                        tab = document.getElementById("tab");
-                        tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>" + result;
-
+                        if(result=="ERDB" || result=="NOVAL" || result=="ERCON"){
+                         confirm("Hai qualche problema di connessione al db contatt il fornitore del software..");
+                         location.href="login.jsp";
+                           }
+                        else {
+                            tab = document.getElementById("tab");
+                            tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>" + result;
+                        
+                        }
                     }
                 }
                 httpRequest.open("GET", "getAccountByEmailAccountServlet?email=" + par, true);
@@ -118,18 +162,30 @@
             }
 
             function ajaxFunctiondomicilio(par) {
-                tab = document.getElementById("tab2").innerHTML = " <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>";
+              //  tab = document.getElementById("tab2").innerHTML = " <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>";
                 httpRequest = new XMLHttpRequest();
                 httpRequest.onreadystatechange = function ()
                 {
 
                     if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                        tab.innerHTML = "   <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>";
+                       tab = document.getElementById("tab2");
+                        tab.innerHTML = " <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>";
 
                         result = httpRequest.responseText;
-                        tab = document.getElementById("tab2")
-                        tab.innerHTML = "   <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>" + result;
+                   
 
+                       if((result=="ERDB") || (result=="NOVAL") || (result=="ERCON")){
+                         confirm("Hai qualche problema di connessione al db contatt il fornitore del software..");
+                         location.href="login.jsp";
+                           }
+                           else{
+                        tab = document.getElementById("tab2")
+                        tab.innerHTML = " <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>" + result;
+                        }
+                       // else {
+                       //  alert("Hai qualche problema di connessione al db contatt il fornitore del software..");
+                        // location.href="login.jsp";
+                        //}
                     }
                 }
                 httpRequest.open("GET", "getAccountByFiltriAccountServlet?domicilio=" + par, true);
@@ -147,13 +203,13 @@
                 <div class="header-top-in">
 
                     <ul class="support">
-                        <li ><a href="mailto:info@gmail.com" ><i > </i>info@gmail.com</a></li>	
+                        <li ><a href="mailto:info@gmail.com" ><i> </i>info@gmail.com</a></li>	
                     </ul>
                     <ul class=" support-right">
                         <c:choose>
-                            <c:when test="${sessionScope.email != null}">
+                            <c:when test="${sessionScope.account.getEmail() != null}">
 
-                                <li ><a><i class="title"> </i>Ciao ${sessionScope.email}!</a></li>
+                                <li ><a><i class="title"> </i>Ciao ${sessionScope.account.getEmail()}!</a></li>
 
                                 <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
 
@@ -173,7 +229,7 @@
 
                         <!-- start header menu -->
                         <ul class="megamenu skyblue menu-in">
-                            <li><a  href="index.jsp">Home</a></li>
+                           
 
 
 
@@ -236,41 +292,52 @@
 </div></div>
 <center><blockquote>
         <p id="RA">Ricerca Account con l'email.</p>
-        <footer>Le operazioni concesse sono: <cite title="Source Title">elimina</cite></footer>
+        
     </blockquote></center>
 <div class="mio">
-    <form style="margin-top:5%;margin-left:37%" name="myForm">
-        <b><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;&nbsp;Indirizzo E-mail</b>
+    <div style="margin-top:5%;margin-left:37%" name="myForm">
+        <b>&nbsp;&nbsp;&nbsp;Indirizzo E-mail</b>
         <input type="text" name="nome" onclick='addColor("RA")' onblur='removeColor("RA")' onkeyUp="ajaxFunction(this.value);" onchange="delet()" />
-    </form>
+    </div>
 
     <p id="result">
 
     </p>
     <!-- <tr><th>Nome</th><th>Email</th><th>Numero di telefono</th><th>Domicilio</th></tr>-->
     <table class="table table-striped" id="tab">
-        <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>
+        <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>
     </table>
 
 </div>
 <center><blockquote>
         <p id="RF">Ricerca Account con per filtri.</p>
-        <footer>Le operazioni concesse sono: <cite title="Source Title">elimina</cite></footer>
+       
     </blockquote></center>
 <div class="mio">
-    <form style="margin-top:5%;margin-left:37%" name="myForm">
-        <span class="glyphicon glyphicon-tower"></span><b>&nbsp;&nbsp;&nbsp;Domicilio</b>
-        <input type="text" name="domicilio" onclick='addColor("RF")' onblur='removeColor("RF")' onkeyUp="ajaxFunctiondomicilio(this.value);" />
-    </form>
+    <div style="margin-top:5%;margin-left:37%" name="myForm">
+        <b>&nbsp;&nbsp;&nbsp;Domicilio</b>
+        <input type="text" name="domicilio" onclick='addColor("RF")'  onblur='removeColor("RF")' onkeyUp="ajaxFunctiondomicilio(this.value);" />
+    </div>
     <p id="result">
 
     </p>
     <!-- <tr><th>Nome</th><th>Email</th><th>Numero di telefono</th><th>Domicilio</th></tr>-->
     <table class="table table-striped" id="tab2">
-        <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th><th>operazione</th></tr>
+        <tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>
     </table>
 
 </div>
+<div class="footer" style="margin-top:70px;">
+		<!--<div class="container">-->
+			
+                     <div class="clearfix"> </div>        
+              <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
+                      
+                      
+     </div>
+ </div>
+			
 </body>
 </html>
 <body> 

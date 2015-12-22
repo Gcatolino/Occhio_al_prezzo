@@ -50,6 +50,10 @@ public class GetAccountByEmailAccountServlet extends HttpServlet {
         Account acc=null;
         try {
             acc = instance.getAccountByEmail(email);
+            if(acc==null) {out.print("nessunrisultato");
+            return;
+            }
+            
             String nome = acc.getNome();
             String cognome = acc.getCognome();
             String residenza = acc.getComuneDiResidenza();
@@ -65,17 +69,19 @@ public class GetAccountByEmailAccountServlet extends HttpServlet {
                             "<td>"+domicilio+"</td>"+
                             "<td>"+ruolo+"</td>"+
                             "<td>"+nascita+"</td>"+
-                            "<td>"+"<a href='deleteAccountServlet?email="+email+"'>elimina</a>"+"</td>"+
-                            "</tr>");
+                            //"<td>"+"<a href='deleteAccountServlet?email="+email+"'>elimina</a>"+"</td>"+
+                            "<td><button  type='submit' name='ciao' OnClick='deleteAccount(this)' value='"+email+"'>elimina</button></td>"+
+                             "</tr>");
         } catch (SQLException ex) {
-            out.print("<h1>errore database</h1>");
+            out.print("ERDB");
         } catch (ValueNullException ex) {
             
-            out.print("<h1>non hai inserito qualche valore</h1>");
+            out.print("NOVAL");
         }
         catch (ConnectionException ex) {
-                out.print("<h1errore di connessione</h1>");
+                out.print("ERCON");
             }
+       
         
          
     }
