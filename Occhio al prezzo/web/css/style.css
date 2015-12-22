@@ -38,7 +38,7 @@ thead{
     background: #C4C3C3;
 }
 tr:nth-child(even){
-    background: #99ccff;
+    background: white;
 }
 body{
 	background:#fff;

@@ -63,9 +63,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 				<ul class=" support-right">
                   <c:choose>
-                      <c:when test="${sessionScope.email != null}">
+                      <c:when test="${sessionScope.account.email != null}">
                             
-                          <li ><a><i class="title"> </i>Ciao ${sessionScope.email}!</a></li>
+                          <li ><a><i class="title"> </i>Ciao ${sessionScope.account.email}!</a></li>
                             
                               <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
                             

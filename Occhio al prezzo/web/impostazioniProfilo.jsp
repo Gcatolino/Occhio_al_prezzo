@@ -51,9 +51,9 @@
                         </ul>
                         <ul class=" support-right">
                             <c:choose>
-                                <c:when test="${sessionScope.email != null}">
+                                <c:when test="${sessionScope.account.email != null}">
 
-                                    <li ><a><i class="title"> </i>Ciao ${sessionScope.email}!</a></li>
+                                    <li ><a><i class="title"> </i>Ciao ${sessionScope.account.email}!</a></li>
 
                                     <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
 
@@ -136,49 +136,156 @@
         <div class="container">
             <div class="register">
                 <h3>Modifica dati personali</h3>
-                <form id="registrationForm" class="form-horizontal" method="POST" action="addAccountServlet"/> 
+                <form id="registrationForm" name="modulo" class="form-horizontal" method="POST" /> 
 
 
                 <div class="mation">
                     <div>
                         <span id="nome">Nome</span>
-                        <input type="text" id="nome"> 
+                        <input type="text" value="${sessionScope.account.nome}" id="nome" name="nome" > 
                     </div>
                     <div>
                         <span id="cognome">Cognome</span>
-                        <input type="text" id="cognome"> 
+                        <input type="text" value="${sessionScope.account.cognome}" id="cognome" name="cognome"> 
                     </div>
                     <div>
                         <span id="email">Email </span>
-                        <input type="text" id="email"> 
+                        <input type="text" value="${sessionScope.account.email}" id="email" name="email"> 
                     </div>
                     <div>
                         <span id="password">Password</span>
-                        <input type="password" id="password">						 
+                        <input type="password" value="${sessionScope.account.password}" id="password" name="password">						 
                     </div>
                     <div>
                         <span>Conferma Password</span>
-                        <input type="password" id="password">						 
+                        <input type="password" value="${sessionScope.account.password}" id="conferma" name="conferma">						 
                     </div>
                     <div>
                         <span id="domiclio">Domicilio</span>
-                        <input type="text" id="domiclio">						 
+                        <input type="text" value="${sessionScope.account.domicilio}" id="domiclio" name="domicilio">						 
                     </div>
                     <div>
                         <span id="data_di_nascita">Data di nascita</span>
-                        <input type="text" id="data_di_nascita">						 
+                        <input type="text" value="${sessionScope.account.dataDiNascita}" id="data_di_nascita" name="nascita">						 
                     </div>
                     <div>
                         <span id="comune_di_residenza">Comune di Residenza</span>
-                        <input type="text" id="comune_di_residenza">						 
+                        <input type="text" value="${sessionScope.account.comuneDiResidenza}" id="comune_di_residenza" name="comune">						 
                     </div>
                 </div>
-                <input type="submit" id="register" value="Modifica"> 
+                <input type="submit" id="register" value="Modifica" onClick="Modulo()"> 
                 </form>
 
+            <script>
+                        <!--
+                        function Modulo() {
+                        // Variabili associate ai campi del modulo
+                        var nome = document.modulo.nome.value;
+                        var cognome = document.modulo.cognome.value;
+                        var email = document.modulo.email.value;
+                        var password = document.modulo.password.value;
+                        var conferma = document.modulo.conferma.value;
+                        var domicilio = document.modulo.domicilio.value;
+                        var nascita = document.modulo.nascita.value;
+                        var comune = document.modulo.comune.value;
+ 
+                        // Espressione regolare dell'email
+                        var email_reg_exp = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
+                        
+                        //Effettua il controllo sul campo NOME
+                        if ((nome == "") || (nome == "undefined")) {
+                            alert("Il campo Nome è obbligatorio.");
+                            document.modulo.nome.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo COGNOME
+                        else if ((cognome == "") || (cognome == "undefined")) {
+                            alert("Il campo Cognome è obbligatorio.");
+                            document.modulo.cognome.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo PASSWORD
+                        else if ((password == "") || (password == "undefined")) {
+                            alert("Il campo Password è obbligatorio.");
+                            document.modulo.password.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo CONFERMA PASSWORD
+                        else if ((conferma == "") || (conferma == "undefined")) {
+                            alert("Il campo Conferma Password è obbligatorio.");
+                            document.modulo.conferma.focus();
+                            return false;
+                        }
+                        //Verifica l'uguaglianza tra i campi PASSWORD e CONFERMA PASSWORD
+                        else if (password != conferma) {
+                            alert("La password confermata è diversa da quella scelta, controllare.");
+                            document.modulo.conferma.value = "";
+                            document.modulo.conferma.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo DOMICILIO
+                        else if ((domicilio == "") || (domicilio == "undefined")) {
+                            alert("Il campo Domicilio è obbligatorio.");
+                            document.modulo.domicilio.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo DATA DI NASCITA
+                        else if (document.modulo.nascita.value.substring(4,5) != "-" ||
+                                 document.modulo.nascita.value.substring(7,8) != "-" ||
+                                 isNaN(document.modulo.nascita.value.substring(0,4)) ||
+                                 isNaN(document.modulo.nascita.value.substring(5,7)) ||
+                                 isNaN(document.modulo.nascita.value.substring(8))) {
+                             
+                            alert("Inserire nascita in formato aaaa-mm-gg");
+                            document.modulo.nascita.value = "";
+                            document.modulo.nascita.focus();
+                            return false;
+                        }
+                        else if (document.modulo.nascita.value.substring(8) > 31) {
+                            alert("Impossibile utilizzare un valore superiore a 31 per i giorni");
+                            document.modulo.nascita.select();
+                            return false;
+                        }
+                        else if (document.modulo.nascita.value.substring(5,7) > 12) {
+                            alert("Impossibile utilizzare un valore superiore a 12 per i mesi");
+                            document.modulo.nascita.value = "";
+                            document.modulo.nascita.focus();
+                            return false;
+                        }
+                        else if (document.modulo.nascita.value.substring(0,4) < 1900) {
+                            alert("Impossibile utilizzare un valore inferiore a 1900 per l'anno");
+                            document.modulo.nascita.value = "";
+                            document.modulo.nascita.focus();
+                            return false;
+                        }
+                        //Effettua il controllo sul campo COMUNE
+                        else if ((comune == "") || (comune == "undefined")) {
+                            alert("Il campo Comune è obbligatorio.");
+                            document.modulo.comune.focus();
+                            return false;
+                        }
+                        else if (!email_reg_exp.test(email) || (email == "") || (email == "undefined")) {
+                            alert("Inserire un indirizzo email corretto.");
+                            document.modulo.email.select();
+                            return false;
+                        }
+                        //INVIA IL MODULO
+                        else {
+                            document.modulo.action = "modificaAccountServlet";
+                            document.modulo.submit();
+                        }
+                    }
+                    //-->
+                </script>
 
+                
             </div>
         </div>
+                    
+                    <div class="clearfix"> </div>
+	 <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                      <a  href="utenteLoggato.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
+                
         <!---->
 
         <!---->

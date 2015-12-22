@@ -7,11 +7,13 @@ import it.unisa.utility.UtilityVar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
  /*
         NOTA SUPER SUPER IMPORTANTISSIMA!!!!!!!!!!!!!!!!!!!!!!!!!!!
         POSSIBILE FAULT
@@ -51,12 +53,20 @@ public class ModificaAccountServlet extends HttpServlet {
         PrintWriter out=response.getWriter();
         Account acc=new Account();
         acc.setNome(request.getParameter("nome"));
+        
+        /*
+        Verificare se è corretto permettere la modifica anche della mail
+        */
+        
         acc.setEmail(request.getParameter("email"));
         acc.setDomicilio(request.getParameter("domicilio"));
         /*il ruolo non lo settiamo perchè di default è un utente*/
         acc.setComuneDiResidenza(request.getParameter("comune"));
         acc.setCognome(request.getParameter("cognome"));
-        acc.setDataDiNascita(UtilityVar.parseData(request.getParameter("data")));
+        /*String temp = request.getParameter("nascita");
+        String data = temp.substring(6) + "-" + temp.substring(3, 5) + "-" + temp.substring(0, 2);
+        acc.setDataDiNascita(UtilityVar.parseData(data));*/
+        acc.setDataDiNascita(UtilityVar.parseData(request.getParameter("nascita")));
         /*
         NOTA SUPER SUPER IMPORTANTISSIMA!!!!!!!!!!!!!!!!!!!!!!!!!!!
         POSSIBILE FAULT
@@ -65,7 +75,9 @@ public class ModificaAccountServlet extends HttpServlet {
         data??? cioe l'admin non la modifica
         OPPURE FACCIAMO QUI IL CONTROLLO?????????????????????????*/
        
-          acc.setPassword(request.getParameter("password"));
+        acc.setPassword(request.getParameter("password"));
+        HttpSession session = request.getSession();
+        session.setAttribute("account", acc);
    
         AccountManager instance =  AccountManager.getInstance();
         try {
@@ -73,6 +85,8 @@ public class ModificaAccountServlet extends HttpServlet {
                 instance.modificaAccount(acc);
            
             out.print("<h1>account modificato correttamente</h1>");
+            RequestDispatcher rs = request.getRequestDispatcher("profilo.jsp");
+            rs.forward(request, response);
         } catch (SQLException ex) {
             out.print("<h1>errore database</h1>");
         } catch (ValueNullException ex) {

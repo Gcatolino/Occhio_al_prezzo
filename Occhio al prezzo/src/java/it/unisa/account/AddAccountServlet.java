@@ -71,7 +71,7 @@ public class AddAccountServlet extends HttpServlet {
             RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
             rs.forward(request, response);
         } catch (SQLException ex) {
-            out.print("<h1>errore database</h1>");
+            out.print("<h1>errore database: </h1>" + ex.getMessage());
         } catch (ValueNullException ex) {
             
             out.print("<h1>non hai inserito qualche valore</h1>");

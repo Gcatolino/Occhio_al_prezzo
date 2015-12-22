@@ -120,7 +120,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 		<div class="register">
 		<h3>Registrazione</h3>
-		  	  <form id="registrationForm" name="modulo" class="form-horizontal" method="POST" action="addAccountServlet"/> 
+		  	  <form id="registrationForm" name="modulo" class="form-horizontal" method="POST"/> 
 				
 					
 					<div class="mation">
@@ -157,7 +157,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <input type="text" name="comune">						 
 					</div>
                                         </div>
-                                    <input type="button" id="register" value="Registrati" onClick="Modulo()"> 
+                                    <input type="submit" id="register" value="Registrati" onClick="Modulo()"> 
 				</form>
 				
 		<script>
@@ -255,7 +255,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         }
                         //INVIA IL MODULO
                         else {
-                            //document.modulo.action = "addAccountServlet";
+                            document.modulo.action = "addAccountServlet";
                             document.modulo.submit();
                         }
                     }

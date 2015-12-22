@@ -14,9 +14,9 @@ public class Account {
 
     private String nome;
     private String cognome;
-    private Date data_di_nascita;
+    private Date dataDiNascita;
     private String domicilio;
-    private String comune_di_residenza;
+    private String comuneDiResidenza;
     private String ruolo;
     private String email;
     private String password;
@@ -34,7 +34,7 @@ public class Account {
     }
 
     public Date getDataDiNascita() {
-        return data_di_nascita;
+        return dataDiNascita;
     }
 
     public String getDomicilio() {
@@ -42,7 +42,7 @@ public class Account {
     }
 
     public String getComuneDiResidenza() {
-        return comune_di_residenza;
+        return comuneDiResidenza;
     }
 
     public String getRuolo() {
@@ -67,7 +67,7 @@ public class Account {
     
     /*la data deve essere della forma aaaa-mm-gg*/
     public void setDataDiNascita(Date data_di_nascita) {
-        this.data_di_nascita = data_di_nascita;
+        this.dataDiNascita = data_di_nascita;
     }
 
     public void setDomicilio(String domicilio) {
@@ -75,7 +75,7 @@ public class Account {
     }
 
     public void setComuneDiResidenza(String comune_di_residenza) {
-        this.comune_di_residenza = comune_di_residenza;
+        this.comuneDiResidenza = comune_di_residenza;
     }
 
     public void setRuolo(String ruolo) {

@@ -48,8 +48,9 @@ public class LoginServlet extends HttpServlet {
             else{
                 HttpSession session = request.getSession();
                 String r = a.getRuolo();
-                session.setAttribute("email", email);  // just a marker object
-                session.setAttribute("ruolo", r);
+                /*session.setAttribute("email", email);  // just a marker object
+                session.setAttribute("ruolo", r);*/
+                session.setAttribute("account", a);
                 if(r.equalsIgnoreCase("admin")){
                     response.sendRedirect("adminLoggato.jsp");
                     //RequestDispatcher rs = request.getRequestDispatcher("adminLoggato.jsp");

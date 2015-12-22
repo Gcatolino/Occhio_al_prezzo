@@ -52,12 +52,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <c:choose>
                         <c:when test="${sessionScope.email != null}">
                             
-                            <li ><a><i class="title"> </i>Ciao ${sessionScope.email}!</a></li>
+                            <li ><a><i class="title"> </i>Ciao ${sessionScope.account.email}!</a></li>
                             
                               <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
-                            
                         </c:when>
-                    </c:choose>
+                    </c:choose>    
+                        
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
@@ -131,6 +131,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   
   <div id="table" class="table-editable">
     
+      <br>
+      <br>
+      
+      <ul class="right">
+		
+           
+           <ld><a>
+               <span style="font-size:2em;" class="glyphicon glyphicon-pencil" aria-hidden="true" onclick="location.href = 'impostazioniProfilo.jsp'" >
+                                    </span>
+               </a></ld> 
+           <ld><a>
+               <span style="font-size:2em;" class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href = '<%= "deleteAccountServlet?email=" + account.getEmail()%>'">
+                                    </span>
+                   </a>
+           </ld>
+               
+     </ul>
+      
     <table class="table">
         <tr>
             <th>
@@ -139,40 +157,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </tr>
       <tr>
         <td contenteditable="false">Nome</td>
-        <td contenteditable="true" id="nome"></td>
+        <td contenteditable="false" id="nome">${sessionScope.account.nome}</td>
         
       </tr>
             <tr>
         <td contenteditable="false">Cognome</td>
-        <td contenteditable="true" id="cognome"></td>
+        <td contenteditable="false" id="cognome">${sessionScope.account.cognome}</td>
         
             </tr>
                         <tr>
         <td contenteditable="false">Email</td>
-        <td contenteditable="true" id="email"></td>
+        <td contenteditable="false" id="email">${sessionScope.account.email}</td>
         
             </tr>
     <tr>
         <td contenteditable="false">Password</td>
-        
-        <td contenteditable="true" id="password"></td>
+        <td contenteditable="false" id="password">${sessionScope.account.password}</td>
        
             </tr>
                                     <tr>
         <td contenteditable="false">Domicilio</td>
-        <td contenteditable="true" id="domiclio"></td>
+        <td contenteditable="false" id="domiclio">${sessionScope.account.domicilio}</td>
         
             </tr>
                                     <tr>
         <td contenteditable="false">Data di nascita</td>
-        <td contenteditable="true" id="data_di_nascita"></td>
+        <td contenteditable="false" id="data_di_nascita">${sessionScope.account.dataDiNascita}</td>
+        
+            </tr>
+            
+            <tr>
+        <td contenteditable="false">Comune di Residenza</td>
+        <td contenteditable="false" id="comune_di_residenza">${sessionScope.account.comuneDiResidenza}</td>
         
             </tr>
                  
                  
                  
 
-
+            
 
 
 
@@ -194,26 +217,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     
     <div>                  
   
-       <ul class=" left">
-				
-           <ld><a href="#"> <img src="images/deleteuser.png" ></a></ld>
-     
-         <ld><a  href="impostazioniProfilo.jsp"> <img src="images/mod.png" ></a></ld> 
-     </ul>
-       
-                       
-
-  </div>
+      
+    </div>
   <p id="export"></p>
 </div>
 		
 			<!---->
-						<div class="content-bottom">
-			<div class="container">
-			
-<label class="line1"> </label>
-			</div>
-		</div>
+	
+                        <div class="clearfix"> </div>         
+                      <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                      <a  href="utenteLoggato.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
+                      
 <!---->
 
 <!---->
