@@ -21,7 +21,7 @@ import java.sql.Date;
  */
 public class Prodotto implements Serializable{
     
-    private int ID;
+    private int id;
     private String marca;
     private String nome;
     private String taglia;
@@ -36,8 +36,8 @@ public class Prodotto implements Serializable{
     }
 
     
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setMarca(String marca) {
@@ -75,8 +75,8 @@ public class Prodotto implements Serializable{
         this.pathImmagine = pathImmagine;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
     public String getMarca() {

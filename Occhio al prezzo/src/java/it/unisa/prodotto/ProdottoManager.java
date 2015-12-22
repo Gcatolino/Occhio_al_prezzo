@@ -395,7 +395,7 @@ public class ProdottoManager {
     private Prodotto riempiRisultato (ResultSet risultato) throws SQLException{
         Prodotto prodotto = new Prodotto();
         risultato.getInt("idProdotto");
-        prodotto.setID(risultato.getInt("idProdotto"));
+        prodotto.setId(risultato.getInt("idProdotto"));
         prodotto.setMarca(risultato.getString("marca"));
         prodotto.setNome(risultato.getString("nome"));
         prodotto.setTaglia(risultato.getString("taglia"));

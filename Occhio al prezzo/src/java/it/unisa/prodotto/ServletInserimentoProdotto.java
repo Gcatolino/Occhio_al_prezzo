@@ -49,7 +49,7 @@ public class ServletInserimentoProdotto extends HttpServlet {
             String taglia = request.getParameter("taglia");
             double prezzo = Double.valueOf(request.getParameter("prezzo"));
             String punto_vendita = request.getParameter("punto_vendita");
-            String fk_email = session.getAttribute("fk_email").toString();
+            String fkEmail = session.getAttribute("fk_email").toString();
             String data = request.getParameter("data");
             String pathImmagine = request.getParameter("path_immagine");
          
@@ -59,7 +59,7 @@ public class ServletInserimentoProdotto extends HttpServlet {
             prodotto.setTaglia(taglia);
             prodotto.setPuntoVendita(punto_vendita);
             prodotto.setPrezzo(prezzo);
-            prodotto.setFkEmail(fk_email);
+            prodotto.setFkEmail(fkEmail);
             prodotto.setData(data);
             prodotto.setPathImmagine(pathImmagine);
             

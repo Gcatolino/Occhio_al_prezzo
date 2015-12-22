@@ -142,7 +142,7 @@
                                     </thead>
 
                                     <% for (Prodotto prodotto : prodotti) {%>
-                                    <tr class="sottolineato">
+                                    <tr class="sottolineato colorato">
                                         <td>&nbsp;<%= prodotto.getMarca()%>&nbsp;</td>
                                         <td><%= prodotto.getNome()%>&nbsp;</td>		
                                         <td><%= prodotto.getTaglia()%>&nbsp;</td>
@@ -153,9 +153,10 @@
                                         <td><img SRC="<%=prodotto.getPathImmagine()%>" width="50" height="70"></td>
 
                                         
-                                        <td width="20px"> 
+                                        <td width="20px">
+                                            
                                             <a>
-                                                    <span style="font-size:1.5em;" class="glyphicon glyphicon-edit" aria-hidden="true" onclick="location.href = '<%= "modificaProdotto.jsp?idProdotto=" + prodotto.getID()%>'" >
+                                                    <span style="font-size:1.5em;" class="glyphicon glyphicon-edit" aria-hidden="true" onclick="location.href = '<%= "modificaProdotto.jsp?idProdotto=" + prodotto.getId()%>'" >
                                                     </span>
                                             </a>
                                         </td>
@@ -164,7 +165,7 @@
                                         </td>
                                         <td width="20px">
                                             <a>
-                                            <span style="font-size:1.5em;" class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href = '<%= "ServletEliminaProdotto?idProdotto=" + prodotto.getID()%>'" >
+                                            <span style="font-size:1.5em;" class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href = '<%= "ServletEliminaProdotto?idProdotto=" + prodotto.getId()%>'" >
                                             </span>
                                             </a>
                                         </td>
