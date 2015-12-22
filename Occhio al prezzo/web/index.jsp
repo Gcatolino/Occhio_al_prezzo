@@ -76,30 +76,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<ul class="megamenu skyblue menu-in">
 			<li><a  href="index.jsp">Home</a></li>
                         
-                        <li><a><button>Cerca prodotti</button></a>
-                        </li>
-                          <div class="search-in" >
-			<div class="search" >
-						<form>
-							<input type="text" value="Keywords" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Keywords';}" class="text">
-							<input type="submit" value="SEARCH">
-						</form>
-							<div class="close-in"><img src="images/close.png" alt="" /></div>
-					</div>
-						
-				</div>
-						<script type="text/javascript">
-							$('.search').hide();
-							$('button').click(function (){
-							$('.search').show();
-							$('.text').focus();
-							}
-							);
-							$('.close-in').click(function(){
-							$('.search').hide();
-							});
-						</script>
-                
+                        
+                        <li><a href="login.jsp">Cerca prodotti</a></li>
                                        
                         
                          <li><a  href="contatti.jsp">Contatti</a>

@@ -60,9 +60,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a  href="index.jsp">Home</a></li>
 				
 						
-				  <li><a><button>Cerca prodotti</button></a>
+                        <li><a>Cerca prodotti</a>
                         </li>
-                          <div class="search-in" >
+                        <div class="search-in" >
 			<div class="search" >
 						<form>
 							<input type="text" value="Keywords" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Keywords';}" class="text">
@@ -74,7 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 						<script type="text/javascript">
 							$('.search').hide();
-							$('button').click(function (){
+							$('').click(function (){
 							$('.search').show();
 							$('.text').focus();
 							}
@@ -83,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							$('.search').hide();
 							});
 						</script>
-				
+                      
 				<li><a  href="contatti.jsp">Contatti</a>
 					
 				</li>
@@ -134,6 +134,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				  
 				  
 			    </form>
+                                <br>
+                                <br>
                                 <a class="forgot" href="#">Password dimenticata?</a>
 			   </div>	
 			    <div class=" login-left">

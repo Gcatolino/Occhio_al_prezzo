@@ -73,28 +73,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a  href="utenteLoggato.jsp">Home</a></li>
 				
 						
-				  <li><a><button>Cerca prodotti</button></a>
+                    <li><a id="barra" href="javascript:void(0)" onclick="myfunction()">Cerca prodotti</a>
                         </li>
                           <div class="search-in" >
 			<div class="search" >
 						<form>
-							<input type="text" value="Keywords" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Keywords';}" class="text">
-							<input type="submit" value="SEARCH">
+							<input type="text" placeholder="Cerca prodotto..."   class="text">
+							<input type="submit" value="Cerca">
 						</form>
 							<div class="close-in"><img src="images/close.png" alt="" /></div>
 					</div>
 						
 				</div>
+                
 						<script type="text/javascript">
-							$('.search').hide();
-							$('button').click(function (){
+                                                    $('.search').hide();
+                                                    function myfunction(){
+							
 							$('.search').show();
 							$('.text').focus();
-							}
-							);
+							
+							
 							$('.close-in').click(function(){
 							$('.search').hide();
 							});
+                                                    };
+							
 						</script>
 				
 				<li><a  href="contatti.jsp">Contatti</a>
