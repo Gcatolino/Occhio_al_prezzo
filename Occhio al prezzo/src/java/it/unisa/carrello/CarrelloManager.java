@@ -56,10 +56,10 @@ public class CarrelloManager {
         Connection conn = DBConnection.getConnection();
         
         
-        if(!UtilityVar.isNull(prod.getID()) && !UtilityVar.isNull(car.getID())){
+        if(!UtilityVar.isNull(prod.getId()) && !UtilityVar.isNull(car.getID())){
             
             String sql = "INSERT INTO Composizione (fk_idCarrello, fk_idProdotto) VALUES ('"
-                         + car.getID() + "','" + prod.getID() + "')";
+                         + car.getID() + "','" + prod.getId() + "')";
             
             try{
                 Statement st = conn.createStatement();
@@ -89,7 +89,7 @@ public class CarrelloManager {
                 
                 if(rs.next()){
                     prod = new Prodotto();
-                    prod.setID(rs.getInt("fk_idProdotto"));
+                    prod.setId(rs.getInt("fk_idProdotto"));
                     prodotti.add(prod);
                 }
             }finally{
@@ -109,7 +109,7 @@ public class CarrelloManager {
         if(!UtilityVar.isNull(prod)){
             
             String sql = "DELETE FROM Composizione WHERE fk_idProdotto = '"
-                         + prod.getID() + "'";
+                         + prod.getId() + "'";
             
             try{
                 Statement st = conn.createStatement();

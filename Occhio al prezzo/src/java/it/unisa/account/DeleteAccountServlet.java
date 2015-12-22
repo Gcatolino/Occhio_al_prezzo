@@ -18,6 +18,7 @@ import it.unisa.exception.ValueNullException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,31 +39,53 @@ public class DeleteAccountServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          
-        
+          
         String email=request.getParameter("email");
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();
     
-       
-       
         AccountManager instance =  AccountManager.getInstance();
         Account acc=null;
-        try {
-            acc = instance.getAccountByEmail(email);
+        
+        String x = request.getParameter("x");
+        if(x == null){
+                try {
+                acc = instance.getAccountByEmail(email);
            
                 instance.deleteAccount(acc);
             
-            out.print("SI");
-        } catch (SQLException ex) {
-            out.print("ERDB");
-        } catch (ValueNullException ex) {
-            
-            out.print("NOVAL");
-        }
-        catch (ConnectionException ex) {
+                out.print("SI");
+            } catch (SQLException ex) {
+                out.print("ERDB");
+            } catch (ValueNullException ex) {
+                out.print("NOVAL");
+            } catch (ConnectionException ex) {
                 out.print("ERCON");
             }
-        
+        }
+        else{
+            try {
+                acc = instance.getAccountByEmail(email);
+           
+                instance.deleteAccount(acc);
+            
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Account eliminato correttamente')");
+                out.println("</script>");
+                
+                RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+                rs.forward(request, response);
+        } catch (SQLException ex) {
+            
+            out.print("<h1>errore database: </h1>" + ex.getMessage());
+        } catch (ValueNullException ex) {
+            
+            out.print("<h1>non hai inserito qualche valore</h1>");
+        }
+        catch (ConnectionException ex) {
+                out.print("<h1errore di connessione</h1>");
+            }
+        }
          
     
  

@@ -146,7 +146,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </span>
                </a></ld> 
            <ld><a>
-               <span style="font-size:2em;" class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href = '<%= "deleteAccountServlet?email=" + account.getEmail()%>'">
+               <span style="font-size:2em;" class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href = '<%= "deleteAccountServlet?email=" + account.getEmail() + "&x=notAdmin"%>'">
                                     </span>
                    </a>
            </ld>

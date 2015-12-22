@@ -96,7 +96,7 @@ public class CarrelloManagerTest {
         ResultSet rs = null;
         
         prod = new Prodotto();
-        prod.setID(13);
+        prod.setId(13);
         
         carr = new Carrello();
         carr.setID("1");
@@ -106,7 +106,7 @@ public class CarrelloManagerTest {
         Connection conn = DBConnection.getConnection();
         String sql = "select * from Composizione where (fk_idCarrello='" 
                      + carr.getID() + "')"  + "AND" + "(fk_idProdotto = '"
-                     + prod.getID() + "')";
+                     + prod.getId() + "')";
         if(conn == null){
             throw new ConnectException();
         }
@@ -128,8 +128,8 @@ public class CarrelloManagerTest {
         Prodotto prod = new Prodotto();
         Prodotto prod1 = new Prodotto();
         
-        prod.setID(12);
-        prod1.setID(15);
+        prod.setId(12);
+        prod1.setId(15);
         
         Carrello car = new Carrello();
         car.setID("1");
@@ -158,7 +158,7 @@ public class CarrelloManagerTest {
         car.setID("1");
         
         Prodotto prod = new Prodotto();
-        prod.setID(5);
+        prod.setId(5);
         
         CarrelloManager instance = CarrelloManager.getInstance();
         instance.addProdotto(prod, car);
@@ -167,7 +167,7 @@ public class CarrelloManagerTest {
         Connection conn = DBConnection.getConnection();
         
         String sql = "SELECT fk_idProdotto FROM Composizione WHERE (fk_idProdotto='"
-                      + prod.getID() + "')";
+                      + prod.getId() + "')";
         
         if(conn == null){
             throw new ConnectException();
@@ -210,8 +210,8 @@ public class CarrelloManagerTest {
         Prodotto prod  = new Prodotto();
         Prodotto prod1 = new Prodotto();
         
-        prod.setID(15);
-        prod1.setID(12);
+        prod.setId(15);
+        prod1.setId(12);
         
         instance.addProdotto(prod, car);
         instance.addProdotto(prod1, car);

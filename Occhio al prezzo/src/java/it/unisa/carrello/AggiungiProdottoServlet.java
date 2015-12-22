@@ -39,7 +39,7 @@ public class AggiungiProdottoServlet extends HttpServlet{
         car.setID((String)session.getAttribute("ID"));
         car.setEmail((String)session.getAttribute("fk_email"));
         
-        prod.setID((int) request.getAttribute("ID"));
+        prod.setId((int) request.getAttribute("ID"));
         
         CarrelloManager instance = CarrelloManager.getInstance();
         

@@ -150,7 +150,7 @@
                     </div>
                     <div>
                         <span id="email">Email </span>
-                        <input type="text" value="${sessionScope.account.email}" id="email" name="email"> 
+                        <input type="text" value="${sessionScope.account.email}" id="email" name="email" readonly> 
                     </div>
                     <div>
                         <span id="password">Password</span>

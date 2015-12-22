@@ -41,7 +41,7 @@ public class EliminaProdottoServlet extends HttpServlet {
         Prodotto prod = null;
         
         car.setID((String)session.getAttribute("ID"));
-        prod.setID((Integer)session.getAttribute("ID"));
+        prod.setId((Integer)session.getAttribute("ID"));
         
         CarrelloManager instance = CarrelloManager.getInstance();
         

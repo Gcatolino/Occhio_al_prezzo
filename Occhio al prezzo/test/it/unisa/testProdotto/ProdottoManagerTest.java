@@ -52,13 +52,13 @@ public class ProdottoManagerTest {
         prodotto.setData("2015-12-15");
         prodotto.setPathImmagine("C:\\\\immagini");
         
-        idUltimoProdottoPrimaDiInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+        idUltimoProdottoPrimaDiInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
     }
     
     @After
     public void tearDown() {
         try {
-            int idUltimoProdotto = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+            int idUltimoProdotto = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
             if(idUltimoProdotto > idUltimoProdottoPrimaDiInserimento){
                 try {
                     ProdottoManager.getInstance().delete(idUltimoProdotto);
@@ -111,7 +111,7 @@ public class ProdottoManagerTest {
         ProdottoManager.getInstance().insert(prodotto);
         prodotto.setNome("Pesce");
         
-        idProdottoDaAggiornare = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+        idProdottoDaAggiornare = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
         
         ProdottoManager.getInstance().update(idProdottoDaAggiornare, prodotto);
         Prodotto aggiornato = ProdottoManager.getInstance().ricercaUltimoProdottoInserito();
@@ -133,13 +133,13 @@ public class ProdottoManagerTest {
         
         System.out.println("delete");
         
-        idUltimoProdottoPrimaInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+        idUltimoProdottoPrimaInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
         ProdottoManager.getInstance().insert(prodotto);
         
-        idProdottoDaEliminare = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+        idProdottoDaEliminare = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
         ProdottoManager.getInstance().delete(idProdottoDaEliminare);
         
-        idUltimoProdottoDopoInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getID();
+        idUltimoProdottoDopoInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
         
         assertEquals(idUltimoProdottoDopoInserimento, idUltimoProdottoPrimaInserimento);
         

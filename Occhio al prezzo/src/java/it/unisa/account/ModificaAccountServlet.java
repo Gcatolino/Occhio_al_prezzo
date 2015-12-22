@@ -7,11 +7,13 @@ import it.unisa.utility.UtilityVar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
  /*
         NOTA SUPER SUPER IMPORTANTISSIMA!!!!!!!!!!!!!!!!!!!!!!!!!!!
         POSSIBILE FAULT
@@ -56,7 +58,7 @@ public class ModificaAccountServlet extends HttpServlet {
         /*il ruolo non lo settiamo perchè di default è un utente*/
         acc.setComuneDiResidenza(request.getParameter("comune"));
         acc.setCognome(request.getParameter("cognome"));
-        acc.setDataDiNascita(UtilityVar.parseData(request.getParameter("data")));
+        acc.setDataDiNascita(UtilityVar.parseData(request.getParameter("nascita")));
         /*
         NOTA SUPER SUPER IMPORTANTISSIMA!!!!!!!!!!!!!!!!!!!!!!!!!!!
         POSSIBILE FAULT
@@ -66,6 +68,8 @@ public class ModificaAccountServlet extends HttpServlet {
         OPPURE FACCIAMO QUI IL CONTROLLO?????????????????????????*/
        
           acc.setPassword(request.getParameter("password"));
+          HttpSession session = request.getSession();
+        session.setAttribute("account", acc);
    
         AccountManager instance =  AccountManager.getInstance();
         try {
@@ -73,6 +77,8 @@ public class ModificaAccountServlet extends HttpServlet {
                 instance.modificaAccount(acc);
            
             out.print("<h1>account modificato correttamente</h1>");
+            RequestDispatcher rs = request.getRequestDispatcher("profilo.jsp");
+            rs.forward(request, response);
         } catch (SQLException ex) {
             out.print("<h1>errore database</h1>");
         } catch (ValueNullException ex) {
