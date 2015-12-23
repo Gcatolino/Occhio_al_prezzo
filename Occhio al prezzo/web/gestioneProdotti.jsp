@@ -177,7 +177,7 @@
                                 </table>
                             </div>
 		</div>
-                                 <div class="footer">
+                                 <div>
 		<div class="container">
 			<div class="col-md-4 footer-top">
 				

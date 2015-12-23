@@ -56,7 +56,19 @@
         </script>	
 
         <script src="js/simpleCart.min.js"></script>
+        <script language="Javascript">
+            function isnum(numero) {
 
+                if (isNaN(numero.value)) {
+                            numero.value = numero.value.replace(",",".");
+                            if(isNaN(numero.value)){
+                                alert("Il campo Prezzo è un numero.");
+                                numero.value="";
+                            }
+                }
+                return true;
+            }
+        </script>
     </head>
     <body> 
 
@@ -67,6 +79,8 @@
             String fkEmail = account.getEmail();
             session.setAttribute("idProdotto", idProdotto);
             session.setAttribute("fk_email", fkEmail);
+            String tmp = prodotto.getData().toString();
+            String dat = tmp.substring(8, 10) + "/" + tmp.substring(5, 7) + "/" + tmp.substring(0, 4);
         %>
         <!--header-->	
         <div>
@@ -130,7 +144,7 @@
                                 <br>
                             </div>
                             <div>
-                                <form class="form-horizontal" method="POST" action="ServletModificaProdotto">
+                                <form class="form-horizontal" name="modulo" method="POST">
                                     <div class="form-group">
                                         <div class="col-lg-offset-5 col-lg-6">
                                         <table width="90%" align="center">
@@ -138,19 +152,19 @@
                                                     <p>Marca:</p>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"></span>
-                                                        <input class="text" name="marca" type="text" value="<%= prodotto.getMarca()%>"required>
+                                                        <input class="text" name="marca" type="text" value="<%= prodotto.getMarca()%>" required>
                                                     </div>
                                                     <br>
                                                     <p>Nome:</p>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"></span>
-                                                        <input class="text" name="nome" type="text" value="<%= prodotto.getNome()%>"required>
+                                                        <input class="text" name="nome" type="text" value="<%= prodotto.getNome()%>" required>
                                                     </div>
                                                     <br>
                                                     <p>Taglia:</p>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"></span>
-                                                        <input class="text" name="taglia" type="number" step="any" onBlur="isnum(this)" value="<%= prodotto.getTaglia()%>" required>  
+                                                        <input class="text" name="taglia" type="text" value="<%= prodotto.getTaglia()%>" required>  
                                                     </div>
                                                     <br>
                                                     <br>
@@ -160,21 +174,23 @@
                                                         <% String prezzo = formatoNumeri.format(prodotto.getPrezzo());
                                                             prezzo = prezzo.replace(',','.');
                                                         %>
-                                                        <input class="text" name="prezzo" type="number" step="any" onBlur="isnum(this)" value="<%= Double.parseDouble(prezzo)%>"required>
+                                                        <input class="text" name="prezzo" type="text" onBlur="isnum(this)" value="<%= Double.parseDouble(prezzo)%>" required>
                                                     </div>
                                                     <br>
                                                     <br>
                                                     <p>Punto Vendita:</p>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"></span>
-                                                        <input class="text" name="punto_vendita" type="text" value="<%= prodotto.getPuntoVendita()%>"required>
+                                                        <input class="text" name="punto_vendita" type="text" value="<%= prodotto.getPuntoVendita()%>" required>
                                                     </div>
                                                     <br>
                                                     <br>
+                                                    <% 
+                                                    %>
                                                     <p>Data:</p>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"></span>
-                                                        <input class="text" name="data" type="date" value="<%= prodotto.getData()%>"required>
+                                                        <input class="text" name="data" type="text" value="<%= dat%>" required>
                                                     </div>
                                                     <br>
                                                     <br>
@@ -186,7 +202,7 @@
                                                     <br>
                                                     <br>
                                                     <div>
-                                                        <input id="btn" type="submit" class="col-lg-offset-1" value="Aggiorna"> 
+                                                        <input id="btn" type="submit" class="col-lg-offset-1" value="Aggiorna" onClick="Modulo()"> 
                                                         <br>
                                                         <br>
                                                     </div>
@@ -198,10 +214,97 @@
                             </div>
                         </div>
                     </div>
-
+                    <script>
+<!--
+                        function Modulo() {
+                        // Variabili associate ai campi del modulo
+                        var marca = document.modulo.marca.value;
+                        var nome = document.modulo.nome.value;
+                        var taglia = document.modulo.taglia.value;
+                        var prezzo = document.modulo.prezzo.value;
+                        var puntovendita = document.modulo.punto_vendita.value;
+                        var data = document.modulo.data.value;
+                        
+                        
+                        if(((marca === "") || (marca === "undefined"))){
+                            alert("Il campo Marca è obbligatorio.");
+                            document.modulo.marca.focus();
+                            return false;
+                        }
+                        else if(((nome === "") || (nome === "undefined"))){
+                            alert("Il campo Nome è obbligatorio.");
+                            document.modulo.nome.focus();
+                            return false;
+                        }
+                        
+                        else if(((taglia === "") || (taglia === "undefined"))){
+                            alert("Il campo Taglia è obbligatorio.");
+                            document.modulo.taglia.focus();
+                            return false;
+                        }
+                        else if(((prezzo === "") || (prezzo === "undefined"))){
+                            alert("Il campo prezzo è obbligatorio.");
+                            document.modulo.punto_vendita.focus();
+                            
+                            return false;
+                            }
+                        else if(((puntovendita === "") || (puntovendita === "undefined"))){
+                            alert("Il campo Punto Vendita è obbligatorio.");
+                            document.modulo.punto_vendita.focus();
+                            return false;
+                        }
+                        
+                        //Effettua il controllo sul campo DATA DI NASCITA
+                        else if (document.modulo.data.value.substring(2,3) !== "/" ||
+                                 document.modulo.data.value.substring(5,6) !== "/" ||
+                                 isNaN(document.modulo.data.value.substring(0,2)) ||
+                                 isNaN(document.modulo.data.value.substring(3,5)) ||
+                                 isNaN(document.modulo.data.value.substring(6,10))) {
+                             
+                            alert("Inserire data in formato gg/mm/aaaa");
+                            document.modulo.data.value = "";
+                            document.modulo.data.focus();
+                            return false;
+                        }
+                        else if (document.modulo.data.value.substring(0,2) > 31) {
+                            alert("Impossibile utilizzare un valore superiore a 31 per i giorni");
+                            document.modulo.data.select();
+                            return false;
+                        }
+                        else if (document.modulo.data.value.substring(3,5) > 12) {
+                            alert("Impossibile utilizzare un valore superiore a 12 per i mesi");
+                            document.modulo.data.value = "";
+                            document.modulo.data.focus();
+                            return false;
+                        }
+                        else if (document.modulo.data.value.substring(6,10) < 1900) {
+                            alert("Impossibile utilizzare un valore inferiore a 1900 per l'anno");
+                            document.modulo.data.value = "";
+                            document.modulo.data.focus();
+                            return false;
+                        }
+                        else{
+                        document.modulo.action = "ServletModificaProdotto";
+                        document.modulo.submit();
+                        }
+                    }
+                    //-->
+                </script>                                        
                     <div class="col-sm-1"></div>
 
                 </div>
             </div>
+                                                    <div>
+		<div class="container">
+			<div class="col-md-4 footer-top">
+				
+                        </div>
+                       <div class="clearfix"> </div>         
+                      <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
+                      
+                      
+        </div>
+        </div>
     </body>
 </html>

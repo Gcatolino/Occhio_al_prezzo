@@ -61,7 +61,7 @@ public class ProdottoManagerTest {
             int idUltimoProdotto = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
             if(idUltimoProdotto > idUltimoProdottoPrimaDiInserimento){
                 try {
-                    ProdottoManager.getInstance().delete(idUltimoProdotto);
+                    ProdottoManager.getInstance().elimina(idUltimoProdotto);
                 } catch (SQLException ex) {
                     Logger.getLogger(ProdottoManagerTest.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
@@ -85,35 +85,35 @@ public class ProdottoManagerTest {
     }
     
      /**
-     * Test di insert della classe ProdottoManager.
+     * Test di inserimento della classe ProdottoManager.
      *
      */
     @Test
-    public void testInsert() throws Exception{
+    public void testInserimento() throws Exception{
         System.out.println("insert");
         setUp();
-        ProdottoManager.getInstance().insert(prodotto);
+        ProdottoManager.getInstance().inserimento(prodotto);
         Prodotto inserito = ProdottoManager.getInstance().ricercaUltimoProdottoInserito();
         
         assertEquals(prodotto.getNome(),inserito.getNome());
     }
     
      /**
-     * Test di update della classe ProdottoManager.
+     * Test di modifica della classe ProdottoManager.
      * 
      * 
      */
     @Test
-    public void testUpdate() throws Exception {
+    public void testModifica() throws Exception {
         int idProdottoDaAggiornare;
         System.out.println("update");
         
-        ProdottoManager.getInstance().insert(prodotto);
+        ProdottoManager.getInstance().inserimento(prodotto);
         prodotto.setNome("Pesce");
         
         idProdottoDaAggiornare = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
         
-        ProdottoManager.getInstance().update(idProdottoDaAggiornare, prodotto);
+        ProdottoManager.getInstance().modifica(idProdottoDaAggiornare, prodotto);
         Prodotto aggiornato = ProdottoManager.getInstance().ricercaUltimoProdottoInserito();
         
         assertEquals("Pesce", aggiornato.getNome());
@@ -121,12 +121,12 @@ public class ProdottoManagerTest {
     }
     
      /**
-     * Test di delete della classe ProdottoManager.
+     * Test di elimina della classe ProdottoManager.
      * 
      * 
      */
     @Test
-    public void testDelete() throws Exception {
+    public void testElimina() throws Exception {
         int idProdottoDaEliminare;
         int idUltimoProdottoPrimaInserimento;
         int idUltimoProdottoDopoInserimento;
@@ -134,10 +134,10 @@ public class ProdottoManagerTest {
         System.out.println("delete");
         
         idUltimoProdottoPrimaInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
-        ProdottoManager.getInstance().insert(prodotto);
+        ProdottoManager.getInstance().inserimento(prodotto);
         
         idProdottoDaEliminare = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
-        ProdottoManager.getInstance().delete(idProdottoDaEliminare);
+        ProdottoManager.getInstance().elimina(idProdottoDaEliminare);
         
         idUltimoProdottoDopoInserimento = ProdottoManager.getInstance().ricercaUltimoProdottoInserito().getId();
         
@@ -157,7 +157,7 @@ public class ProdottoManagerTest {
         ArrayList<Prodotto> prodotti;
         String nomeProdottoDaRicerca = prodotto.getNome();
         
-        ProdottoManager.getInstance().insert(prodotto);
+        ProdottoManager.getInstance().inserimento(prodotto);
         prodotti = ProdottoManager.getInstance().ricercaProdottiPerNome(nomeProdottoDaRicerca);
  
         assertTrue(!prodotti.isEmpty());
@@ -175,7 +175,7 @@ public class ProdottoManagerTest {
         ArrayList<Prodotto> prodotti;
         String fkEmail = prodotto.getFkEmail();
         
-        ProdottoManager.getInstance().insert(prodotto);
+        ProdottoManager.getInstance().inserimento(prodotto);
         prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(fkEmail);
         
         assertTrue(!prodotti.isEmpty());

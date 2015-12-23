@@ -68,7 +68,7 @@ public class ProdottoManager {
      * @throws java.sql.SQLException
      * @throws it.unisa.exception.ValueNullException
      */
-    public synchronized void insert(Prodotto prodotto) throws SQLException, ValueNullException {
+    public synchronized void inserimento(Prodotto prodotto) throws SQLException, ValueNullException {
         try(Connection connessione = DBConnection.getConnection()) {
             /*
              * Prepariamo la stringa SQL per inserire un nuovo record 
@@ -125,7 +125,7 @@ public class ProdottoManager {
      * @throws java.io.IOException
      * @throws it.unisa.exception.ValueNullException
      */
-    public synchronized void update(int vecchioIdProdotto, Prodotto prodotto) throws  SQLException, IOException, ValueNullException {
+    public synchronized void modifica(int vecchioIdProdotto, Prodotto prodotto) throws  SQLException, IOException, ValueNullException {
         try (Connection connessione = DBConnection.getConnection()) {
 
             /*
@@ -183,7 +183,7 @@ public class ProdottoManager {
      * @throws java.sql.SQLException
      * @throws java.io.IOException
      */
-    public synchronized void delete(int idProdotto) throws SQLException, IOException {
+    public synchronized void elimina(int idProdotto) throws SQLException, IOException {
         Connection connessione = null;
         try{
             // Otteniamo una Connessione al DataBase

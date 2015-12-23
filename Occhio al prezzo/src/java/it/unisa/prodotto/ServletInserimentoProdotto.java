@@ -9,6 +9,7 @@ import it.unisa.account.Account;
 import it.unisa.exception.ValueNullException;
 import it.unisa.prodotto.Prodotto;
 import it.unisa.prodotto.ProdottoManager;
+import it.unisa.utility.UtilityVar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -51,6 +52,7 @@ public class ServletInserimentoProdotto extends HttpServlet {
             String punto_vendita = request.getParameter("punto_vendita");
             String fkEmail = session.getAttribute("fk_email").toString();
             String data = request.getParameter("data");
+            data = UtilityVar.ricomponiData(data);
             String pathImmagine = request.getParameter("path_immagine");
          
             Prodotto prodotto = new Prodotto();
@@ -64,7 +66,7 @@ public class ServletInserimentoProdotto extends HttpServlet {
             prodotto.setPathImmagine(pathImmagine);
             
             System.out.println(prodotto);
-            ProdottoManager.getInstance().insert(prodotto);
+            ProdottoManager.getInstance().inserimento(prodotto);
             session.setAttribute("messaggio", "Prodotto inserito correttamente");
             response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
         } catch (SQLException ex) {

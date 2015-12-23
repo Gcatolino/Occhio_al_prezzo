@@ -60,10 +60,13 @@
             function isnum(numero) {
 
                 if (isNaN(numero.value)) {
-                    alert('Nel campo è possibile immettere solo numeri (usare il punto)!');
-                    numero.value = "";
-                    numero.focus();
+                            numero.value = numero.value.replace(",",".");
+                            if(isNaN(numero.value)){
+                                alert("Il campo Prezzo è un numero.");
+                                numero.value="";
+                            }
                 }
+                return true;
             }
         </script>
     </head>
@@ -135,7 +138,7 @@
                                 <br>
                             </div>
                             <div>
-                                <form class="form-horizontal" method="POST" action="ServletInserimentoProdotto" onSubmit="return controlla();">
+                                <form class="form-horizontal" name="modulo" id="modul" method="POST">
                                     <div class="form-group">
                                         <div class="col-lg-offset-5 col-lg-6">
                                         <table width="90%" align="center">
@@ -155,13 +158,13 @@
                                                     <p>Taglia:</p>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"></span>
-                                                        <input class="text" name="taglia" type="number" step="any" onBlur="isnum(this)" required>
+                                                        <input class="text" name="taglia" type="text" required>
                                                     </div>
                                                     <br>
                                                     <p>Prezzo:</p>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"></span>
-                                                        <input class="text" name="prezzo" type="number" step="any" onBlur="isnum(this)" required>
+                                                        <input class="text" name="prezzo" type="text" onBlur="isnum(this)" required>
                                                     </div>
                                                     <br>
                                                     <p>Punto Vendita:</p>
@@ -173,7 +176,7 @@
                                                     <p>Data:</p>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"></span>
-                                                        <input class="text" name="data" type="date" required>
+                                                        <input class="text" placeholder="gg/mm/aaaa" name="data" type="text" onBlur="modulo()" required>
                                                     </div>
                                                     <br>
                                                     <p>Path Immagine:</p>
@@ -183,7 +186,7 @@
                                                     </div>
                                                     <br>
                                                     <div>
-                                    <input id="btn" type="submit" class="col-lg-offset-1" value="Inserisci"> 
+                                    <input id="btn" type="submit" class="col-lg-offset-1" value="Inserisci" onClick="Modulo()"> 
                                     <br>
                                     <br>
                                 </div>
@@ -198,12 +201,87 @@
                             </div>
                         </div>
                     </div>
-
+                    <script>
+<!--
+                        function Modulo() {
+                        // Variabili associate ai campi del modulo
+                        var marca = document.modulo.marca.value;
+                        var nome = document.modulo.nome.value;
+                        var taglia = document.modulo.taglia.value;
+                        var prezzo = document.modulo.prezzo.value;
+                        var puntovendita = document.modulo.punto_vendita.value;
+                        var data = document.modulo.data.value;
+                        
+                        
+                        if(((marca === "") || (marca === "undefined"))){
+                            alert("Il campo Marca è obbligatorio.");
+                            document.modulo.marca.focus();
+                            return false;
+                        }
+                        else if(((nome === "") || (nome === "undefined"))){
+                            alert("Il campo Nome è obbligatorio.");
+                            document.modulo.nome.focus();
+                            return false;
+                        }
+                        
+                        else if(((taglia === "") || (taglia === "undefined"))){
+                            alert("Il campo Taglia è obbligatorio.");
+                            document.modulo.taglia.focus();
+                            return false;
+                        }
+                        else if(((prezzo === "") || (prezzo === "undefined"))){
+                            alert("Il campo prezzo è obbligatorio.");
+                            document.modulo.punto_vendita.focus();
+                            
+                            return false;
+                            }
+                        else if(((puntovendita === "") || (puntovendita === "undefined"))){
+                            alert("Il campo Punto Vendita è obbligatorio.");
+                            document.modulo.punto_vendita.focus();
+                            return false;
+                        }
+                        
+                        //Effettua il controllo sul campo DATA DI NASCITA
+                        else if (document.modulo.data.value.substring(2,3) !== "/" ||
+                                 document.modulo.data.value.substring(5,6) !== "/" ||
+                                 isNaN(document.modulo.data.value.substring(0,2)) ||
+                                 isNaN(document.modulo.data.value.substring(3,5)) ||
+                                 isNaN(document.modulo.data.value.substring(6,10))) {
+                             
+                            alert("Inserire data in formato gg/mm/aaaa");
+                            document.modulo.data.value = "";
+                            document.modulo.data.focus();
+                            return false;
+                        }
+                        else if (document.modulo.data.value.substring(0,2) > 31) {
+                            alert("Impossibile utilizzare un valore superiore a 31 per i giorni");
+                            document.modulo.data.select();
+                            return false;
+                        }
+                        else if (document.modulo.data.value.substring(3,5) > 12) {
+                            alert("Impossibile utilizzare un valore superiore a 12 per i mesi");
+                            document.modulo.data.value = "";
+                            document.modulo.data.focus();
+                            return false;
+                        }
+                        else if (document.modulo.data.value.substring(6,10) < 1900) {
+                            alert("Impossibile utilizzare un valore inferiore a 1900 per l'anno");
+                            document.modulo.data.value = "";
+                            document.modulo.data.focus();
+                            return false;
+                        }
+                        else{
+                        document.modulo.action = "ServletInserimentoProdotto";
+                        document.modulo.submit();
+                        }
+                    }
+                    //-->
+                </script>
                     <div class="col-sm-1"></div>
 
                 </div>
             </div>
-                                            <div class="footer">
+                                            <div>
 		<div class="container">
 			<div class="col-md-4 footer-top">
 				

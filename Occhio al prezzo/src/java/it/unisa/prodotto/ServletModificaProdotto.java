@@ -8,6 +8,7 @@ package it.unisa.prodotto;
 import it.unisa.exception.ValueNullException;
 import it.unisa.prodotto.Prodotto;
 import it.unisa.prodotto.ProdottoManager;
+import it.unisa.utility.UtilityVar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -50,6 +51,7 @@ public class ServletModificaProdotto extends HttpServlet {
             double prezzo = Double.valueOf(request.getParameter("prezzo"));
             String puntoVendita = request.getParameter("punto_vendita");
             String data = request.getParameter("data");
+            data = UtilityVar.ricomponiData(data);
             String pathImmagine = request.getParameter("path_immagine");
             
             
@@ -64,7 +66,7 @@ public class ServletModificaProdotto extends HttpServlet {
             prodotto.setPathImmagine(pathImmagine);
             
             
-            ProdottoManager.getInstance().update(idProdotto, prodotto);
+            ProdottoManager.getInstance().modifica(idProdotto, prodotto);
             
             session.setAttribute("messaggio", "Prodotto modificato correttamente");
             response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");

@@ -41,7 +41,7 @@ public class ServletEliminaProdotto extends HttpServlet {
         HttpSession session = request.getSession(true);
         int idProdottoEliminare = Integer.valueOf(request.getParameter("idProdotto"));
         try {
-            ProdottoManager.getInstance().delete(idProdottoEliminare);
+            ProdottoManager.getInstance().elimina(idProdottoEliminare);
             session.setAttribute("messaggio", "Prodotto eliminato con successo");
             response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
         } catch (SQLException ex) {

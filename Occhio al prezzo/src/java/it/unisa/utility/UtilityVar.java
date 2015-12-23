@@ -75,4 +75,17 @@ public class UtilityVar {
         
         return dataSql;
     }
+    
+    /**
+     * Metodo della classe incaricato di rendere conforme la data,
+     * all'inserimento nel database
+     * 
+     * @param data
+     * @return data riformattata
+     */
+    public static String ricomponiData(String data){
+        data = data.substring(6) + "-" + data.substring(3, 5) + "-" + data.substring(0, 2);
+        
+        return data;
+    }
 }
