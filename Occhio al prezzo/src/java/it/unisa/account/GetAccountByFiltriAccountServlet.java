@@ -49,7 +49,7 @@ public class GetAccountByFiltriAccountServlet extends HttpServlet {
         ArrayList<Account> accounts=null;
         try {
             
-            accounts = instance.getAccoutnByFiltri(domicilio);
+            accounts = instance.ottieniAccountDaFiltri(domicilio);
             if(accounts.size()==0) {out.print("nessunrisultato");
             return;
             }

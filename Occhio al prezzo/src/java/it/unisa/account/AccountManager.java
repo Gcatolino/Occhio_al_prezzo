@@ -30,7 +30,7 @@ public class AccountManager {
     /*può essere considerata come registrazione? SI alla fine nn c 'è nemmeno di controllare il ruolo o strategie
     perchè nella tabella account il valore di default è utente per l'account, poi dovrà essere l'admin a metterlo
     venditore QUINDI VA BENE COSI*/
-    public void add(Account account) throws SQLException,ValueNullException{
+    public void aggiungi(Account account) throws SQLException,ValueNullException{
         Connection connect = DBConnection.getConnection();
         
         if(!UtilityVar.isNull(account.getEmail()) && !UtilityVar.isNull(account.getPassword()) && !UtilityVar.isNull(account.getRuolo()))
@@ -58,7 +58,7 @@ public class AccountManager {
         }
      } 
     
-    public Account getAccountByEmail(String email) throws SQLException, ConnectionException, ValueNullException {
+    public Account ottieniAccountDaEmail(String email) throws SQLException, ConnectionException, ValueNullException {
         Statement stmt = null;
         ResultSet rs = null;
         Connection connection = DBConnection.getConnection();;
@@ -106,7 +106,7 @@ public class AccountManager {
  }     
     
     
-     public ArrayList<Account> getAccoutnByFiltri(String comune) throws SQLException, ConnectionException, Exception {
+     public ArrayList<Account> ottieniAccountDaFiltri(String comune) throws SQLException, ConnectionException, Exception {
         Statement stmt = null;
         ResultSet rs = null;
         Connection connection = DBConnection.getConnection();;
@@ -200,7 +200,7 @@ public class AccountManager {
          }
 }
      
-    public void deleteAccount(Account account) throws SQLException, ConnectionException, ValueNullException {
+    public void eliminaAccount(Account account) throws SQLException, ConnectionException, ValueNullException {
         Connection connection = DBConnection.getConnection();
       
         if(!UtilityVar.isNull(account))

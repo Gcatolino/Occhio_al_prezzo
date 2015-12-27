@@ -72,10 +72,10 @@ public class AutenticazioneManagerTest {
         String email = "prova";
         String password = "1111";
         AccountManager instance = AccountManager.getInstance();
-        instance.add(acc);
+        instance.aggiungi(acc);
         AutenticazioneManager inst=AutenticazioneManager.getInstance();
         Account result = inst.login(email, password);
         assertEquals(result, acc);
-        instance.deleteAccount(acc);
+        instance.eliminaAccount(acc);
     }  
 }

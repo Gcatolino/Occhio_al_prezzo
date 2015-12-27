@@ -76,10 +76,10 @@ public class AccountManagerTest {
         acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         
         AccountManager instance =  AccountManager.getInstance();
-        instance.add(acc);
-        Account result = instance.getAccountByEmail(email);
+        instance.aggiungi(acc);
+        Account result = instance.ottieniAccountDaEmail(email);
         assertEquals(acc, result);
-        instance.deleteAccount(acc);
+        instance.eliminaAccount(acc);
         // TODO review the generated test code and remove the default call to fail.
        
     }
@@ -101,10 +101,10 @@ public class AccountManagerTest {
         acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         //---------------------------------
         AccountManager instance =  AccountManager.getInstance();
-        instance.add(acc);
-        Account result = instance.getAccountByEmail(email);
+        instance.aggiungi(acc);
+        Account result = instance.ottieniAccountDaEmail(email);
         assertEquals(acc,result);
-        instance.deleteAccount(acc);
+        instance.eliminaAccount(acc);
 
         
         // TODO review the generated test code and remove the default call to fail.
@@ -126,16 +126,16 @@ public class AccountManagerTest {
         acc.setCognome("donadio");
         acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         AccountManager instance = AccountManager.getInstance();
-        instance.add(acc);
+        instance.aggiungi(acc);
         ArrayList<Account> expResult = new ArrayList<Account>();
         expResult.add(acc);
-        ArrayList<Account> result = instance.getAccoutnByFiltri(domicilio);
+        ArrayList<Account> result = instance.ottieniAccountDaFiltri(domicilio);
         Iterator<Account> iter=expResult.iterator();
         for(Account t:result)
             if(iter.hasNext())
             assertEquals(t, iter.next());
         // TODO review the generated test code and remove the default call to fail.
-        instance.deleteAccount(acc);
+        instance.eliminaAccount(acc);
     }
 
     /**
@@ -155,13 +155,13 @@ public class AccountManagerTest {
         acc.setCognome("donadio");
         acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         AccountManager instance =  AccountManager.getInstance();
-        instance.add(acc);
+        instance.aggiungi(acc);
         acc.setNome("ciao");
         instance.modificaAccount(acc);
-        Account ac=instance.getAccountByEmail(email);
+        Account ac=instance.ottieniAccountDaEmail(email);
         System.out.println(ac.getEmail()+" "+acc.getEmail());
         assertEquals(acc,ac);
-        instance.deleteAccount(acc);
+        instance.eliminaAccount(acc);
         
         
         
@@ -186,8 +186,8 @@ public class AccountManagerTest {
         acc.setCognome("donadio");
         acc.setDataDiNascita(UtilityVar.parseData("1993-12-12"));
         AccountManager instance =  AccountManager.getInstance();
-        instance.deleteAccount(acc);
-        Account ac=instance.getAccountByEmail(email);
+        instance.eliminaAccount(acc);
+        Account ac=instance.ottieniAccountDaEmail(email);
         assertEquals(null,ac);
         // TODO review the generated test code and remove the default call to fail.
        

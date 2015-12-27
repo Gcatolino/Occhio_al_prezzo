@@ -49,7 +49,7 @@ public class GetAccountByEmailAccountServlet extends HttpServlet {
         AccountManager instance =  AccountManager.getInstance();
         Account acc=null;
         try {
-            acc = instance.getAccountByEmail(email);
+            acc = instance.ottieniAccountDaEmail(email);
             if(acc==null) {out.print("nessunrisultato");
             return;
             }

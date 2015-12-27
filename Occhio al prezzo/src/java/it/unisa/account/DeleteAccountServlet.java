@@ -50,9 +50,9 @@ public class DeleteAccountServlet extends HttpServlet {
         String x = request.getParameter("x");
         if(x == null){
                 try {
-                acc = instance.getAccountByEmail(email);
+                acc = instance.ottieniAccountDaEmail(email);
            
-                instance.deleteAccount(acc);
+                instance.eliminaAccount(acc);
             
                 out.print("SI");
             } catch (SQLException ex) {
@@ -65,9 +65,9 @@ public class DeleteAccountServlet extends HttpServlet {
         }
         else{
             try {
-                acc = instance.getAccountByEmail(email);
+                acc = instance.ottieniAccountDaEmail(email);
            
-                instance.deleteAccount(acc);
+                instance.eliminaAccount(acc);
             
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Account eliminato correttamente')");
