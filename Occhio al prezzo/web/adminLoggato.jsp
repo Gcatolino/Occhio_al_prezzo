@@ -150,6 +150,12 @@
                          confirm("Hai qualche problema di connessione al db contatt il fornitore del software..");
                          location.href="login.jsp";
                            }
+                           else  if(result=="nessunrisultato")
+                           {
+                             result="<p style='color:red;'><span class=\"glyphicon glyphicon-minus\"></span>nessun risultato</p>"
+                            tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>" + result;
+
+                           }
                         else {
                             tab = document.getElementById("tab");
                             tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>" + result;
@@ -177,6 +183,12 @@
                        if((result=="ERDB") || (result=="NOVAL") || (result=="ERCON")){
                          confirm("Hai qualche problema di connessione al db contatt il fornitore del software..");
                          location.href="login.jsp";
+                           }
+                            else  if(result=="nessunrisultato")
+                           {
+                             result="<p style='color:red;'><span class=\"glyphicon glyphicon-minus\"></span>nessun risultato</p>"
+                            tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>" + result;
+
                            }
                            else{
                         tab = document.getElementById("tab2")
@@ -291,7 +303,7 @@
     </div>
 </div></div>
 <center><blockquote>
-        <p id="RA">Ricerca Account con l'email.</p>
+        <p id="RA"><span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;&nbsp;Ricerca Account con l'email.</p>
         
     </blockquote></center>
 <div class="mio">
@@ -310,12 +322,12 @@
 
 </div>
 <center><blockquote>
-        <p id="RF">Ricerca Account con per filtri.</p>
+        <p id="RF"><span class="glyphicon glyphicon-home"></span> &nbsp; &nbsp; &nbsp;Ricerca Account con per filtri.</p>
        
     </blockquote></center>
 <div class="mio">
-    <div style="margin-top:5%;margin-left:37%" name="myForm">
-        <b>&nbsp;&nbsp;&nbsp;Domicilio</b>
+    <div style="margin-top:5%;margin-left:34%" name="myForm">
+        <b></span>Comune di Residenza</b>
         <input type="text" name="domicilio" onclick='addColor("RF")'  onblur='removeColor("RF")' onkeyUp="ajaxFunctiondomicilio(this.value);" />
     </div>
     <p id="result">
@@ -327,16 +339,21 @@
     </table>
 
 </div>
-<div class="footer" style="margin-top:70px;">
+<!--<div class="footer" style="margin-top:70px;">
 		<!--<div class="container">-->
 			
-                     <div class="clearfix"> </div>        
+          <!--           <div class="clearfix"> </div>        
               <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
                       <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
                       
                       
      </div>
- </div>
+ </div>-->
+          <div>
+              <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                      <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
+                   
+          </div>
 			
 </body>
 </html>

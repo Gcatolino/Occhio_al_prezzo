@@ -105,20 +105,18 @@ public class AccountManager {
         }
  }     
     
-    /*NOTA IMPORTANTISSIMA: qui si dovrebbe passare la regione o provincia, pero dopo
-    si dovrebbe far un controllo incrociato per vede se qll domicilio preso è prp della regione o
-    provincia passaata perchè così è stato specificato nel rad*/
-     public ArrayList<Account> getAccoutnByFiltri(String domicilio) throws SQLException, ConnectionException, Exception {
+    
+     public ArrayList<Account> getAccoutnByFiltri(String comune) throws SQLException, ConnectionException, Exception {
         Statement stmt = null;
         ResultSet rs = null;
         Connection connection = DBConnection.getConnection();;
         Account account = null;
         ArrayList<Account> accounts=new ArrayList<Account>();
-        String query = "select * from Account where domicilio = '" + domicilio + "'";
+        String query = "select * from Account where comune_di_residenza = '" + comune + "'";
         
        
         
-        if(!UtilityVar.isNull(domicilio))
+        if(!UtilityVar.isNull(comune))
         {
         try {
 

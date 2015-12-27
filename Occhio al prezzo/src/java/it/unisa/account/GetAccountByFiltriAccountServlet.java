@@ -63,7 +63,7 @@ public class GetAccountByFiltriAccountServlet extends HttpServlet {
                             "<td>"+a.getRuolo()+"</td>"+
                             "<td>"+a.getDataDiNascita()+"</td>"+
                            // "<td>"+"<a href='deleteAccountServlet?email="+a.getEmail()+"'>elimina</a>"+"</td>"+
-                            "<td><button  type='submit' name='ciao' OnClick='deleteAccount2(this)' value='"+a.getEmail()+"'>elimina</button></td>"+
+                            "<td><button  type='submit' name='ciao' OnClick='deleteAccount2(this)' value='"+a.getEmail()+"'><span class=\"glyphicon glyphicon-trash\"></span></button></td>"+
                             "</tr>";
             }
             out.print(temp);

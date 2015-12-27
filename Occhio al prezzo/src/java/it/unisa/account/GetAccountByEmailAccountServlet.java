@@ -70,7 +70,7 @@ public class GetAccountByEmailAccountServlet extends HttpServlet {
                             "<td>"+ruolo+"</td>"+
                             "<td>"+nascita+"</td>"+
                             //"<td>"+"<a href='deleteAccountServlet?email="+email+"'>elimina</a>"+"</td>"+
-                            "<td><button  type='submit' name='ciao' OnClick='deleteAccount(this)' value='"+email+"'>elimina</button></td>"+
+                            "<td><button  type='submit' name='ciao' OnClick='deleteAccount(this)' value='"+email+"'><span class=\"glyphicon glyphicon-trash\"></span></button></td>"+
                              "</tr>");
         } catch (SQLException ex) {
             out.print("ERDB");
