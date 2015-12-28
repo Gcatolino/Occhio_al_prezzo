@@ -39,12 +39,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 thead{
     background: #C4C3C3;
 }
+
+thead.utente{
+    background: white;
+    color: black;
+}
+tr:nth-child(even).utente{
+    color: white;
+    background:  #ff9999;
+}
+tr:nth-child(odd).utente{
+    color: #ff9999;
+    background: white;
+}
 tr:nth-child(even).colorato{
     background: #99ccff;
 }
 
+
 tr:hover.col { 
-    background-color: yellow; 
+    background-color: #ff5d56;
+    color: white;
 }
 body{
 	background:#fff;

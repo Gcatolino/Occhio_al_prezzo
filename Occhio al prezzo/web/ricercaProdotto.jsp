@@ -126,7 +126,7 @@
                           <div class="search-in" >
 			<div class="search" >
 						<form method="POST" action="ServletRicercaPerNome">
-							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text">
+							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text" required>
 							<input type="submit" value="Cerca">
 						</form>
 							<div class="close-in"><img src="images/close.png" alt="" /></div>
@@ -187,7 +187,7 @@
 </div>
                           <div class="panel-body">
                                 <table width="60%" align="center" >
-                                    <thead class="sottolineato">
+                                    <thead class="utente">
                                     <th>&nbsp;Marca&nbsp;</th>
                                     <th>Nome&nbsp;</th>		
                                     <th>Taglia&nbsp;</th>
@@ -195,13 +195,14 @@
                                     <th>Punto Vendita&nbsp;</th>
                                     <th>Data&nbsp;</th>
                                     </thead>
+                                    <tr class="sottolineato"><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
 
                                     <% for(; inizio < fine; inizio++){
                                         
                                             Prodotto prodotto = prodotti.get(inizio);
                                     %>
                                     
-                                    <tr style="cursor:pointer;"  class="sottolineato colorato col" onclick="location.href = '<%= "visualizzaProdotto.jsp?idProdotto=" + prodotto.getId()%>'">
+                                    <tr style="cursor:pointer;"  class="sottolineato utente col" onclick="location.href = '<%= "visualizzaProdotto.jsp?idProdotto=" + prodotto.getId()%>'">
                                         <td>&nbsp;<%= prodotto.getMarca()%>&nbsp;</td>
                                         <td><%= prodotto.getNome()%>&nbsp;</td>		
                                         <td><%= prodotto.getTaglia()%>&nbsp;</td>
@@ -226,7 +227,7 @@
                           <a id="cliccabile" onclick="location.href = '<%= "ricercaProdotto.jsp?pagina=" + p%>'"><%=p%> </a>
                           <%}%>
                           </div>
-                   <div class="footer">
+                   <div>
 		<div class="container">
 			<div class="col-md-4 footer-top">
 				

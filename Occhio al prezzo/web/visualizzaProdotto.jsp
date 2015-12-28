@@ -104,8 +104,8 @@
                         </li>
                           <div class="search-in" >
 			<div class="search" >
-						<form>
-							<input type="text" placeholder="Cerca prodotto..."   class="text">
+						<form method="POST" action="ServletRicercaPerNome">
+							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text" required>
 							<input type="submit" value="Cerca">
 						</form>
 							<div class="close-in"><img src="images/close.png" alt="" /></div>
@@ -221,16 +221,16 @@
                                         </div>
                                     </div>
                                                     
-                                                    <table class="col-lg-offset-3">
+                                                    <table class="col-lg-offset-4">
                                                         <tr><td>
                                                             <br><br><br>
-                                                        </tr></td>
+                                                        </td></tr>
                                                         <tr>
                                                             <td>
-                                                                <input id="btn" type="submit" class="col-lg-offset-3" value="Aggiungi al carrello" onClick="">
+                                                                <input style="background:#ff5d56;" id="btn" type="submit" class="col-lg-offset-3" value="Aggiungi al carrello" onClick="">
                                                             </td>
                                                             <td>
-                                                                <input id="btn" type="submit" class="col-lg-offset-5" value="Localizza prodotto" onClick="">
+                                                                <input style="background:#ff5d56;" id="btn" type="submit" class="col-lg-offset-5" value="Localizza prodotto" onClick="">
                                                             </td>
                                                                
                                                         </tr>
