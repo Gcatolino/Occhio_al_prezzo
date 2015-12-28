@@ -91,8 +91,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                           <div class="search-in" >
 			<div class="search" >
-						<form>
-							<input type="text" placeholder="Cerca prodotto..."   class="text">
+						<form method="POST" action="ServletRicercaPerNome">
+							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text">
 							<input type="submit" value="Cerca">
 						</form>
 							<div class="close-in"><img src="images/close.png" alt="" /></div>

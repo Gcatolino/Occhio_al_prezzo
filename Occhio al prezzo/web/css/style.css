@@ -4,7 +4,9 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
-
+#cliccabile{
+    cursor:pointer;
+}
 #btn {
   background: #3498db;
   background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
@@ -39,6 +41,10 @@ thead{
 }
 tr:nth-child(even).colorato{
     background: #99ccff;
+}
+
+tr:hover.col { 
+    background-color: yellow; 
 }
 body{
 	background:#fff;
