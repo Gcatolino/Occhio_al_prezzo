@@ -4,9 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
-#cliccabile{
-    cursor:pointer;
-}
+
 #btn {
   background: #3498db;
   background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
@@ -39,27 +37,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 thead{
     background: #C4C3C3;
 }
-
-thead.utente{
-    background: white;
-    color: black;
-}
-tr:nth-child(even).utente{
-    color: white;
-    background:  #ff9999;
-}
-tr:nth-child(odd).utente{
-    color: #ff9999;
-    background: white;
-}
 tr:nth-child(even).colorato{
     background: #99ccff;
-}
-
-
-tr:hover.col { 
-    background-color: #ff5d56;
-    color: white;
 }
 body{
 	background:#fff;
@@ -1177,6 +1156,16 @@ p.footer-class a:hover{
   display: block;
   text-align: center;
 }
+
+.back1{
+	background: url(../images/splash.jpg) 0px 0px;
+  width: 100%;
+  background-size: cover;
+  min-height:650px;
+  display: block;
+  text-align: center;
+}
+
 .back h2 {
   color: orange;
   font-size: 3em;

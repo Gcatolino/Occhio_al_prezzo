@@ -4,6 +4,11 @@
     Author     : gemmacatolino
 --%>
 
+<%@page import="java.sql.SQLException"%>
+<%@page import="it.unisa.prodotto.Prodotto"%>
+<%@page import="it.unisa.carrello.CarrelloManager"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="it.unisa.carrello.Carrello"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,7 +38,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <script src="js/simpleCart.min.js"> </script>
 </head>
-<body> 
+<body>  
+    
+    <% 
+        Carrello carr = new Carrello();
+        carr = (Carrello) session.getAttribute("carrello");
+        ArrayList<Prodotto> prodotti = CarrelloManager.getInstance().visualizzaCarrello(carr);
+    %>
+   
 <!--header-->	
 <div class=" header-product">
 	<div class="header-top com">
@@ -116,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 	
 </div>
-<div class="back">
+<div class="back1">
 	
 </div>
 		<!---->
@@ -172,32 +184,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					});
 			   </script>
 				
-				  <div class="in-check" >
-		  <ul class="unit">
-			<li><span>Item</span></li>
-			<li><span>Product Name</span></li>		
-			<li><span>Unit Price</span></li>
-			
-			<li> </li>
+                           <div class="in-check">
+                               
+                               <table class="table table-striped" id="tablecart">
+                                       <thead class="sottolineato">
+                                       <th>Prodotto</th>
+                                    <th>&nbsp;Marca&nbsp;</th>
+                                    <th>Nome&nbsp;</th>		
+                                    <th>Taglia&nbsp;</th>
+                                    <th>Prezzo&nbsp;</th>
+                                    <th>Punto Vendita&nbsp;</th>
+                                    <th></th>
+                                    </thead>
+                                    
+                                    <%
+                                        for(int i=0; i < prodotti.size(); i++){
+                                            Prodotto prod = prodotti.get(i);
+                                    %>
+                                    
+                                    <tr><td><img SRC="<%= prod.getPathImmagine()%>" width="100" height="180"></td>
+                                        <td><%= prod.getNome()%></td>
+                                        <td><%= prod.getMarca()%></td>
+                                        <td><%= prod.getTaglia()%></td>
+                                        <td><%= prod.getPrezzo()%></td>
+                                        <td><%= prod.getPuntoVendita()%></td>
+                                        <td><button onclick="location.href = '<%="eliminaProdottoServlet?idProdotto=" + prod.getId() %>'">Elimina</button></td>
+                      </tr>
+                      <%}%>
+                  </table>	
+                                   <div>
+                                       <button type="submit" name="svuotacarrello" onclick="location.href = '<%="svuotaCarrelloServlet"%>'">Svuota Carrello</button>
+                               </div>
 			<div class="clearfix"> </div>
 		  </ul>
-		  <ul class="cart-header">
-		   <div class="close1"> </div>
-			<li class="ring-in"><a href="#" ><img src="images/f1.jpg" class="img-responsive" alt=""></a>
-			</li>
-			<li><span>Woo Dress</span></li>
-			<li><span>$ 60.00</span></li>
-			
-			<div class="clearfix"> </div>
-			</ul>
- <ul class=" cart-header1">
-		   <div class="close2"> </div>
-			<li class="ring-in"><a href="#" ><img src="images/f2.jpg" class="img-responsive" alt=""></a>
-			</li>
-			<li><span>Woo Dress</span></li>
-			<li><span>$ 60.00</span></li>
-			<div class="clearfix"> </div>
-			</ul>
 		</div>
 			 </div>
 					  

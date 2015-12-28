@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *CarrelloManager
+ * 
+ * Questa classe ha lo scopo di aggiornare e modificare i dati 
+ * presenti nel database relativi alla gestione del Carrello.
+ * 
+ * @author  Antonio Calabria
+ *
+ *2015 - Copyright
  */
 package it.unisa.carrello;
 
@@ -17,10 +22,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- *
- * @author Antonio
- */
+
 public class CarrelloManager {
     
     private static CarrelloManager instance;
@@ -32,14 +34,15 @@ public class CarrelloManager {
         return instance;
     }
     
-    public void add(Carrello carrello) throws SQLException,ValueNullException{
+
+    public void aggiungiCarrello(Carrello carrello) throws SQLException,ValueNullException{
         
         Connection conn = DBConnection.getConnection();
         
-        if(!UtilityVar.isNull(carrello.getID()) && !UtilityVar.isNull(carrello.getEmail())){
+        if(!UtilityVar.isNull(carrello.getEmail())){
             
-            String sql = "INSERT INTO Carrello (idCarrello,fk_email) VALUES('"
-                         + carrello.getID() + "','" + carrello.getEmail() + "')";
+            String sql = "INSERT INTO Carrello (fk_email) VALUES ('"
+                          + carrello.getEmail() + "')";
             
             try{
                 Statement stmt = conn.createStatement();
@@ -52,7 +55,7 @@ public class CarrelloManager {
         }else throw new ValueNullException();
     }
     
-    public void addProdotto(Prodotto prod, Carrello car) throws SQLException, ConnectionException, ValueNullException{
+    public void aggiungiProdotto(Prodotto prod, Carrello car) throws SQLException, ConnectionException, ValueNullException{
         Connection conn = DBConnection.getConnection();
         
         
@@ -87,9 +90,10 @@ public class CarrelloManager {
                 Statement st = conn.createStatement();
                 ResultSet rs  = st.executeQuery(sql);
                 
-                if(rs.next()){
+                while(rs.next()){
                     prod = new Prodotto();
                     prod.setId(rs.getInt("fk_idProdotto"));
+                    prod = riempiRisultato(prod);
                     prodotti.add(prod);
                 }
             }finally{
@@ -148,7 +152,7 @@ public class CarrelloManager {
     }
     
     
-    public void deleteCarrello(Carrello carr) throws SQLException, ConnectionException, ValueNullException{
+    public void eliminaCarrello(Carrello carr) throws SQLException, ConnectionException, ValueNullException{
         Connection conn = DBConnection.getConnection();
         
         if(!UtilityVar.isNull(carr)){
@@ -165,6 +169,44 @@ public class CarrelloManager {
                 DBConnection.releaseConnection(conn);
             }
         }else throw new ValueNullException();
+    }
+
+    private Prodotto riempiRisultato(Prodotto prod) throws SQLException, ConnectionException {
+        Connection conn = DBConnection.getConnection();
+        
+        String sql = "SELECT * FROM Prodotto WHERE idProdotto = '" 
+                   + prod.getId() + "'";
+        
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        
+        while(rs.next()){
+            prod.setNome(rs.getString("nome"));
+            prod.setMarca(rs.getString("marca"));
+            prod.setTaglia("taglia");
+            prod.setPrezzo(rs.getDouble("prezzo"));
+            prod.setPuntoVendita(rs.getString("punto_vendita"));
+            prod.setPathImmagine(rs.getString("path_immagine"));
+        }
+        
+        return prod;
+    }
+    
+    public Integer recuperoID(String email)throws SQLException, ConnectionException{
+        Connection conn = DBConnection.getConnection();
+        Carrello car = new Carrello();
+        String sql = "SELECT idCarrello FROM Carrello WHERE fk_email='" 
+                   + email + "'";
+        
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        
+        if(rs.next()){
+            car.setID(rs.getInt("idCarrello"));
+        }
+        
+        return car.getID();
+                 
     }
     
 }

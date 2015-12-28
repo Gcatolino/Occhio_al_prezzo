@@ -1,40 +1,41 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *CarrelloManager
+ * 
+ * Questa classe rappresenta l'astrazione di un carrello.
+ * 
+ * @author  Antonio Calabria
+ *
+ *2015 - Copyright
  */
+
 package it.unisa.carrello;
 
 
 import it.unisa.prodotto.Prodotto;
 import java.util.ArrayList;
 
-/**
- *
- * @author Antonio
- */
 public class Carrello {
     
-    private String ID;
-    private String fk_email;
+    private int ID;
+    private String fkEmail;
 
     public Carrello(){
         
     }
     
-    public void setID(String ID){
+    public void setID(int ID){
         this.ID = ID;
     }
     
-    public String getID(){
+    public int getID(){
         return ID;
     }
     
     public void setEmail(String email){
-        this.fk_email = email;
+        this.fkEmail = email;
     }
     
     public String getEmail(){
-        return fk_email;
+        return fkEmail;
     }
 }

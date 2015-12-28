@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *ServletAggiungiCarrello
+ * 
+ * Interagisce che si pone tra la web application ed il DB.
+ * Consente di svuotare un carrello. 
+ * 
+ * @author  Antonio Calabria
+ *
+ *2015 - Copyright
  */
 package it.unisa.carrello;
 
@@ -17,31 +22,37 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 
-/**
- *
- * @author Antonio
- */
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
 
 @WebServlet(name="svuotaCarrelloServlet", urlPatterns={"/svuotaCarrelloServlet"})
-public class SvuotaCarrelloServlet extends HttpServlet{
+public class ServletSvuotaCarrello extends HttpServlet{
     
     protected void processRequest(HttpServletResponse response, HttpServletRequest request)
-            throws SQLException, IOException{
+            throws SQLException, IOException, ServletException{
         
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         
         HttpSession session = request.getSession();
         
-        Carrello car = null;
-        car.setID((String)session.getAttribute("ID"));
-        
+        Carrello car = (Carrello) session.getAttribute("carrello");
         CarrelloManager instance = CarrelloManager.getInstance();
         
         try{
            instance.svuotaCarrello(car);
+           RequestDispatcher re = request.getRequestDispatcher("carrello.jsp");
+           re.forward(request, response);
         }catch(ConnectionException ex){
             out.print("<h1> Errore Connesione </h1>");
         }catch(SQLException ex){
@@ -57,7 +68,7 @@ public class SvuotaCarrelloServlet extends HttpServlet{
         try {
             processRequest(resp, req);
         } catch (SQLException ex) {
-            Logger.getLogger(SvuotaCarrelloServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletSvuotaCarrello.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -66,7 +77,7 @@ public class SvuotaCarrelloServlet extends HttpServlet{
         try {
             processRequest(resp, req);
         } catch (SQLException ex) {
-            Logger.getLogger(SvuotaCarrelloServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletSvuotaCarrello.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

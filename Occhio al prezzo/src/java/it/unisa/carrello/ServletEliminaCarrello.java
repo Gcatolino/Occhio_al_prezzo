@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *ServletEliminaCarrello
+ * 
+ * Interagisce che si pone tra la web application ed il DB.
+ * Consente di eliminare un carrello.
+ * 
+ * @author  Antonio Calabria
+ *
+ *2015 - Copyright
  */
 package it.unisa.carrello;
 
@@ -10,6 +15,7 @@ import it.unisa.exception.ValueNullException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+
 import javax.jws.WebService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +23,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-/**
- *
- * @author Antonio
- */
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     * @throws ValueNullException if there are value null
+     * @throws ConnectionException if an connection error occurs
+     */
 @WebServlet(name="DeleteCarrello")
-public class DeleteCarrelloServlet extends HttpServlet{
+public class ServletEliminaCarrello extends HttpServlet{
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ValueNullException, ConnectionException{
@@ -36,10 +49,10 @@ public class DeleteCarrelloServlet extends HttpServlet{
         
         try{
             Carrello carr = new Carrello();
-            carr.setID(ID);
+            carr.setID(Integer.valueOf(ID));
             carr.setEmail(fk_email);
             
-            CarrelloManager.getInstance().deleteCarrello(carr);
+            CarrelloManager.getInstance().eliminaCarrello(carr);
         }catch(SQLException ex){
             ex.printStackTrace();
         }
