@@ -18,7 +18,6 @@ import it.unisa.exception.ValueNullException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -34,40 +33,45 @@ import javax.servlet.http.HttpSession;
  * @author  raffaele donadio
  */
 
-@WebServlet(name = "getAccountByFiltriAccountServlet", urlPatterns = {"/getAccountByFiltriAccountServlet"})
-public class GetAccountByFiltriAccountServlet extends HttpServlet {
+@WebServlet(name = "getAccountByEmailAccountServlet", urlPatterns = {"/getAccountByEmailAccountServlet"})
+public class OttieniAccountDaEmailServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          
         
-        response.setContentType("text/html");  
+        //response.setContentType("text/html"); 
+        response.setContentType("text/html");
+  
         PrintWriter out=response.getWriter();
-        String domicilio=request.getParameter("domicilio");
+        String email=request.getParameter("email");
         AccountManager instance =  AccountManager.getInstance();
-        ArrayList<Account> accounts=null;
+        Account acc=null;
         try {
-            
-            accounts = instance.ottieniAccountDaFiltri(domicilio);
-            if(accounts.size()==0) {out.print("nessunrisultato");
+            acc = instance.ottieniAccountDaEmail(email);
+            if(acc==null) {out.print("nessunrisultato");
             return;
             }
-            String temp="";
-            for(Account a : accounts){
-            temp+="<tr><td>"+a.getEmail()+"</td>"+
-                            "<td>"+a.getNome()+"</td>"+
-                            "<td>"+a.getCognome()+"</td>"+
-                            "<td>"+a.getComuneDiResidenza()+"</td>"+
-                            "<td>"+a.getDomicilio()+"</td>"+
-                            "<td>"+a.getRuolo()+"</td>"+
-                            "<td>"+a.getDataDiNascita()+"</td>"+
-                           // "<td>"+"<a href='deleteAccountServlet?email="+a.getEmail()+"'>elimina</a>"+"</td>"+
-                            "<td><button  type='submit' name='ciao' OnClick='deleteAccount2(this)' value='"+a.getEmail()+"'><span class=\"glyphicon glyphicon-trash\"></span></button></td>"+
-                            "</tr>";
-            }
-            out.print(temp);
             
+            String nome = acc.getNome();
+            String cognome = acc.getCognome();
+            String residenza = acc.getComuneDiResidenza();
+            String domicilio = acc.getDomicilio();
+            String ruolo = acc.getRuolo();
+            String nascita = acc.getDataDiNascita().toString();
+           
+            
+            out.print( "<tr><td>"+email+"</td>"+
+                            "<td>"+nome+"</td>"+
+                            "<td>"+cognome+"</td>"+
+                            "<td>"+residenza+"</td>"+
+                            "<td>"+domicilio+"</td>"+
+                            "<td>"+ruolo+"</td>"+
+                            "<td>"+nascita+"</td>"+
+                            //"<td>"+"<a href='deleteAccountServlet?email="+email+"'>elimina</a>"+"</td>"+
+                            "<td><button  type='submit' name='ciao' OnClick='deleteAccount(this)' value='"+email+"'><span class=\"glyphicon glyphicon-trash\"></span></button></td>"+
+                             "</tr>");
         } catch (SQLException ex) {
             out.print("ERDB");
         } catch (ValueNullException ex) {
@@ -77,13 +81,10 @@ public class GetAccountByFiltriAccountServlet extends HttpServlet {
         catch (ConnectionException ex) {
                 out.print("ERCON");
             }
-        catch (Exception ex) {
-                Logger.getLogger(GetAccountByFiltriAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+       
         
          
     }
 
-    
- 
+  
 }

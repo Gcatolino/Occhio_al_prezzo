@@ -33,7 +33,7 @@ import javax.servlet.http.HttpSession;
  */
 
 @WebServlet(name = "deleteAccountServlet", urlPatterns = {"/deleteAccountServlet"})
-public class DeleteAccountServlet extends HttpServlet {
+public class EliminaAccountServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
