@@ -203,8 +203,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     %>
                                     
                                     <tr><td><img SRC="<%= prod.getPathImmagine()%>" width="100" height="180"></td>
-                                        <td><%= prod.getNome()%></td>
                                         <td><%= prod.getMarca()%></td>
+                                        <td><%= prod.getNome()%></td>
                                         <td><%= prod.getTaglia()%></td>
                                         <td><%= prod.getPrezzo()%></td>
                                         <td><%= prod.getPuntoVendita()%></td>

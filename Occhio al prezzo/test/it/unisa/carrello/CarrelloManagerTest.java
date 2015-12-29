@@ -73,7 +73,7 @@ public class CarrelloManagerTest {
         carr.setID("2");
         carr.setEmail("a@gmail.com");
         CarrelloManager instance = CarrelloManager.getInstance();
-        instance.add(carr);
+        instance.aggiungiCarrello(carr);
         Connection connection = DBConnection.getConnection();
         String sql = "select * from Carrello where (idCarrello='"+carr.getID()+"')";
           if (connection == null) {
@@ -86,7 +86,7 @@ public class CarrelloManagerTest {
                 if (rs.next())
                     assertEquals("2",rs.getString("idCarrello"));  
         
-         instance.deleteCarrello(carr);
+         instance.eliminaCarrello(carr);
     }
     
     @Test
@@ -102,7 +102,7 @@ public class CarrelloManagerTest {
         carr.setID("1");
         
         CarrelloManager instance = CarrelloManager.getInstance();
-        instance.addProdotto(prod, carr);
+        instance.aggiungiProdotto(prod, carr);
         Connection conn = DBConnection.getConnection();
         String sql = "select * from Composizione where (fk_idCarrello='" 
                      + carr.getID() + "')"  + "AND" + "(fk_idProdotto = '"
@@ -161,7 +161,7 @@ public class CarrelloManagerTest {
         prod.setId(5);
         
         CarrelloManager instance = CarrelloManager.getInstance();
-        instance.addProdotto(prod, car);
+        instance.aggiungiProdotto(prod, car);
         instance.eliminaProdotto(prod);
         
         Connection conn = DBConnection.getConnection();
@@ -213,8 +213,8 @@ public class CarrelloManagerTest {
         prod.setId(15);
         prod1.setId(12);
         
-        instance.addProdotto(prod, car);
-        instance.addProdotto(prod1, car);
+        instance.aggiungiProdotto(prod, car);
+        instance.aggiungiProdotto(prod, car);
         
     }
 
@@ -230,7 +230,7 @@ public class CarrelloManagerTest {
         carr.setID("2");
         carr.setEmail("a@gmail.com");
         CarrelloManager instance =CarrelloManager.getInstance();
-        instance.deleteCarrello(carr);
+        instance.eliminaCarrello(carr);
         
         
         Connection connection = DBConnection.getConnection();

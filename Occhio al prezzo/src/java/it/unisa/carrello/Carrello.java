@@ -16,18 +16,18 @@ import java.util.ArrayList;
 
 public class Carrello {
     
-    private int ID;
+    private String ID;
     private String fkEmail;
 
     public Carrello(){
         
     }
     
-    public void setID(int ID){
+    public void setID(String ID){
         this.ID = ID;
     }
     
-    public int getID(){
+    public String getID(){
         return ID;
     }
     

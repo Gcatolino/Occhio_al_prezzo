@@ -7,10 +7,15 @@ package it.unisa.autenticazione;
 
 import it.unisa.account.Account;
 import it.unisa.autenticazione.AutenticazioneManager;
+import it.unisa.carrello.Carrello;
+import it.unisa.carrello.CarrelloManager;
 import it.unisa.exception.ConnectionException;
+import it.unisa.exception.ValueNullException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,7 +42,7 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         AutenticazioneManager m = AutenticazioneManager.getInstance();
-        PrintWriter out=response.getWriter();
+        PrintWriter out = response.getWriter();
         try {
             Account a = m.login(email, password);
             if(a == null){
@@ -64,6 +69,22 @@ public class LoginServlet extends HttpServlet {
                     else{
                         RequestDispatcher rs = request.getRequestDispatcher("utenteLoggato.jsp");
                         rs.forward(request,response);
+                        Carrello car = new Carrello();
+                        CarrelloManager instance = CarrelloManager.getInstance();
+                        
+                        String idCarrello = instance.recuperoID();
+                        
+                        int id = Integer.parseInt(idCarrello) + 1;
+                        idCarrello = String.valueOf(id);
+                        car.setEmail(email);
+                        car.setID(idCarrello);
+                        
+                        try {
+                            instance.aggiungiCarrello(car);
+                            session.setAttribute("carrello", car);
+                        } catch (ValueNullException ex) {
+                            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 }
                 out.print("login effettuato");

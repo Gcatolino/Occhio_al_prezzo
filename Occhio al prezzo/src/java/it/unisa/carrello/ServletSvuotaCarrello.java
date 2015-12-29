@@ -10,6 +10,7 @@
  */
 package it.unisa.carrello;
 
+import it.unisa.account.Account;
 import it.unisa.exception.ConnectionException;
 import it.unisa.exception.ValueNullException;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +47,8 @@ public class ServletSvuotaCarrello extends HttpServlet{
         
         HttpSession session = request.getSession();
         
-        Carrello car = (Carrello) session.getAttribute("carrello");
+        Carrello car = new Carrello();
+        car = (Carrello) session.getAttribute("carrello");
         CarrelloManager instance = CarrelloManager.getInstance();
         
         try{

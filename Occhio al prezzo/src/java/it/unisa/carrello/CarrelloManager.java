@@ -41,7 +41,9 @@ public class CarrelloManager {
         
         if(!UtilityVar.isNull(carrello.getEmail())){
             
-            String sql = "INSERT INTO Carrello (fk_email) VALUES ('"
+            
+            String sql = "INSERT INTO carrello (idCarrello,fk_email) VALUES ('"
+                          + carrello.getID() + "','"
                           + carrello.getEmail() + "')";
             
             try{
@@ -183,7 +185,7 @@ public class CarrelloManager {
         while(rs.next()){
             prod.setNome(rs.getString("nome"));
             prod.setMarca(rs.getString("marca"));
-            prod.setTaglia("taglia");
+            prod.setTaglia(rs.getString("taglia"));
             prod.setPrezzo(rs.getDouble("prezzo"));
             prod.setPuntoVendita(rs.getString("punto_vendita"));
             prod.setPathImmagine(rs.getString("path_immagine"));
@@ -192,17 +194,16 @@ public class CarrelloManager {
         return prod;
     }
     
-    public Integer recuperoID(String email)throws SQLException, ConnectionException{
+    public String recuperoID()throws SQLException, ConnectionException{
         Connection conn = DBConnection.getConnection();
         Carrello car = new Carrello();
-        String sql = "SELECT idCarrello FROM Carrello WHERE fk_email='" 
-                   + email + "'";
+        String sql = "SELECT count(idCarrello) FROM Carrello";
         
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         
         if(rs.next()){
-            car.setID(rs.getInt("idCarrello"));
+            car.setID(rs.getString("count(idCarrello)"));
         }
         
         return car.getID();

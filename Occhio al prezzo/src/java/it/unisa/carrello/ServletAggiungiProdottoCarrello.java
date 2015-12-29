@@ -50,23 +50,9 @@ public class ServletAggiungiProdottoCarrello extends HttpServlet{
         Prodotto prod = new Prodotto();
         Carrello car = new Carrello();
         car = (Carrello) session.getAttribute("carrello");
-        ArrayList<Prodotto> prodotti = instance.visualizzaCarrello(car);
+        prod.setId(Integer.parseInt(request.getParameter("idProdotto")));
         
-        prod.setId(Integer.valueOf(request.getParameter("idProdotto")));
-                
-        for(Prodotto p:prodotti){
-            if(p.getId() == prod.getId())
-            try{
-               instance.aggiungiProdotto(prod,car);
-               out.print("<h1> Aggiunto Prodotto al Carrello </h1>");
-            }catch(SQLException ex){
-               out.print("<h1> errore database </h1>");
-            }catch(ConnectionException ex){
-               out.print("<h1> errore connessione </h1>");
-            }catch(ValueNullException ex){
-               out.print("<h1> Valori mancanti </h1>");
-            }
-        }
+        instance.aggiungiProdotto(prod, car);
         
     }
 

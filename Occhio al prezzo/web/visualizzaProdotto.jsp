@@ -227,7 +227,7 @@
                                                         </td></tr>
                                                         <tr>
                                                             <td>
-                                                                <input style="background:#ff5d56;" id="btn" type="submit" class="col-lg-offset-3" value="Aggiungi al carrello" onClick="">
+                                                                <input style="background:#ff5d56;" id="btn" type="submit" class="col-lg-offset-3" value="Aggiungi al carrello" onClick="location.href='<%= "aggiungiProdottoServlet?idProdotto=" + prodotto.getId()%>'">                                          
                                                             </td>
                                                             <td>
                                                                 <input style="background:#ff5d56;" id="btn" type="submit" class="col-lg-offset-5" value="Localizza prodotto" onClick="">
