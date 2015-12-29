@@ -575,7 +575,7 @@ a.now-in:hover{
 .resp-tab-item{
 	color:#000;
 	font-size: 1.4em;
-	  font-family: initial;
+	font-family: 'Roboto Slab', serif;
 	cursor: pointer;
 	padding: 6px ;
 	display: inline-block;
@@ -2049,7 +2049,7 @@ a.add-re:hover{
     display: inline-block;
     border: none;
     outline: none;
-    font-family: initial;
+    font-family: 'Roboto Slab', serif;
     border: 1px solid #ff5d56;
     text-align: center;
 }
@@ -2108,7 +2108,7 @@ a.add-re:hover{
 	display: inline-block;
 	border:none;
 	outline:none;
-        font-family: initial;
+        font-family: 'Roboto Slab', serif;
 	border: 1px solid #ff5d56;
 }
 a.forgot {
@@ -2175,7 +2175,7 @@ a.forgot {
 	-moz-transition: 0.5s all;
 	-o-transition: 0.5s all;
 	border: 0.2px solid #ff5d56;
-	font-family: initial;
+       font-family: 'Roboto Slab', serif;
 }
 .register input[type="submit"]:hover{
 	background:none;
