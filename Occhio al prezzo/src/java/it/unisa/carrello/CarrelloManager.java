@@ -38,7 +38,8 @@ public class CarrelloManager {
     public void aggiungiCarrello(Carrello carrello) throws SQLException,ValueNullException{
         
         Connection conn = DBConnection.getConnection();
-        
+        int carrelloId = carrello.getID() + 1;
+        carrello.setID(carrelloId);
         if(!UtilityVar.isNull(carrello.getEmail())){
             
             
@@ -157,11 +158,13 @@ public class CarrelloManager {
     public void eliminaCarrello(Carrello carr) throws SQLException, ConnectionException, ValueNullException{
         Connection conn = DBConnection.getConnection();
         
+        int carrelloId = carr.getID() + 1;
+        carr.setID(carrelloId);
+        
         if(!UtilityVar.isNull(carr)){
             
-            String sql = "DELETE FROM Carrello WHERE fk_email = '"
-                         + carr.getEmail()
-                         + "'";
+            String sql = "DELETE FROM `occhio_al_prezzodb`.`carrello` WHERE `idCarrello`='"
+                         + carr.getID() + "'";
             
             try{
                 Statement stmt = conn.createStatement();
@@ -194,7 +197,7 @@ public class CarrelloManager {
         return prod;
     }
     
-    public String recuperoID()throws SQLException, ConnectionException{
+    public int recuperoID()throws SQLException, ConnectionException{
         Connection conn = DBConnection.getConnection();
         Carrello car = new Carrello();
         String sql = "SELECT count(idCarrello) FROM Carrello";
@@ -203,7 +206,7 @@ public class CarrelloManager {
         ResultSet rs = st.executeQuery(sql);
         
         if(rs.next()){
-            car.setID(rs.getString("count(idCarrello)"));
+            car.setID(rs.getInt("count(idCarrello)"));
         }
         
         return car.getID();

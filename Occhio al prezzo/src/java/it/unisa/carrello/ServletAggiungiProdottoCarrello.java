@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,6 +54,9 @@ public class ServletAggiungiProdottoCarrello extends HttpServlet{
         prod.setId(Integer.parseInt(request.getParameter("idProdotto")));
         
         instance.aggiungiProdotto(prod, car);
+        
+        RequestDispatcher rs = request.getRequestDispatcher("ricercaProdotto.jsp");
+        rs.forward(request, response);
         
     }
 

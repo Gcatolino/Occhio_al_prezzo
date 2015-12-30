@@ -72,16 +72,15 @@ public class LoginServlet extends HttpServlet {
                         Carrello car = new Carrello();
                         CarrelloManager instance = CarrelloManager.getInstance();
                         
-                        String idCarrello = instance.recuperoID();
+                        int idCarrello = instance.recuperoID();
                         
-                        int id = Integer.parseInt(idCarrello) + 1;
-                        idCarrello = String.valueOf(id);
                         car.setEmail(email);
                         car.setID(idCarrello);
                         
                         try {
                             instance.aggiungiCarrello(car);
                             session.setAttribute("carrello", car);
+                            rs.forward(request,response);
                         } catch (ValueNullException ex) {
                             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                         }

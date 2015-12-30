@@ -70,11 +70,12 @@ public class CarrelloManagerTest {
         Statement stmt = null;
         ResultSet rs = null;
         carr = new Carrello();
-        carr.setID("2");
-        carr.setEmail("a@gmail.com");
         CarrelloManager instance = CarrelloManager.getInstance();
-        instance.aggiungiCarrello(carr);
+        
         Connection connection = DBConnection.getConnection();
+        carr.setEmail("antonio94c@gmail.com");
+        carr.setID(instance.recuperoID());
+        instance.aggiungiCarrello(carr);
         String sql = "select * from Carrello where (idCarrello='"+carr.getID()+"')";
           if (connection == null) {
                     throw new ConnectionException();
@@ -84,7 +85,7 @@ public class CarrelloManagerTest {
                 rs = stmt.executeQuery(sql);
 
                 if (rs.next())
-                    assertEquals("2",rs.getString("idCarrello"));  
+                    assertEquals(carr.getID(),rs.getInt("idCarrello"));  
         
          instance.eliminaCarrello(carr);
     }
@@ -99,7 +100,7 @@ public class CarrelloManagerTest {
         prod.setId(13);
         
         carr = new Carrello();
-        carr.setID("1");
+        carr.setID(1);
         
         CarrelloManager instance = CarrelloManager.getInstance();
         instance.aggiungiProdotto(prod, carr);
@@ -132,7 +133,7 @@ public class CarrelloManagerTest {
         prod1.setId(15);
         
         Carrello car = new Carrello();
-        car.setID("1");
+        car.setID(1);
         
         CarrelloManager instance = CarrelloManager.getInstance();
         
@@ -155,10 +156,10 @@ public class CarrelloManagerTest {
         ResultSet rs = null;
         
         Carrello car = new Carrello();
-        car.setID("1");
+        car.setID(1);
         
         Prodotto prod = new Prodotto();
-        prod.setId(5);
+        prod.setId(7);
         
         CarrelloManager instance = CarrelloManager.getInstance();
         instance.aggiungiProdotto(prod, car);
@@ -188,7 +189,7 @@ public class CarrelloManagerTest {
         Statement st = null;
         ResultSet rs = null;
         Carrello car = new Carrello();
-        car.setID("1");
+        car.setID(1);
         
         CarrelloManager instance = CarrelloManager.getInstance();
         instance.svuotaCarrello(car);
@@ -210,11 +211,11 @@ public class CarrelloManagerTest {
         Prodotto prod  = new Prodotto();
         Prodotto prod1 = new Prodotto();
         
-        prod.setId(15);
+        prod.setId(2);
         prod1.setId(12);
         
         instance.aggiungiProdotto(prod, car);
-        instance.aggiungiProdotto(prod, car);
+        instance.aggiungiProdotto(prod1, car);
         
     }
 
@@ -227,9 +228,13 @@ public class CarrelloManagerTest {
         Statement stmt = null;
         ResultSet rs = null;
         carr = new Carrello();
-        carr.setID("2");
-        carr.setEmail("a@gmail.com");
+        
         CarrelloManager instance =CarrelloManager.getInstance();
+        
+        carr.setID(instance.recuperoID());
+        carr.setEmail("antonio94c@gmail.com");
+        
+        instance.aggiungiCarrello(carr);
         instance.eliminaCarrello(carr);
         
         
@@ -237,13 +242,16 @@ public class CarrelloManagerTest {
         String sql = "select * from Carrello where (idCarrello='"+carr.getID()+"')";
           if (connection == null) {
                     throw new ConnectionException();
-                }
+            }
 
                 stmt = connection.createStatement();
                 rs = stmt.executeQuery(sql);
 
                 assertEquals(rs.next(),false);
+                
+                
                  
-            }
+    }
+        
     
 }

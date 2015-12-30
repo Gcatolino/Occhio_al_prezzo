@@ -4,6 +4,7 @@
     Author     : gemmacatolino
 --%>
 
+<%@page import="it.unisa.account.Account"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="it.unisa.prodotto.Prodotto"%>
 <%@page import="it.unisa.carrello.CarrelloManager"%>
@@ -13,7 +14,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Amberegul A Ecommerce Category Flat Bootstrap Responsive Website Template | Checkout :: w3layouts</title>
+<title>Occhio al prezzo.it: Carrello</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -41,6 +42,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>  
     
     <% 
+        Account acc = new Account();
+        acc = (Account) session.getAttribute("account");
         Carrello carr = new Carrello();
         carr = (Carrello) session.getAttribute("carrello");
         ArrayList<Prodotto> prodotti = CarrelloManager.getInstance().visualizzaCarrello(carr);
@@ -56,8 +59,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								
 				</ul>
 				<ul class=" support-right">
-					<li ><a href="login.jsp" ><i class="men"> </i>Login</a></li>
-					<li ><a href="registrazione.jsp" ><i class="tele"> </i>Create an Account</a></li>			
+					<li ><a href="login.jsp" ><i class="men"> </i>Ciao ${sessionScope.account.email}!</a></li>
+					<li ><a href="index.jsp" ><i class="tele"> </i>Logout</a></li>			
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
@@ -230,28 +233,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 			<!---->
 				
-<!---->
-	<div class="footer">
-		<div class="container">
-			<div class="col-md-4 footer-top">
-				<h3>Contattaci</h3>
-				<form>
-						
-						<input type="text" value="Inserisci il nome*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci il nome';}">
-						
-						<input type="text" value="Inserisci email*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci email*';}">
-						
-						<input type="text" value="Inserisci il tuo numero*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci il tuo numero';}">
-					
-						<textarea cols="10" rows="4" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Inserisci il messaggio';}">Inserisci il messaggio*</textarea>
-						
-							<input type="submit" value="Invia" >
-						
-					</form>
-
-			</div>
-			
-			
+<!---->			
 			<div class="clearfix"> </div>
 			<p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
                       <a  href="index.jsp"> <center> <img src="images/occhio3.png" class="img-responsive" alt=""/> </center></a>
