@@ -11,6 +11,13 @@
 <head>
         <%
             Account account = ((Account) session.getAttribute("account"));
+            
+            String pass = account.getPassword();
+            String temp = pass.substring(0,1);
+            for(int i=1; i < pass.length()-1;i++){
+                temp = temp + '*';
+            }
+            temp = temp + pass.substring(pass.length()-1);
         %>
 <title>Amberegul A Ecommerce Category Flat Bootstrap Responsive Website Template | About :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -177,7 +184,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </tr>
     <tr>
         <td contenteditable="false">Password</td>
-        <td contenteditable="false" id="password">${sessionScope.account.password}</td>
+        <td contenteditable="false" id="password"><%
+          
+            out.println(temp);
+        
+        %></td>
        
             </tr>
                                     <tr>
