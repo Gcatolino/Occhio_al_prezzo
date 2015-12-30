@@ -66,7 +66,7 @@ public class AddAccountServlet extends HttpServlet {
         
         AccountManager instance =  AccountManager.getInstance();
         try {
-            instance.add(acc);
+            instance.aggiungi(acc);
             out.print("<h1>Registrazione avvenuta con successo</h1>");
             RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
             rs.forward(request, response);

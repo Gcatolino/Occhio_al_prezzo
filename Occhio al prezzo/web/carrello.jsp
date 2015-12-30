@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 				<ul class=" support-right">
 					<li ><a href="login.jsp" ><i class="men"> </i>Ciao ${sessionScope.account.email}!</a></li>
-					<li ><a href="index.jsp" ><i class="tele"> </i>Logout</a></li>			
+					<li ><a href="LogoutServlet" ><i class="tele"> </i>Logout</a></li>			
 				</ul>
 				<div class="clearfix"> </div>
 			</div>

@@ -4,6 +4,7 @@
     Author     : andreapilato
 --%>
 
+<%@page import="it.unisa.carrello.Carrello"%>
 <%@page import="it.unisa.account.Account"%>
 <%@page import="it.unisa.prodotto.ProdottoManager"%>
 <%@page import="java.util.ArrayList"%>
@@ -62,9 +63,11 @@
         <%
             Account account = ((Account) session.getAttribute("account"));
             int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
+            
             Prodotto prodotto = ProdottoManager.getInstance().ricercaProdottoPerID(idProdotto);
             String tmp = prodotto.getData().toString();
             String dat = tmp.substring(8, 10) + "/" + tmp.substring(5, 7) + "/" + tmp.substring(0, 4);
+     
         %>
         <!--header-->	
         <div>

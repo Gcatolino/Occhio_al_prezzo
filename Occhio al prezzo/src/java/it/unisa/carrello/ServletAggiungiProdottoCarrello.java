@@ -49,8 +49,7 @@ public class ServletAggiungiProdottoCarrello extends HttpServlet{
         HttpSession session = request.getSession();
         
         Prodotto prod = new Prodotto();
-        Carrello car = new Carrello();
-        car = (Carrello) session.getAttribute("carrello");
+        Carrello car = (Carrello) session.getAttribute("carrello");
         prod.setId(Integer.parseInt(request.getParameter("idProdotto")));
         
         instance.aggiungiProdotto(prod, car);

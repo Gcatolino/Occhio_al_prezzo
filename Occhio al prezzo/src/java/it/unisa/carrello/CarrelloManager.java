@@ -60,9 +60,8 @@ public class CarrelloManager {
     
     public void aggiungiProdotto(Prodotto prod, Carrello car) throws SQLException, ConnectionException, ValueNullException{
         Connection conn = DBConnection.getConnection();
-        
-        
-        if(!UtilityVar.isNull(prod.getId()) && !UtilityVar.isNull(car.getID())){
+            
+        if((car.getID() != 0) && (prod.getId()!= 0)){
             
             String sql = "INSERT INTO Composizione (fk_idCarrello, fk_idProdotto) VALUES ('"
                          + car.getID() + "','" + prod.getId() + "')";
