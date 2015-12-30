@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import it.unisa.utility.UtilityVar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 
 /**
@@ -251,6 +253,8 @@ public class ProdottoManager {
             while (risultato.next()) {
                 prodotti.add(riempiRisultato(risultato));
             }
+            
+            Collections.sort(prodotti);
 
         } finally {
             DBConnection.releaseConnection(connessione);

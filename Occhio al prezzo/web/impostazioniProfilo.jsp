@@ -73,15 +73,16 @@
                             <ul class="megamenu skyblue menu-in">
                                 <li><a  href="utenteLoggato.jsp">Home</a></li>
                                 
-                                <li><a id="barra" href="javascript:void(0)" onclick="myfunction()">Cerca prodotti</a>
+                               <li><a id="barra" href="javascript:void(0)" onclick="myfunction()">Cerca prodotti</a>
                         </li>
                           <div class="search-in" >
 			<div class="search" >
-						<form>
-							<input type="text" placeholder="Cerca prodotto..."   class="text">
-							<input type="submit" value="Cerca">
+						<form method="POST" action="ServletRicercaPerNome">
+							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text css-input" required>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <input  type="submit" class="btn" value="Cerca">
 						</form>
-							<div class="close-in"><img src="images/close.png" alt="" /></div>
+							<div class="close-in"><img src="images/close1.png" width="20" height="20" alt="" /></div>
 					</div>
 						
 				</div>

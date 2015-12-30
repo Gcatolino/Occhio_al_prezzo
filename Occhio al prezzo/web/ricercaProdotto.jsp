@@ -126,10 +126,11 @@
                           <div class="search-in" >
 			<div class="search" >
 						<form method="POST" action="ServletRicercaPerNome">
-							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text" required>
-							<input type="submit" value="Cerca">
+							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text css-input" required>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <input  type="submit" class="btn" value="Cerca">
 						</form>
-							<div class="close-in"><img src="images/close.png" alt="" /></div>
+							<div class="close-in"><img src="images/close1.png" width="20" height="20" alt="" /></div>
 					</div>
 						
 				</div>

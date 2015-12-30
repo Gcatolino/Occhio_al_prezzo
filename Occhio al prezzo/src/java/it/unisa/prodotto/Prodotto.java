@@ -19,7 +19,7 @@ import java.sql.Date;
  * @version 1.0
  * 
  */
-public class Prodotto implements Serializable{
+public class Prodotto implements Serializable, Comparable<Prodotto>{
     
     private int id;
     private String marca;
@@ -109,5 +109,20 @@ public class Prodotto implements Serializable{
     
     public String getPathImmagine() {
         return pathImmagine;
+    }
+
+    @Override
+    public int compareTo(Prodotto prodotto) {
+        double prezzo = prodotto.getPrezzo();
+        
+        if (this.prezzo > prezzo){
+            return 1;
+        }
+        else if(this.prezzo < prezzo){
+            return -1;
+        }
+        else{
+            return 0;
+        }  
     }
 }

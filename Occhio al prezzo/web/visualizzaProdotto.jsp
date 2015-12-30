@@ -78,9 +78,9 @@
                                 <ul class=" support-right">
                                         <c:choose>    
                                             <c:when test="${sessionScope.email != null}">
-                                                <li><a><span>Ciao ${sessionScope.account.email}!</span></a></li>
+                                                <li><a><i class="title"> </i>Ciao ${sessionScope.account.email}!</a></li>
                                                 
-                                                <li><a href="logout.jsp"><span class="title">Logout</span></a></li>
+                                                <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
                                             </c:when>
                                         </c:choose>		
 				</ul>
@@ -105,10 +105,11 @@
                           <div class="search-in" >
 			<div class="search" >
 						<form method="POST" action="ServletRicercaPerNome">
-							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text" required>
-							<input type="submit" value="Cerca">
+							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text css-input" required>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <input  type="submit" class="btn" value="Cerca">
 						</form>
-							<div class="close-in"><img src="images/close.png" alt="" /></div>
+							<div class="close-in"><img src="images/close1.png" width="20" height="20" alt="" /></div>
 					</div>
 						
 				</div>
@@ -138,12 +139,25 @@
 				
 
                 </ul>
-
+                                    
 		 <!---->
+                 <!---->
+					<div class="cart box_1">
+						<a href="carrello.jsp">
+						<h3> <div class="total">
+							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity"  class="simpleCart_quantity"></span> oggetti)</div>
+							<img src="images/cart.png" alt=""/></h3>
+						</a>
+						<p><a href="javascript:;" class="simpleCart_empty">Svuota carrello </a></p>
+						<div class="clearfix"> </div>
+					</div>
+
+<div class="clearfix"> </div>
+					<!---->
 				</div>
 	
 			</div>
-			
+			<div class="clearfix"> </div>
 		</div>
         <div class="main-content" id="content">
 
