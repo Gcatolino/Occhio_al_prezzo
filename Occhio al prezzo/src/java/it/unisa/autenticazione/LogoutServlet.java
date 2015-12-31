@@ -2,6 +2,7 @@ package it.unisa.autenticazione;
 import java.io.IOException;  
 import java.io.IOException;
 import java.io.PrintWriter;  
+import javax.servlet.RequestDispatcher;
   
 import javax.servlet.ServletException;  
 import javax.servlet.annotation.WebServlet;
@@ -17,12 +18,14 @@ public class LogoutServlet extends HttpServlet {
             response.setContentType("text/html");  
             PrintWriter out=response.getWriter();  
               
-            request.getRequestDispatcher("index.jsp").include(request, response);  
+            HttpSession session = request.getSession();
+            session.setAttribute("messaggio", "Logout effettuato con successo");
+            RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+            rs.forward(request,response); 
               
-            HttpSession session=request.getSession();  
-            session.invalidate();  
+            session.invalidate();
               
-            out.print("You are successfully logged out!");  
+            out.print("Logout effettuato con successo");  
               
             out.close();  
     }  

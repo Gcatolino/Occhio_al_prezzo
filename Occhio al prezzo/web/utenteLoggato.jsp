@@ -50,7 +50,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body> 
             <%
             Account account = ((Account) session.getAttribute("account"));
-        %>
+            String messaggio = ((String) session.getAttribute("messaggio"));
+                %>
+            <script type="text/javascript">
+                var msg = "<%=messaggio%>";
+                if (msg) {
+                    alert(msg);
+                <% session.setAttribute("messaggio", "");%>
+                }
+                </script>
 <!--header-->	
 <div class="header">
 	<div class="header-top">

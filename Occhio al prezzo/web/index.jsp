@@ -8,6 +8,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%
+        String messaggio = ((String) session.getAttribute("messaggio"));
+        %>
+    <script type="text/javascript">
+            var msg = "<%=messaggio%>";
+            if (msg) {
+                alert(msg);
+            <% session.setAttribute("messaggio", "");%>
+            }
+        </script>
 <title>Occhio al prezzo.it: volantino prodotti</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

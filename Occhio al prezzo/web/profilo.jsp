@@ -18,7 +18,16 @@
                 temp = temp + '*';
             }
             temp = temp + pass.substring(pass.length()-1);
+            
+            String messaggio = ((String) session.getAttribute("messaggio"));
         %>
+        <script type="text/javascript">
+            var msg = "<%=messaggio%>";
+            if (msg) {
+                alert(msg);
+            <% session.setAttribute("messaggio", "");%>
+            }
+        </script>
 <title>Amberegul A Ecommerce Category Flat Bootstrap Responsive Website Template | About :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

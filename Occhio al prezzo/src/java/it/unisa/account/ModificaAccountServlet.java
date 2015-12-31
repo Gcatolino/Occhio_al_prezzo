@@ -76,18 +76,22 @@ public class ModificaAccountServlet extends HttpServlet {
             
                 instance.modificaAccount(acc);
            
-            out.print("<h1>account modificato correttamente</h1>");
+            session.setAttribute("messaggio", "Account modificato correttamente");
             RequestDispatcher rs = request.getRequestDispatcher("profilo.jsp");
             rs.forward(request, response);
         } catch (SQLException ex) {
-            out.print("<h1>errore database</h1>");
+            session.setAttribute("messaggio", "Errore database: " + ex.getMessage());
+            RequestDispatcher rs = request.getRequestDispatcher("profilo.jsp");
+            rs.forward(request, response);
         } catch (ValueNullException ex) {
-            
-            out.print("<h1>non hai inserito qualche valore</h1>");
+            session.setAttribute("messaggio", "Non hai inserito qualche valore");
+            RequestDispatcher rs = request.getRequestDispatcher("profilo.jsp");
+            rs.forward(request, response);
+        } catch (ConnectionException ex) {
+            session.setAttribute("messaggio", "Errore di connessione");
+            RequestDispatcher rs = request.getRequestDispatcher("profilo.jsp");
+            rs.forward(request, response);
         }
-          catch (ConnectionException ex) {
-                out.print("<h1>errore di connession</h1>");
-            }
         
          
     }

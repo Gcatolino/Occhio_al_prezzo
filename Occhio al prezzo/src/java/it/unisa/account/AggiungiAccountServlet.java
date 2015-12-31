@@ -65,16 +65,20 @@ public class AggiungiAccountServlet extends HttpServlet {
         System.out.println(acc.getEmail()+"  "+acc.getRuolo()+"  "+acc.getPassword());
         
         AccountManager instance =  AccountManager.getInstance();
+        HttpSession session = request.getSession();
         try {
             instance.aggiungi(acc);
-            out.print("<h1>Registrazione avvenuta con successo</h1>");
+            session.setAttribute("messaggio", "Registrazione avvenuta con successo! Adesso puoi fare il login.");
             RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
             rs.forward(request, response);
         } catch (SQLException ex) {
-            out.print("<h1>errore database: </h1>" + ex.getMessage());
+            session.setAttribute("messaggio", "Errore database: " + ex.getMessage());
+            RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+            rs.forward(request, response);
         } catch (ValueNullException ex) {
-            
-            out.print("<h1>non hai inserito qualche valore</h1>");
+            session.setAttribute("messaggio", "Non hai inserito qualche valore");
+            RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+            rs.forward(request, response);
         }    
     }
 }

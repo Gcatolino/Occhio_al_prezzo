@@ -43,15 +43,15 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         AutenticazioneManager m = AutenticazioneManager.getInstance();
         PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
         try {
             Account a = m.login(email, password);
             if(a == null){
-                out.print("<h1>Non sei ancora registrato. Cosa aspetti a farlo?</h1>");
+                session.setAttribute("messaggio", "Non sei ancora registrato oppure hai sbagliato password");
                 RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
                 rs.forward(request, response);
             }
             else{
-                HttpSession session = request.getSession();
                 String r = a.getRuolo();
                 /*session.setAttribute("email", email);  // just a marker object
                 session.setAttribute("ruolo", r);*/
@@ -67,6 +67,7 @@ public class LoginServlet extends HttpServlet {
                         rs.forward(request,response);
                     }
                     else{
+                        session.setAttribute("messaggio", "Login effettuato con successo");
                         RequestDispatcher rs = request.getRequestDispatcher("utenteLoggato.jsp");
                         rs.forward(request,response);
                         Carrello car = new Carrello();
@@ -90,9 +91,13 @@ public class LoginServlet extends HttpServlet {
             }
             
         } catch (SQLException ex) {
-            out.print("<h1>errore database</h1>");
+            session.setAttribute("messaggio", "Errore database: " + ex.getMessage());
+            RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+            rs.forward(request,response);
         } catch (ConnectionException ex) {
-             out.print("<h1>errore connessione</h1>");
+            session.setAttribute("messaggio", "Errore connessione");
+            RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+            rs.forward(request,response);
         }
     }
     

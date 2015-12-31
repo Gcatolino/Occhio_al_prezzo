@@ -43,6 +43,7 @@ public class EliminaAccountServlet extends HttpServlet {
         String email=request.getParameter("email");
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();
+        HttpSession session = request.getSession();
     
         AccountManager instance =  AccountManager.getInstance();
         Account acc=null;
@@ -68,22 +69,24 @@ public class EliminaAccountServlet extends HttpServlet {
                 acc = instance.ottieniAccountDaEmail(email);
            
                 instance.eliminaAccount(acc);
-            
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Account eliminato correttamente')");
-                out.println("</script>");
                 
+                session.setAttribute("messaggio", "Account eliminato correttamente");
                 RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
                 rs.forward(request, response);
         } catch (SQLException ex) {
+            session.setAttribute("messaggio", "Errore database: " + ex.getMessage());
+            RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+            rs.forward(request, response);
             
-            out.print("<h1>errore database: </h1>" + ex.getMessage());
         } catch (ValueNullException ex) {
-            
-            out.print("<h1>non hai inserito qualche valore</h1>");
+            session.setAttribute("messaggio", "Non hai inserito qualche valore");
+            RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+            rs.forward(request, response);
         }
         catch (ConnectionException ex) {
-                out.print("<h1errore di connessione</h1>");
+            session.setAttribute("messaggio", "Errore di connessione");
+            RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+            rs.forward(request, response);
             }
         }
          
