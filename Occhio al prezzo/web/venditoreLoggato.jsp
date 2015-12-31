@@ -90,7 +90,7 @@
 			
 			
                         
-                        <li><a href="gestioneProdotti.jsp">Gestione prodotti</a>
+                        <li><a href="ServletRicercaPerPuntoVendita?puntoVendita=<%=account.getEmail()%>">Gestione prodotti</a>
         			</li>
 		</ul>
 		 <!---->

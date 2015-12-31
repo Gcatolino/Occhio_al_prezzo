@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,14 +37,14 @@ public class ServletRicercaPerPuntoVendita extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession(true);
         try {
             String puntoVendita = request.getParameter("puntoVendita");
             ArrayList<Prodotto> prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(puntoVendita);
-            out.print("<h1> prodotti </h1>");
-            out.write(prodotti.toString());
+            session.setAttribute("prodotti", prodotti);
+            response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
         } catch (SQLException ex) {
-            out.print("<h1> errore database </h1>");
+            response.sendRedirect("/Occhio_al_prezzo/venditoreLoggato.jsp");
         }
     }
 

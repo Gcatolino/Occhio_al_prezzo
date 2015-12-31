@@ -63,7 +63,7 @@
         <%
             Account account = ((Account) session.getAttribute("account"));
             String fkEmail = account.getEmail();
-            ArrayList<Prodotto> prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(fkEmail);
+            ArrayList<Prodotto> prodotti = ((ArrayList<Prodotto>) session.getAttribute("prodotti"));
             String messaggio = ((String) session.getAttribute("messaggio"));
         %>
         <script type="text/javascript">

@@ -40,9 +40,8 @@ public class ServletInserimentoProdotto extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession(true);
         try{
-            HttpSession session = request.getSession(true);
             response.setContentType("text/html;charset=UTF-8");
 
             String marca = request.getParameter("marca");
@@ -65,14 +64,15 @@ public class ServletInserimentoProdotto extends HttpServlet {
             prodotto.setData(data);
             prodotto.setPathImmagine(pathImmagine);
             
-            System.out.println(prodotto);
             ProdottoManager.getInstance().inserimento(prodotto);
             session.setAttribute("messaggio", "Prodotto inserito correttamente");
             response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
         } catch (SQLException ex) {
-            out.print("<h1> errore database </h1>");
+            session.setAttribute("messaggio", "errore database");
+            response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
         } catch (ValueNullException ex) {
-            out.print("<h1> campo/i mancante/i </h1>");
+            session.setAttribute("messaggio", "campo/i mancante/i");
+            response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
         }
         
     }

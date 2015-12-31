@@ -13,7 +13,7 @@
         %>
     <script type="text/javascript">
             var msg = "<%=messaggio%>";
-            if (msg) {
+            if (msg !== "null") {
                 alert(msg);
             <% session.setAttribute("messaggio", "");%>
             }
