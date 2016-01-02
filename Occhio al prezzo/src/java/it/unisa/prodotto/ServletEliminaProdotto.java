@@ -5,10 +5,12 @@
  */
 package it.unisa.prodotto;
 
+import it.unisa.account.Account;
 import it.unisa.prodotto.ProdottoManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -39,9 +41,11 @@ public class ServletEliminaProdotto extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(true);
         int idProdottoEliminare = Integer.valueOf(request.getParameter("idProdotto"));
+        Account account = (Account) session.getAttribute("account");
         try {
             ProdottoManager.getInstance().elimina(idProdottoEliminare);
-            
+            ArrayList<Prodotto> prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(account.getEmail());
+            session.setAttribute("prodotti", prodotti);
             session.setAttribute("messaggio", "Prodotto eliminato con successo");
             response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
         } catch (SQLException ex) {

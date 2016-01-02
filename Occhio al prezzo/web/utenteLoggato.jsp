@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             }
            %>
             <script type="text/javascript">
-                var msg = "<%=messaggio%>";
+                var msg = "<%= messaggio%>";
                 if (msg) {
                     alert(msg);
                 <% session.setAttribute("messaggio", "");%>

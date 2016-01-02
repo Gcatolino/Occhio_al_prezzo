@@ -12,6 +12,7 @@ import it.unisa.utility.UtilityVar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,6 +65,9 @@ public class ServletModificaProdotto extends HttpServlet {
             
             ProdottoManager.getInstance().modifica(idProdotto, prodotto);
             
+            ArrayList<Prodotto> prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(fkEmail);
+            
+            session.setAttribute("prodotti", prodotti);
             session.setAttribute("messaggio", "Prodotto modificato correttamente");
             response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
             } catch (SQLException ex) {

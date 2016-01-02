@@ -13,6 +13,7 @@ import it.unisa.utility.UtilityVar;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -65,8 +66,13 @@ public class ServletInserimentoProdotto extends HttpServlet {
             prodotto.setPathImmagine(pathImmagine);
             
             ProdottoManager.getInstance().inserimento(prodotto);
+            
+            ArrayList<Prodotto> prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(fkEmail);
+            
+            session.setAttribute("prodotti", prodotti);
             session.setAttribute("messaggio", "Prodotto inserito correttamente");
             response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
+     
         } catch (SQLException ex) {
             session.setAttribute("messaggio", "errore database");
             response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");

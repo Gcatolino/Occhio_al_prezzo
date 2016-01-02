@@ -4,6 +4,7 @@
     Author     : andreapilato
 --%>
 
+<%@page import="it.unisa.account.AccountManager"%>
 <%@page import="it.unisa.carrello.Carrello"%>
 <%@page import="it.unisa.account.Account"%>
 <%@page import="it.unisa.prodotto.ProdottoManager"%>
@@ -66,6 +67,7 @@
             int prodottiCarr = (Integer) session.getAttribute("prodottiCarr");
             
             Prodotto prodotto = ProdottoManager.getInstance().ricercaProdottoPerID(idProdotto);
+            String emailVenditore = prodotto.getFkEmail();
             String tmp = prodotto.getData().toString();
             String dat = tmp.substring(8, 10) + "/" + tmp.substring(5, 7) + "/" + tmp.substring(0, 4);
      
@@ -149,16 +151,16 @@
 					<div class="cart box_1">
 						<a href="carrello.jsp">
 						<h3> <div class="total">
-                                                        <span><%= prodottiCarr %> Prodotti </span>	
-                                                    </div>
-							<img src="images/cart.png" alt=""/></h3>
+                                                    <span><%= prodottiCarr %> Prodotti </span>	
+                                                     </div>	
+                                                    <img src="images/cart.png" alt=""/></h3>
 						</a>
-                                                <% if(prodottiCarr > 0){ %>
-						<p><a href="<%="svuotaCarrelloServlet"%>" class="simpleCart_empty">Svuota carrello </a></p>
-                                                <%} else{ %>
-                                                <p><span>Carrello Vuoto</span></p>
-                                                <% } %>
-						<div class="clearfix"> </div>
+						<% if(prodottiCarr > 0){ %>
+ 						<p><a href="<%="svuotaCarrelloServlet"%>" class="simpleCart_empty">Svuota carrello </a></p>
+                                                 <%} else{ %>
+                                                 <p><span>Carrello Vuoto</span></p>
+                                                 <% } %>
+                                                <div class="clearfix"> </div>
 					</div>
 
 <div class="clearfix"> </div>
@@ -253,7 +255,8 @@
                                                                 <input style="background:#ff5d56;" id="btn" type="submit" class="col-lg-offset-3" value="Aggiungi al carrello" onClick="location.href='<%= "aggiungiProdottoServlet?idProdotto=" + prodotto.getId()%>'">                                          
                                                             </td>
                                                             <td>
-                                                                <input style="background:#ff5d56;" id="btn" type="submit" class="col-lg-offset-5" value="Localizza prodotto" onClick="">
+                                                                <input style="background:#ff5d56;" id="btn" type="submit" class="col-lg-offset-5" value="Localizza prodotto" onClick="location.href='<%= "localizzaProdotto.jsp?emailU=" + account.getEmail() + 
+                                                                      "&emailV=" + emailVenditore%>'">
                                                             </td>
                                                                
                                                         </tr>

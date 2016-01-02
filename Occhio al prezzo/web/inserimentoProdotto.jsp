@@ -89,9 +89,9 @@
                                 <ul class=" support-right">
                                          <c:choose>    
                                             <c:when test="${sessionScope.email != null}">
-                                                <li><a><span>Ciao ${sessionScope.account.email}!</span></a></li>
+                                                <li><a><i class="men"></i>Ciao ${sessionScope.account.email}!</a></li>
                                                 
-                                                <li><a href="logout.jsp"><span class="title">Logout</span></a></li>
+                                                <li><a href="logout.jsp"><i class="tele"></i>Logout</a></li>
                                             </c:when>
                                         </c:choose>		
 				</ul>

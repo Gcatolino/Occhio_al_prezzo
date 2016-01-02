@@ -169,16 +169,16 @@
 					<div class="cart box_1">
 						<a href="carrello.jsp">
 						<h3> <div class="total">
-                                                        <span><%= prodottiCarr %> Prodotti </span>	
-                                                    </div>
-							<img src="images/cart.png" alt=""/></h3>
+						 <span><%= prodottiCarr %> Prodotti </span>	
+                                                     </div>	
+                                                    <img src="images/cart.png" alt=""/></h3>
 						</a>
-                                                <% if(prodottiCarr > 0){ %>
-						<p><a href="<%="svuotaCarrelloServlet"%>" class="simpleCart_empty">Svuota carrello </a></p>
-                                                <%} else{ %>
-                                                <p><span>Carrello Vuoto</span></p>
-                                                <% } %>
-						<div class="clearfix"> </div>
+						<% if(prodottiCarr > 0){ %>
+ 						<p><a href="<%="svuotaCarrelloServlet"%>" class="simpleCart_empty">Svuota carrello </a></p>
+                                                 <%} else{ %>
+                                                 <p><span>Carrello Vuoto</span></p>
+                                                 <% } %>
+                                                <div class="clearfix"> </div>
 					</div>
 
 <div class="clearfix"> </div>
