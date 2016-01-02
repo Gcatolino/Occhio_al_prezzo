@@ -157,7 +157,7 @@ public class CarrelloManager {
     public void eliminaCarrello(Carrello carr) throws SQLException, ConnectionException, ValueNullException{
         Connection conn = DBConnection.getConnection();
         
-        int carrelloId = carr.getID() + 1;
+        int carrelloId = carr.getID();
         carr.setID(carrelloId);
         
         if(!UtilityVar.isNull(carr)){

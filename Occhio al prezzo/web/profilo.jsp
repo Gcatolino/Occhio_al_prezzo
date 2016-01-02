@@ -11,6 +11,10 @@
 <head>
         <%
             Account account = ((Account) session.getAttribute("account"));
+            Integer prodottiCarr = ((Integer) session.getAttribute("prodottiCarr"));
+            if(prodottiCarr == null){
+                prodottiCarr = 0;
+            }
             
             String pass = account.getPassword();
             String temp = pass.substring(0,1);
@@ -129,10 +133,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="cart box_1">
 						<a href="carrello.jsp">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+                                                        <span><%= prodottiCarr %> Prodotti </span>	
+                                                    </div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Svuota carrello</a></p>
+                                                <% if(prodottiCarr > 0){ %>
+						<p><a href="<%="svuotaCarrelloServlet"%>" class="simpleCart_empty">Svuota carrello </a></p>
+                                                <%} else{ %>
+                                                <p><span>Carrello Vuoto</span></p>
+                                                <% } %>
 						<div class="clearfix"> </div>
 					</div>
 

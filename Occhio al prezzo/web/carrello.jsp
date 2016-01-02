@@ -38,6 +38,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <script src="js/simpleCart.min.js"> </script>
+
+
 </head>
 <body>  
     
@@ -46,7 +48,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         acc = (Account) session.getAttribute("account");
         Carrello carr = new Carrello();
         carr = (Carrello) session.getAttribute("carrello");
-        ArrayList<Prodotto> prodotti = CarrelloManager.getInstance().visualizzaCarrello(carr);
+        Integer prodottiCarr = (Integer) session.getAttribute("prodottiCarr");
+        if(prodottiCarr == null)
+            prodottiCarr = 0; 
+        ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
+        if(carr == null){
+            RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
+            rs.forward(request, response);
+        }else{
+            prodotti = CarrelloManager.getInstance().visualizzaCarrello(carr);
+        }
     %>
    
 <!--header-->	
@@ -60,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 				<ul class=" support-right">
 					<li ><a href="login.jsp" ><i class="men"> </i>Ciao ${sessionScope.account.email}!</a></li>
-					<li ><a href="LogoutServlet" ><i class="tele"> </i>Logout</a></li>			
+					<li ><a href="LogoutServlet"><i class="tele"> </i>Logout</a></li>			
 				</ul>
 				<div class="clearfix"> </div>
 			</div>
@@ -103,7 +114,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							});
                                                     };
 							
-						</script>           
+						</script>  
+                                <li><a href="profilo.jsp">Profilo</a></li>
 				<li><a  href="contatti.jsp">Contatti</a>
 					
 				</li>
@@ -111,12 +123,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <!---->
 	<!---->
 					<div class="cart box_1">
-						<a href="carello.jspl">
+						<a href="carrello.jsp">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> Oggetti)</div>
+                                                        <span><%= prodottiCarr %> Prodotti </span>	
+                                                    </div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Carrello vuoto</a></p>
+                                                <% if(prodottiCarr > 0){ %>
+						<p><a href="<%="svuotaCarrelloServlet"%>" class="simpleCart_empty">Svuota carrello </a></p>
+                                                <%} else{ %>
+                                                <p><span>Carrello Vuoto</span></p>
+                                                <% } %>
 						<div class="clearfix"> </div>
 					</div>
 
@@ -217,8 +234,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                       <%}%>
                   </table>	
                                    <div>
-                                       <button type="submit" name="svuotacarrello" onclick="location.href = '<%="svuotaCarrelloServlet"%>'">Svuota Carrello</button>
-                               </div>
+                                       <% if(!prodotti.isEmpty()){ %>
+                                       <p>
+                                           <span style="font-size:1.7em; white-space: none;" class="glyphicon glyphicon-trash" onclick="location.href = '<%="svuotaCarrelloServlet "%>'"></span>
+                                           <a style="font-size: 1.5em; text-decoration: none;" href="<%="svuotaCarrelloServlet"%>">&nbsp;Svuota Carrello</a>
+                                       </p>  
+                                       <% }else{ %>
+                                       
+                                       <h3 align="center">Carrello Vuoto</h3> 
+                                       
+                                       <% } %>
+                                   </div>
 			<div class="clearfix"> </div>
 		  </ul>
 		</div>

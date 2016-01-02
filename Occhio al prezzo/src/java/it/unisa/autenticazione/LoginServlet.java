@@ -77,10 +77,12 @@ public class LoginServlet extends HttpServlet {
                         
                         car.setEmail(email);
                         car.setID(idCarrello);
+                        Integer prodottiCarr = 0;
                         
                         try {
                             instance.aggiungiCarrello(car);
                             session.setAttribute("carrello", car);
+                            session.setAttribute("prodottiCarr", prodottiCarr);
                             rs.forward(request,response);
                         } catch (ValueNullException ex) {
                             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);

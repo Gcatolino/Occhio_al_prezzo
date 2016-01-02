@@ -49,11 +49,13 @@ public class ServletAggiungiProdottoCarrello extends HttpServlet{
         HttpSession session = request.getSession();
         
         Prodotto prod = new Prodotto();
+        int prodottiCarr = (Integer) session.getAttribute("prodottiCarr");
         Carrello car = (Carrello) session.getAttribute("carrello");
         prod.setId(Integer.parseInt(request.getParameter("idProdotto")));
         
         instance.aggiungiProdotto(prod, car);
-        
+        prodottiCarr = prodottiCarr + 1;
+        session.setAttribute("prodottiCarr", prodottiCarr);
         RequestDispatcher rs = request.getRequestDispatcher("ricercaProdotto.jsp");
         rs.forward(request, response);
         

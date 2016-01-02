@@ -50,11 +50,15 @@ public class ServletEliminaProdottoCarrello extends HttpServlet {
         
         Carrello carr = new Carrello();
         carr =(Carrello) session.getAttribute("carrello");
-        
+        int prodottiCarr = (Integer) session.getAttribute("prodottiCarr");
+         
         ArrayList<Prodotto> prodotti = instance.visualizzaCarrello(carr);
         
         Prodotto prod = new Prodotto();
         prod.setId(Integer.valueOf(request.getParameter("idProdotto")));
+        
+        prodottiCarr = prodottiCarr - 1;
+        session.setAttribute("prodottiCarr", prodottiCarr);
         
         PrintWriter out = response.getWriter();
         
@@ -62,6 +66,7 @@ public class ServletEliminaProdottoCarrello extends HttpServlet {
            if(prod.getId() == p.getId()){
                try {
                    instance.eliminaProdotto(prod);
+                   session.setAttribute("prodottiCarr", prodottiCarr);
                    RequestDispatcher re = request.getRequestDispatcher("carrello.jsp");
                    re.forward(request, response);
                   }catch(ConnectionException ex){

@@ -51,7 +51,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <%
             Account account = ((Account) session.getAttribute("account"));
             String messaggio = ((String) session.getAttribute("messaggio"));
-                %>
+            Integer prodottiCarr = ((Integer) session.getAttribute("prodottiCarr"));
+            if(prodottiCarr == null){
+                prodottiCarr = 0;
+            }
+           %>
             <script type="text/javascript">
                 var msg = "<%=messaggio%>";
                 if (msg) {
@@ -75,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             
                           <li ><a><i class="title"> </i>Ciao ${sessionScope.account.email}!</a></li>
                             
-                              <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
+                              <li ><a href="LogoutServlet"><i class="tele"> </i>Logout</a></li>      
                             
                         </c:when>
                     </c:choose>
@@ -142,10 +146,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="cart box_1">
 						<a href="carrello.jsp">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity"  class="simpleCart_quantity"></span> oggetti)</div>
+                                                        <span><%= prodottiCarr %> Prodotti </span>	
+                                                    </div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Svuota carrello </a></p>
+                                                <% if(prodottiCarr > 0){ %>
+						<p><a href="<%="svuotaCarrelloServlet"%>" class="simpleCart_empty">Svuota carrello </a></p>
+                                                <%} else{ %>
+                                                <p><span>Carrello Vuoto</span></p>
+                                                <% } %>
 						<div class="clearfix"> </div>
 					</div>
 

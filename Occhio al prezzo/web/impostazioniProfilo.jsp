@@ -12,6 +12,10 @@
     <head>
         <%
             Account account = ((Account) session.getAttribute("account"));
+            Integer prodottiCarr = ((Integer) session.getAttribute("prodottiCarr"));
+            if(prodottiCarr == null){
+                prodottiCarr = 0;
+            }
         %>
         <title> Crea account </title>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -113,15 +117,20 @@
 
 
                             <!---->
-                            <div class="cart box_1">
-                                <a href="carrello.jsp">
-                                    <h3> <div class="total">
-                                            <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-                                        <img src="images/cart.png" alt=""/></h3>
-                                </a>
-                                <p><a href="javascript:;" class="simpleCart_empty">Carrello vuoto</a></p>
-                                <div class="clearfix"> </div>
-                            </div>
+                        <div class="cart box_1">
+						<a href="carrello.jsp">
+						<h3> <div class="total">
+                                                        <span><%= prodottiCarr %> Prodotti </span>	
+                                                    </div>
+							<img src="images/cart.png" alt=""/></h3>
+						</a>
+                                                <% if(prodottiCarr > 0){ %>
+						<p><a href="<%="svuotaCarrelloServlet"%>" class="simpleCart_empty">Svuota carrello </a></p>
+                                                <%} else{ %>
+                                                <p><span>Carrello Vuoto</span></p>
+                                                <% } %>
+						<div class="clearfix"> </div>
+					</div>
 
                             <!---->
                         </div>

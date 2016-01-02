@@ -49,10 +49,13 @@ public class ServletSvuotaCarrello extends HttpServlet{
         
         Carrello car = new Carrello();
         car = (Carrello) session.getAttribute("carrello");
+        int prodottiCarr = (Integer) session.getAttribute("prodottiCarr");
         CarrelloManager instance = CarrelloManager.getInstance();
         
         try{
            instance.svuotaCarrello(car);
+           prodottiCarr = 0;
+           session.setAttribute("prodottiCarr", prodottiCarr);
            RequestDispatcher re = request.getRequestDispatcher("carrello.jsp");
            re.forward(request, response);
         }catch(ConnectionException ex){

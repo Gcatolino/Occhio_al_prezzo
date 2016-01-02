@@ -63,6 +63,7 @@
         <%
             Account account = ((Account) session.getAttribute("account"));
             int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
+            int prodottiCarr = (Integer) session.getAttribute("prodottiCarr");
             
             Prodotto prodotto = ProdottoManager.getInstance().ricercaProdottoPerID(idProdotto);
             String tmp = prodotto.getData().toString();
@@ -148,10 +149,15 @@
 					<div class="cart box_1">
 						<a href="carrello.jsp">
 						<h3> <div class="total">
-							<span class="simpleCart_total"></span> (<span id="simpleCart_quantity"  class="simpleCart_quantity"></span> oggetti)</div>
+                                                        <span><%= prodottiCarr %> Prodotti </span>	
+                                                    </div>
 							<img src="images/cart.png" alt=""/></h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Svuota carrello </a></p>
+                                                <% if(prodottiCarr > 0){ %>
+						<p><a href="<%="svuotaCarrelloServlet"%>" class="simpleCart_empty">Svuota carrello </a></p>
+                                                <%} else{ %>
+                                                <p><span>Carrello Vuoto</span></p>
+                                                <% } %>
 						<div class="clearfix"> </div>
 					</div>
 
