@@ -50,14 +50,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body> 
             <%
             Account account = ((Account) session.getAttribute("account"));
-            String messaggio = ((String) session.getAttribute("messaggio"));
+            if((account==null) || (!account.getRuolo().equals("utente"))){
+            
+            %>
+            <script type="text/javascript">
+                location.href="index.jsp";
+            </script>
+            <%}
             Integer prodottiCarr = ((Integer) session.getAttribute("prodottiCarr"));
             if(prodottiCarr == null){
                 prodottiCarr = 0;
             }
-           %>
+            String messaggio = ((String) session.getAttribute("messaggio"));
+            %>
             <script type="text/javascript">
-                var msg = "<%= messaggio%>";
+                var msg = "<%=messaggio%>";
                 if (msg) {
                     alert(msg);
                 <% session.setAttribute("messaggio", "");%>
