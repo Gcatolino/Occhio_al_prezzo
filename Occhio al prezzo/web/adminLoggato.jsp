@@ -91,8 +91,19 @@
             {
                 paragrafo = document.getElementById(id);
                 paragrafo.style.color = excolore
-               
+             
             }
+            function removeWriter(){
+                var tab2=document.getElementById("tab2")
+                 tab2.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>";
+              
+             }
+             function removeWriter2(){
+                 
+                  var tab=document.getElementById("tab")
+                 tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>";
+                 
+             }
              function cambia(){
               tab = document.getElementById("tab");
              tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr>";
@@ -112,7 +123,7 @@
                 httpRequest.open("GET","deleteAccountServlet?email="+email, false);
                 alert("accout eliminato correttamente");
                 tab = document.getElementById("tab");
-                tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr><span style='color:red'>account eliminato correttamente</span>";
+                tab.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr><span style='color:red'></span>";
                 setTimeout(cambia,2000);   
                 httpRequest.send(null);
             }
@@ -125,7 +136,7 @@
                 httpRequest.open("GET","deleteAccountServlet?email="+email, false);
                 alert("accout eliminato correttamente");
                 tab2 = document.getElementById("tab2");
-                tab2.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr><span style='color:red'>account eliminato correttamente</span>";
+                tab2.innerHTML = "<tr><th>email</th><th>nome</th><th>cognome</th><th>residenza</th><th>domicilio</th><th>ruolo</th><th>data di nascita</th></tr><span style='color:red'></span>";
                 setTimeout(cambia2,2000);   
                 httpRequest.send(null);
             }
@@ -309,7 +320,7 @@
 <div class="mio">
     <div style="margin-top:5%;margin-left:37%" name="myForm">
         <b>&nbsp;&nbsp;&nbsp;Indirizzo E-mail</b>
-        <input type="text" name="nome" onclick='addColor("RA")' onblur='removeColor("RA")' onkeyUp="ajaxFunction(this.value);" onchange="delet()" />
+        <input type="text" name="nome" onclick='addColor("RA")' onfocus="removeWriter()" onblur='removeColor("RA")' onkeyUp="ajaxFunction(this.value);" onchange="delet()" />
     </div>
 
     <p id="result">
@@ -328,7 +339,7 @@
 <div class="mio">
     <div style="margin-top:5%;margin-left:34%" name="myForm">
         <b></span>Comune di Residenza</b>
-        <input type="text" name="domicilio" onclick='addColor("RF")'  onblur='removeColor("RF")' onkeyUp="ajaxFunctiondomicilio(this.value);" />
+        <input type="text" name="domicilio"  onfocus="removeWriter2()" onclick='addColor("RF")'  onblur='removeColor("RF")' onkeyUp="ajaxFunctiondomicilio(this.value);" />
     </div>
     <p id="result">
 
