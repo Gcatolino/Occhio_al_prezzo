@@ -57,6 +57,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             rs.forward(request, response);
         }else{
             prodotti = CarrelloManager.getInstance().visualizzaCarrello(carr);
+            prodottiCarr = prodotti.size();
+            session.setAttribute("prodottiCarr", prodottiCarr);
         }
     %>
    
