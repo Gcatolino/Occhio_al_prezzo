@@ -84,7 +84,7 @@
                                             <c:when test="${sessionScope.email != null}">
                                                 <li><a><i class="title"> </i>Ciao ${sessionScope.account.email}!</a></li>
                                                 
-                                                <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
+                                                <li ><a href="LogoutServlet"><i class="tele"> </i>Logout</a></li>      
                                             </c:when>
                                         </c:choose>		
 				</ul>
