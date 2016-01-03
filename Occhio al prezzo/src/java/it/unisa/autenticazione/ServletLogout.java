@@ -28,7 +28,6 @@ public class ServletLogout extends HttpServlet {
                 HttpSession session = request.getSession();
                 CarrelloManager instance = CarrelloManager.getInstance();
                 Carrello carr = new Carrello();
-                session.setAttribute("carrello", null);
                 carr.setID(instance.recuperoID());
                 instance.eliminaCarrello(carr);
                 session.setAttribute("messaggio", "Logout effettuato con successo");
