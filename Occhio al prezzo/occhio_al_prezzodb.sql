@@ -77,32 +77,7 @@ LOCK TABLES `Carrello` WRITE;
 
 INSERT INTO `Carrello` (`idCarrello`, `fk_email`)
 VALUES
-	('10','alfredo.santoro@gmail.com'),
-	('11','alfredo.santoro@gmail.com'),
-	('12','alfredo.santoro@gmail.com'),
-	('13','alfredo.santoro@gmail.com'),
-	('14','alfredo.santoro@gmail.com'),
-	('15','alfredo.santoro@gmail.com'),
-	('16','alfredo.santoro@gmail.com'),
-	('17','alfredo.santoro@gmail.com'),
-	('18','alfredo.santoro@gmail.com'),
-	('19','alfredo.santoro@gmail.com'),
-	('20','alfredo.santoro@gmail.com'),
-	('21','alfredo.santoro@gmail.com'),
-	('22','alfredo.santoro@gmail.com'),
-	('23','alfredo.santoro@gmail.com'),
-	('24','alfredo.santoro@gmail.com'),
-	('25','alfredo.santoro@gmail.com'),
-	('26','alfredo.santoro@gmail.com'),
-	('5','alfredo.santoro@gmail.com'),
-	('6','alfredo.santoro@gmail.com'),
-	('7','alfredo.santoro@gmail.com'),
-	('8','alfredo.santoro@gmail.com'),
-	('9','alfredo.santoro@gmail.com'),
-	('1','mario.rossi@gmail.com'),
-	('2','rossi@gmail.com'),
-	('3','rossi@gmail.com'),
-	('4','rossi@gmail.com');
+	
 
 /*!40000 ALTER TABLE `Carrello` ENABLE KEYS */;
 UNLOCK TABLES;
