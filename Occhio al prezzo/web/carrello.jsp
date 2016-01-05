@@ -49,6 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         Carrello carr = new Carrello();
         carr = (Carrello) session.getAttribute("carrello");
         Integer prodottiCarr = (Integer) session.getAttribute("prodottiCarr");
+        double totale = 0.0;
         if(prodottiCarr == null)
             prodottiCarr = 0; 
         ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
@@ -62,6 +63,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
     %>
    
+    <style type="text/css">
+        
+        #totale{
+            position: absolute;
+            left: 80%;
+        }
+        
+    </style>
 <!--header-->	
 <div class=" header-product">
 	<div class="header-top com">
@@ -220,6 +229,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <%
                                         for(int i=0; i < prodotti.size(); i++){
                                             Prodotto prod = prodotti.get(i);
+                                            totale += prod.getPrezzo();
                                     %>
                                     
                                     <tr><td><img SRC="<%= prod.getPathImmagine()%>" width="100" height="180"></td>
@@ -237,6 +247,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                        <p>
                                            <span style="font-size:1.7em; white-space: none;" class="glyphicon glyphicon-trash" onclick="location.href = '<%="svuotaCarrelloServlet "%>'"></span>
                                            <a style="font-size: 1.5em; text-decoration: none;" href="<%="svuotaCarrelloServlet"%>">&nbsp;Svuota Carrello</a>
+                                           <span id ="totale" style="font-size: 1.7em;">Totale: <%= totale %>€</span>
                                        </p>  
                                        <% }else{ %>
                                        

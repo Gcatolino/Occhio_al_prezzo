@@ -12,6 +12,13 @@
     <head>
         <%
             Account account = ((Account) session.getAttribute("account"));
+            if((account==null) || (!account.getRuolo().equals("utente"))){
+            
+        %>
+        <script type="text/javascript">
+            location.href="index.jsp";
+            </script>
+            <%}
             Integer prodottiCarr = ((Integer) session.getAttribute("prodottiCarr"));
             if(prodottiCarr == null){
                 prodottiCarr = 0;
@@ -59,7 +66,7 @@
 
                                     <li ><a><i class="title"> </i>Ciao ${sessionScope.account.email}!</a></li>
 
-                                    <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
+                                    <li ><a href="LogoutServlet"><i class="tele"> </i>Logout</a></li>      
 
                                 </c:when>
                             </c:choose>				

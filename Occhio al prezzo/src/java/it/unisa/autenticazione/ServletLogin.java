@@ -32,7 +32,7 @@ import javax.servlet.http.HttpSession;
  */
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/loginServlet"})
-public class LoginServlet extends HttpServlet {
+public class ServletLogin extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -85,7 +85,7 @@ public class LoginServlet extends HttpServlet {
                             session.setAttribute("prodottiCarr", prodottiCarr);
                             rs.forward(request,response);
                         } catch (ValueNullException ex) {
-                            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
                 }

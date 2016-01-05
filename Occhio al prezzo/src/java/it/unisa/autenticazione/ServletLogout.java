@@ -3,7 +3,6 @@ import it.unisa.carrello.Carrello;
 import it.unisa.carrello.CarrelloManager;
 import it.unisa.exception.ConnectionException;
 import it.unisa.exception.ValueNullException;
-import java.io.IOException;  
 import java.io.IOException;
 import java.io.PrintWriter;  
 import java.sql.SQLException;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;  
 
 @WebServlet(name = "LogoutServlet", urlPatterns = {"/LogoutServlet"})
-public class LogoutServlet extends HttpServlet {  
+public class ServletLogout extends HttpServlet {  
         protected void doGet(HttpServletRequest request, HttpServletResponse response)  
                                 throws ServletException, IOException {  
             try {
@@ -29,7 +28,6 @@ public class LogoutServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 CarrelloManager instance = CarrelloManager.getInstance();
                 Carrello carr = new Carrello();
-                session.setAttribute("carrello", null);
                 carr.setID(instance.recuperoID());
                 instance.eliminaCarrello(carr);
                 session.setAttribute("messaggio", "Logout effettuato con successo");
@@ -42,11 +40,11 @@ public class LogoutServlet extends HttpServlet {
                   
                 out.close();
             } catch (SQLException ex) {
-                Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletLogout.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ConnectionException ex) {
-                Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletLogout.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ValueNullException ex) {
-                Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletLogout.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
 

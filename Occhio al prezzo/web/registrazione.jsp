@@ -154,7 +154,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <input type="text" name="comune">						 
 					</div>
                                         </div>
-                                    <input type="submit" id="register" value="Registrati" onClick="Modulo()"> 
+                                    <input type="button" id="register" value="Registrati" onClick="Modulo()"> 
 				</form>
 				
 		<script>
