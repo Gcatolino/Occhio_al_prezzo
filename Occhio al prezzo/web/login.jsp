@@ -93,10 +93,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							$('.search').hide();
 							});
 						</script>
-                      
-				<li><a  href="contatti.jsp">Contatti</a>
-					
-				</li>
 		 </ul> 
 		 <!---->
 		

@@ -122,7 +122,7 @@ window.onload = initialize;
                             
                           <li ><a><i class="title"> </i>Ciao ${sessionScope.account.email}!</a></li>
                             
-                              <li ><a href="index.jsp"><i class="tele"> </i>Logout</a></li>      
+                              <li ><a href="LogoutServlet"><i class="tele"> </i>Logout</a></li>      
                             
                         </c:when>
                     </c:choose>
@@ -147,7 +147,7 @@ window.onload = initialize;
                           <div class="search-in" >
 			<div class="search" >
 						<form method="POST" action="ServletRicercaPerNome">
-							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text css-input" required>
+							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto per nome" class="text css-input" required>
                                                         &nbsp;&nbsp;&nbsp;
                                                         <input  type="submit" class="btn" value="Cerca">
 						</form>
@@ -175,9 +175,6 @@ window.onload = initialize;
                             <a href="profilo.jsp">Profilo</a>
                         </li>
                         
-                         <li><a  href="contatti.jsp">Contatti</a>
-					
-				</li>     
 				
 
                 </ul>

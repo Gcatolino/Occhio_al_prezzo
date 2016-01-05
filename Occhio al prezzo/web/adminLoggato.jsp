@@ -258,11 +258,6 @@
 
                             <li><a href="adminLoggato.jsp">Gestione Account</a>
                             </li>
-
-
-
-                            <!--<li><a  href="contact.html">Contatti</a>-->
-
                             </li>
                         </ul>
 

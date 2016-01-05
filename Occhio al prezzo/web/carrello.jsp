@@ -118,9 +118,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							
 						</script>  
                                 <li><a href="profilo.jsp">Profilo</a></li>
-				<li><a  href="contatti.jsp">Contatti</a>
-					
-				</li>
 		 </ul> 
 		 <!---->
 	<!---->

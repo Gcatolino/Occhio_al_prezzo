@@ -154,10 +154,7 @@
                         <li>
                             <a href="profilo.jsp">Profilo</a>
                         </li>
-                        
-                         <li><a  href="contatti.jsp">Contatti</a>
-					
-				</li>     
+                            
 				
 
                 </ul>
