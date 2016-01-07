@@ -122,7 +122,7 @@
                           <div class="search-in" >
 			<div class="search" >
 						<form method="POST" action="ServletRicercaPerNome">
-							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text css-input" required>
+							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto per nome" class="text css-input" required>
                                                         &nbsp;&nbsp;&nbsp;
                                                         <input  type="submit" class="btn" value="Cerca">
 						</form>
@@ -151,8 +151,8 @@
                         </li>
                         
                            
-				
 
+				
                 </ul>
                                     
 		 <!---->
@@ -261,7 +261,7 @@
                                                         </td></tr>
                                                         <tr>
                                                             <td>
-                                                                <input style="background:#ff5d56;" id="btn" type="submit" class="col-lg-offset-3" value="Aggiungi al carrello" onClick="location.href='<%= "aggiungiProdottoServlet?idProdotto=" + prodotto.getId()%>'">                                          
+                                                                <input style="background:#ff5d56;" id="btn" type="submit" value="Aggiungi al carrello" onClick="location.href='<%= "aggiungiProdottoServlet?idProdotto=" + prodotto.getId()%>'">                                          
                                                             </td>
                                                             <td>
                                                                 <input style="background:#ff5d56;" id="btn" type="submit" class="col-lg-offset-5" value="Localizza prodotto" onClick="location.href='<%= "localizzaProdotto.jsp?emailU=" + account.getEmail() + 

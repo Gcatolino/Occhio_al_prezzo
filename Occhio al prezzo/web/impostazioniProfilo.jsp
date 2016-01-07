@@ -89,7 +89,7 @@
                           <div class="search-in" >
 			<div class="search" >
 						<form method="POST" action="ServletRicercaPerNome">
-							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto..." class="text css-input" required>
+							<input type="text" name="nomeProdotto" placeholder="Cerca prodotto per nome" class="text css-input" required>
                                                         &nbsp;&nbsp;&nbsp;
                                                         <input  type="submit" class="btn" value="Cerca">
 						</form>

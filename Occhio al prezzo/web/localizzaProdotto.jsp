@@ -1,6 +1,7 @@
 <%@page import="it.unisa.account.AccountManager"%>
 <%@page import="it.unisa.account.Account"%>
 <html>
+<<<<<<< HEAD
     <head>
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
