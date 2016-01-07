@@ -21,9 +21,9 @@ import java.util.logging.Logger;
  * @author andreapilat
  */
 public class DBConnection {
-    private static String dbPath = "jdbc:mysql://localhost:3306/sys?zeroDateTimeBehavior=convertToNull";
+    private static String dbPath = "jdbc:mysql://localhost:3306/occhio_al_prezzodb";
     private static String dbUsername = "root";
-    private static String dbPassword = "pwd"; 
+    private static String dbPassword = "root"; 
 
     static {
         freeDbConnections = new ArrayList<Connection>();
