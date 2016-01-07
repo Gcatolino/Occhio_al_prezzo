@@ -133,7 +133,6 @@
                                     <th>Prezzo&nbsp;</th>
                                     <th>Punto Vendita&nbsp;</th>
                                     <th>Data&nbsp;</th>
-                                    <th>Path Immagine</th>
                                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                                     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -149,7 +148,6 @@
                                         <td><%= formatoNumeri.format(prodotto.getPrezzo())%>&nbsp;</td>
                                         <td><%= prodotto.getPuntoVendita()%>&nbsp;</td>
                                         <td><%= prodotto.getData()%>&nbsp;</td>
-                                        <td><%= prodotto.getPathImmagine()%>&nbsp;</td>
                                         <td><img SRC="<%=prodotto.getPathImmagine()%>" width="50" height="70"></td>
 
                                         

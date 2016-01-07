@@ -4,6 +4,7 @@
     Author     : gemmacatolino
 --%>
 
+<%@page import="java.text.NumberFormat"%>
 <%@page import="it.unisa.account.Account"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="it.unisa.prodotto.Prodotto"%>
@@ -11,6 +12,11 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="it.unisa.carrello.Carrello"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    NumberFormat formatoNumeri = NumberFormat.getInstance();
+    formatoNumeri.setMaximumFractionDigits(2);
+    formatoNumeri.setMinimumFractionDigits(2);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -260,7 +266,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                        <p>
                                            <span style="font-size:1.7em; white-space: none;" class="glyphicon glyphicon-trash" onclick="location.href = '<%="svuotaCarrelloServlet "%>'"></span>
                                            <a style="font-size: 1.5em; text-decoration: none;" href="<%="svuotaCarrelloServlet"%>">&nbsp;Svuota Carrello</a>
-                                           <span id ="totale" style="font-size: 1.7em;">Totale: <%= totale %>€</span>
+                                           <span id ="totale" style="font-size: 1.7em;">Totale: <%= formatoNumeri.format(totale) %>€</span>
                                        </p>  
                                        <% }else{ %>
                                        

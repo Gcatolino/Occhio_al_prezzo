@@ -168,19 +168,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="col-md-4 footer-top">
 				<h3>Contattaci</h3>
-				<form>
+				<form name="modulo" method="post">
 						
-						<input type="text" value="Inserisci il nome*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci il nome';}">
+						<input type="text" name="nome" placeholder="Inserisci il nome*"  required>
 						
-						<input type="text" value="Inserisci email*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci email*';}">
+						<input type="text" name="email" placeholder="Inserisci email*"  required>
 						
-						<input type="text" value="Inserisci il tuo numero*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Inserisci il tuo numero';}">
-					
-						<textarea cols="10" rows="4" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Inserisci il messaggio';}">Inserisci il messaggio*</textarea>
+						<textarea cols="10" name="messaggio" rows="4" placeholder="Inserisci il messaggio*" required></textarea>
 						
-							<input type="submit" value="Invia" style="float:left;">
+							<input type="button" value="Invia" onClick="Modulo()">
 						
-					</form>
+				</form>
+                                <script>
+                                function Modulo() {
+                        // Variabili associate ai campi del modulo
+                        var nome = document.modulo.nome.value;
+                        var email = document.modulo.email.value;
+                        var messaggio = document.modulo.messaggio.value;
+   
+                        // Espressione regolare dell'email
+                        var email_reg_exp = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
+                        
+                        if((document.modulo.nome.value === "") || (document.modulo.nome.value === "undefined")){
+                            alert("Il campo Nome è obbligatorio.");
+                            document.modulo.nome.focus();
+                            return false;
+                        }
+                        else if (!email_reg_exp.test(email) || (email === "") || (email === "undefined")) {
+                           alert("Inserire un indirizzo email corretto.");
+                           document.modulo.email.select();
+                           return false;
+                        }
+                        else if((messaggio === "") || (messaggio === "undefined")){
+                            alert("Il campo Messaggio è obbligatorio.");
+                            document.modulo.messaggio.focus();
+                            return false;
+                        }
+                        else{
+                        document.modulo.action = "ServletContatti";
+                        document.modulo.submit();
+                        }
+                    }
+                </script>
                         </div>
                        <div class="clearfix"> </div>         
                       <p class="footer-class">© 2015 Amberegul All Rights Reserved | Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
