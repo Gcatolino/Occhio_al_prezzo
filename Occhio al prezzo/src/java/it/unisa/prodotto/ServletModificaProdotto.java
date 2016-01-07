@@ -69,13 +69,13 @@ public class ServletModificaProdotto extends HttpServlet {
             
             session.setAttribute("prodotti", prodotti);
             session.setAttribute("messaggio", "Prodotto modificato correttamente");
-            response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
+            response.sendRedirect("gestioneProdotti.jsp");
             } catch (SQLException ex) {
                 session.setAttribute("messaggio", "Errore database");
-                response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
+                response.sendRedirect("gestioneProdotti.jsp");
             } catch (ValueNullException ex) {
                 session.setAttribute("messaggio", "Campo/i mancante/i");
-                response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
+                response.sendRedirect("gestioneProdotti.jsp");
             }
         
         }

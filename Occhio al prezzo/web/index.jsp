@@ -90,9 +90,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="login.jsp">Cerca prodotti</a></li>
                                        
                         
-                         <li><a  href="contatti.jsp">Contatti</a>
-					
-				</li>     
+                              
 				
 
                 </ul>
@@ -133,319 +131,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  	<div class="col-md-8 about_left">
 	  		<h3>Occhio al prezzo</h3>
 	        <img src="images/p1.jpg" class="img-responsive" alt="">
-		    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		    <p>Occhio al prezzo nasce con l’obiettivo di tenere informato l’utente sulle offerte di beni primari di consumo. Il sistema confronta i prezzi dei prodotti in offerta dei vari punti vendita italiani. Il portale offre la possibilità di cercare un singolo prodotto o più prodotti(non di sfogliare un semplice volantino), tenendone traccia in un comodo carrello. In questo modo la ricerca delle offerte è immediata.</p>
                     <br>
                     <br>                  
                 </div>
                 <div class="col-md-4 sidebar">
-	  		      <h3>Testimonianze</h3>
+	  		      <h3>Dicono di noi..</h3>
 		  			    <div class="testimonials">
-		  					 <h5>Finibus Bonorum Malorum<span><a href="#">http://demolink.org</a></span></h5>
-		  					 <p><span class="quotes"></span>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<span class="quotes-down"></span></p>
+		  					 <h4>Marco<span></h4>
+                                                         <p><span class="quotes"></span>Ottimo portale, la aspettavo da tempo un'applicazione così!<span class="quotes-down"></span>
 		  				</div>	
 		  				<div class="testimonials">
-		  					 <h5>Finibus Bonorum <span><a href="#">http://demolink.org</a></span></h5>
-		  					 <p><span class="quotes"></span>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<span class="quotes-down"></span></p>
+		  					 <h4>Ilaria</h4>
+		  					 <p><span class="quotes"></span>Semplice da utilizzare e tanto risparmio!<span class="quotes-down"></span></p>
 		  				</div>
 		  				<div class="testimonials">
-		  					 <h5>H. Rackham<span><a href="#">http://demolink.org</a></span></h5>
-		  					 <p><span class="quotes"></span>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.<span class="quotes-down"></span></p>
+		  					 <h4>Bruno</h4>
+		  					 <p><span class="quotes"></span>Una web application comoda ed efficiente!<span class="quotes-down"></span></p>
 		  				</div>
 		  			
 	  	</div>	
           </div>
                     </div>
-                    <label class="line"> </label>
-			<h2>Ultimi prodotti in offerta</h2>	
-						 <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-						  <ul class="resp-tabs-list">
-						  	  <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Bevande</span></li>
-							  <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Alimenti</span></li>
-							  <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>Carta</span></li>
-							  <div class="clearfix"></div>
-						  </ul>				  	 
-							<div class="resp-tabs-container">
-							    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-									<div class="tab_img">
-									  <div class="img-top simpleCart_shelfItem">
-										
-					   		  			   <img src="images/birra1.jpeg" class="img-responsive" alt=""/>
-											
-								              <div class="tab_desc">
-												 <ul class="round-top">
-												 	<li><a href="#"><i> </i></a></li>
-												 	<li><a href="#"><i class="round"> </i></a></li>
-												 </ul>
-												 
-												 	<div class="agency ">
-													<div class="agency-left">
-														<h6 class="jean">Birra Heineken</h6>
-														<span class="dollor item_price">€ da 0,99</span>
-														<div class="clearfix"> </div>
-													</div>
-													<div class="agency-right">
-														<ul class="social">
-															<li><a href="#"><i class="item_add"> </i></a></li>
-															
-														</ul>
-														<ul class="social-in">
-														</ul>
-														<div class="clearfix"> </div>
-													</div>
-												 </div>
-											  </div>
-										
-										</div>
-										<div class="img-top simpleCart_shelfItem">
-										  
-					   		  			   <img src="images/coca1.jpeg" class="img-responsive" alt=""/>
-											<div class="tab_desc">
-												 <ul class="round-top">
-												 	<li><a href="#"><i> </i></a></li>
-												 	<li><a href="#"><i class="round"> </i></a></li>
-												 </ul>
-												 
-												<div class="agency ">
-													<div class="agency-left">
-														<h6 class="jean">Coca cola</h6>
-														<span class="dollor item_price"> da € 1,00</span>
-														<div class="clearfix"> </div>
-													</div>
-													<div class="agency-right">
-														<ul class="social">
-															<li><a href="#"><i class="item_add"> </i></a></li>
-															
-														</ul>
-														<ul class="social-in">
-														</ul>
-														<div class="clearfix"> </div>
-													</div>
-												 </div>
-											  </div>
-											  
-											 </div>
-											  <div class="img-top simpleCart_shelfItem">
-										  
-					   		  			   <img src="images/latte.jpeg" class="img-responsive" alt=""/>
-											<div class="tab_desc">
-												 <ul class="round-top">
-												 	<li><a href="#"><i> </i></a></li>
-												 	<li><a href="#"><i class="round"> </i></a></li>
-												 </ul>
-												 
-												 <div class="agency ">
-													<div class="agency-left">
-														<h6 class="jean">Latte Fresco</h6>
-														<span class="dollor item_price"> da € 0,60</span>
-														<div class="clearfix"> </div>
-													</div>
-													<div class="agency-right">
-														<ul class="social">
-															<li><a href="#"><i class="item_add"> </i></a></li>
-															
-														</ul>
-														<ul class="social-in">
-														</ul>
-														<div class="clearfix"> </div>
-													</div>
-												 </div>
-											  </div>
-											 <div class="col-in col-in-1">
-											  	
-											  </div>
-											</div>
-											<div class="clearfix"></div>
-							     </div>	
-									 	        					 
-						  </div>
-							    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-									<div class="tab_img">
-									  <div class="img-top simpleCart_shelfItem">
-										
-					   		  			   <img src="images/pandoro.jpeg" class="img-responsive" alt=""/>
-											
-								              <div class="tab_desc">
-												 <ul class="round-top">
-												 	<li><a href="#"><i> </i></a></li>
-												 	<li><a href="#"><i class="round"> </i></a></li>
-												 </ul>
-												 
-												 <div class="agency ">
-													<div class="agency-left">
-														<h6 class="jean">Pandoro</h6>
-														<span class="dollor item_price"> da €1,99</span>
-														<div class="clearfix"> </div>
-													</div>
-													<div class="agency-right">
-														<ul class="social">
-															<li><a href="#"><i class="item_add"> </i></a></li>
-															
-														</ul>
-														<ul class="social-in">
-														</ul>
-														<div class="clearfix"> </div>
-													</div>
-												 </div>
-											  </div>
-										
-										</div>
-										<div class="img-top simpleCart_shelfItem">
-										  
-					   		  			   <img src="images/pasta.jpeg" class="img-responsive" alt=""/>
-											<div class="tab_desc">
-												 <ul class="round-top">
-												 	<li><a href="#"><i> </i></a></li>
-												 	<li><a href="#"><i class="round"> </i></a></li>
-												 </ul>
-												 
-												 <div class="agency ">
-													<div class="agency-left">
-														<h6 class="jean">Pasta rummo</h6>
-														<span class="dollor item_price"> da € 2,00</span>
-														<div class="clearfix"> </div>
-													</div>
-													<div class="agency-right">
-														<ul class="social">
-															<li><a href="#"><i class="item_add"> </i></a></li>
-															
-														</ul>
-														<ul class="social-in">
-														</ul>
-														<div class="clearfix"> </div>
-													</div>
-												 </div>
-											  </div>
-											  <div class="col-in">
-											  	
-											  </div>
-											 </div>
-											  <div class="img-top simpleCart_shelfItem">
-										  
-					   		  			   <img src="images/nutella.jpeg" class="img-responsive" alt=""/>
-											<div class="tab_desc">
-												 <ul class="round-top">
-												 	<li><a href="#"><i> </i></a></li>
-												 	<li><a href="#"><i class="round"> </i></a></li>
-												 </ul>
-												 <div class="agency ">
-													<div class="agency-left">
-														<h6 class="jean">Nutella ferrero</h6>
-														<span class="dollor item_price"> da €3,40</span>
-														<div class="clearfix"> </div>
-													</div>
-													<div class="agency-right">
-														<ul class="social">
-															<li><a href="#"><i class="item_add"> </i></a></li>
-															
-														</ul>
-														<ul class="social-in">
-														</ul>
-														<div class="clearfix"> </div>
-													</div>
-												 </div>
-											  </div>
-											 
-											</div>
-											<div class="clearfix"></div>
-							     </div>	
-									 	        					 
-						  </div>
-						    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
-									<div class="tab_img">
-									  <div class="img-top simpleCart_shelfItem">
-										
-					   		  			   <img src="images/fazzoletti.jpeg" class="img-responsive" alt=""/>
-											
-								              <div class="tab_desc">
-												 <ul class="round-top">
-												 	<li><a href="#"><i> </i></a></li>
-												 	<li><a href="#"><i class="round"> </i></a></li>
-												 </ul>
-												 
-												 <div class="agency ">
-													<div class="agency-left">
-														<h6 class="jean">Fazzoletti scottex</h6>
-														<span class="dollor item_price">da € 0,79</span>
-														<div class="clearfix"> </div>
-													</div>
-													<div class="agency-right">
-														<ul class="social">
-															<li><a href="#"><i class="item_add"> </i></a></li>
-															
-														</ul>
-														<ul class="social-in">
-														</ul>
-														<div class="clearfix"> </div>
-													</div>
-												 </div>
-											  </div>
-										
-										</div>
-										<div class="img-top simpleCart_shelfItem">
-										  
-					   		  			   <img src="images/carta.jpeg" class="img-responsive" alt=""/>
-											<div class="tab_desc">
-												 <ul class="round-top">
-												 	<li><a href="#"><i> </i></a></li>
-												 	<li><a href="#"><i class="round"> </i></a></li>
-												 </ul>
-												 
-												 	<div class="agency ">
-													<div class="agency-left">
-														<h6 class="jean">Scortex CartaCasa <br> Gigante</h6>
-														<span class="dollor item_price">da € 1,89</span>
-														<div class="clearfix"> </div>
-													</div>
-													<div class="agency-right">
-														<ul class="social">
-															<li><a href="#"><i class="item_add"> </i></a></li>
-															
-														</ul>
-														<ul class="social-in">
-														</ul>
-														<div class="clearfix"> </div>
-													</div>
-												 </div>
-											  </div>
-											  <div class="col-in">
-											  	
-											  </div>
-											 </div>
-											  <div class="img-top simpleCart_shelfItem">
-										  
-					   		  			   <img src="images/cuki.jpeg" class="img-responsive" alt=""/>
-											<div class="tab_desc">
-												 <ul class="round-top">
-												 	<li><a href="#"><i> </i></a></li>
-												 	<li><a href="#"><i class="round"> </i></a></li>
-												 </ul>
-												 
-												 	<div class="agency ">
-													<div class="agency-left">
-														<h6 class="jean">Alluminio Cuki</h6>
-														<span class="dollor item_price">da € 1,10</span>
-														<div class="clearfix"> </div>
-													</div>
-													<div class="agency-right">
-														<ul class="social">
-															<li><a href="#"><i class="item_add"> </i></a></li>
-															
-														</ul>
-														<ul class="social-in">
-														</ul>
-														<div class="clearfix"> </div>
-													</div>
-												 </div>
-											  </div>
-											 
-											</div>
-											<div class="clearfix"></div>
-							     </div>	
-									 	        					 
-						  </div>		
-                  </div>
-          </div>
-         </div>
+                    
 		<!---->
 	</div>
 	<!---->

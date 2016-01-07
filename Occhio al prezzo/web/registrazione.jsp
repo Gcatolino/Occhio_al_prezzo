@@ -85,9 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							});
 						</script>
 				
-				<li><a  href="contatti.jsp">Contatti</a>
-					
-				</li>
+				
 		 </ul> 
 		 <!---->
 		 
@@ -126,38 +124,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="mation">
 					<div>
 						<span id="nome">Nome</span>
-						<input type="text" name="nome"> 
+						<input required type="text" name="nome"> 
 					</div>
 					<div>
 						<span id="cognome">Cognome</span>
-						<input type="text" name="cognome"> 
+						<input required type="text" name="cognome"> 
 					 </div>
 					 <div>
 						 <span id="email">Email </span>
-						 <input type="text" name="email">
+						 <input required type="text" name="email">
                                         </div>
                                         <div>
                                                 <span id="password">Password</span>
-                                                <input type="password" name="password">						 
+                                                <input required type="password" name="password">						 
 					</div>
                                         <div>
                                                 <span>Conferma Password</span>
-                                                <input type="password" name="conferma">						 
+                                                <input required type="password" name="conferma">						 
 					</div>
                                         <div>
                                                 <span id="domiclio">Domicilio</span>
-                                                <input type="text" name="domicilio">						 
+                                                <input required type="text" name="domicilio" placeholder="Via/Contrada">						 
 					</div>
                                         <div>
                                                 <span id="data_di_nascita">Data di nascita</span>
-                                                <input type="text" placeholder="gg/mm/aaaa" name="nascita">						 
+                                                <input required type="text" placeholder="gg/mm/aaaa" name="nascita">						 
 					</div>
                                         <div>
                                                 <span id="comune_di_residenza">Comune di Residenza</span>
-                                                <input type="text" name="comune">						 
+                                                <input required type="text" name="comune">						 
 					</div>
                                         </div>
-                                    <input type="button" id="register" value="Registrati" onClick="Modulo()"> 
+                                    <input type="submit" id="register" value="Registrati" onClick="Modulo()"> 
 				</form>
 				
 		<script>

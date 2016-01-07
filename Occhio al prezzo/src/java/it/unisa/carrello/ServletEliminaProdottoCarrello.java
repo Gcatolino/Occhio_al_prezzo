@@ -62,6 +62,7 @@ public class ServletEliminaProdottoCarrello extends HttpServlet {
            if(prod.getId() == p.getId()){
                try {
                    instance.eliminaProdotto(prod);
+                   session.setAttribute("messaggio", "Prodotto eliminato con successo");                
                    RequestDispatcher re = request.getRequestDispatcher("carrello.jsp");
                    re.forward(request, response);
                   }catch(ConnectionException ex){

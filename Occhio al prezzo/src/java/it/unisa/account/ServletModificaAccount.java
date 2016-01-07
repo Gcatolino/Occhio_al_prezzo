@@ -55,6 +55,7 @@ public class ServletModificaAccount extends HttpServlet {
         acc.setNome(request.getParameter("nome"));
         acc.setEmail(request.getParameter("email"));
         acc.setDomicilio(request.getParameter("domicilio"));
+        acc.setRuolo("utente");
         /*il ruolo non lo settiamo perchè di default è un utente*/
         acc.setComuneDiResidenza(request.getParameter("comune"));
         acc.setCognome(request.getParameter("cognome"));

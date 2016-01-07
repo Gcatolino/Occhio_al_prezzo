@@ -14,6 +14,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%
+        String messaggio = ((String) session.getAttribute("messaggio"));
+        %>
+    <script type="text/javascript">
+            var msg = "<%=messaggio%>";
+            if (msg) {
+                alert(msg);
+            <% session.setAttribute("messaggio", "");%>
+            }
+        </script>
 <title>Occhio al prezzo.it: Carrello</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -127,7 +137,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							
 						</script>  
                                 <li><a href="profilo.jsp">Profilo</a></li>
-				<li><a  href="contatti.jsp">Contatti</a>
 					
 				</li>
 		 </ul> 
@@ -241,7 +250,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <td><%= prod.getTaglia()%></td>
                                         <td><%= prod.getPrezzo()%></td>
                                         <td><%= prod.getPuntoVendita()%></td>
-                                        <td><button onclick="location.href = '<%="eliminaProdottoServlet?idProdotto=" + prod.getId() %>'">Elimina</button></td>
+                                        
+                                        <td><button class="glyphicon glyphicon-trash" onclick="location.href = '<%="eliminaProdottoServlet?idProdotto=" + prod.getId() %>'"></button></td>
                       </tr>
                       <%}%>
                   </table>	

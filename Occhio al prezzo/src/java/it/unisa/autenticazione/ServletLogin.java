@@ -48,7 +48,7 @@ public class ServletLogin extends HttpServlet {
             Account a = m.login(email, password);
             if(a == null){
                 session.setAttribute("messaggio", "Non sei ancora registrato oppure hai sbagliato password");
-                RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+                RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
                 rs.forward(request, response);
             }
             else{

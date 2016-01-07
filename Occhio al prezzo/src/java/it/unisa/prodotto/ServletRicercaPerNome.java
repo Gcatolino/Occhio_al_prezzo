@@ -41,10 +41,10 @@ public class ServletRicercaPerNome extends HttpServlet {
             ArrayList<Prodotto> prodotti = ProdottoManager.getInstance().ricercaProdottiPerNome(nomeProdotto);
             
             session.setAttribute("prodotti", prodotti);
-            response.sendRedirect("/Occhio_al_prezzo/ricercaProdotto.jsp");
+            response.sendRedirect("ricercaProdotto.jsp");
         } catch (SQLException ex) {
             session.setAttribute("messaggio","errore database");
-            response.sendRedirect("/Occhio_al_prezzo/utenteLoggato.jsp");
+            response.sendRedirect("utenteLoggato.jsp");
         }
     }
 

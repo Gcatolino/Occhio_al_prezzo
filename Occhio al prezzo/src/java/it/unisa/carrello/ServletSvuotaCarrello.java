@@ -56,6 +56,7 @@ public class ServletSvuotaCarrello extends HttpServlet{
            instance.svuotaCarrello(car);
            prodottiCarr = 0;
            session.setAttribute("prodottiCarr", prodottiCarr);
+           session.setAttribute("messaggio", "Carrello svuotato con successo");
            RequestDispatcher re = request.getRequestDispatcher("carrello.jsp");
            re.forward(request, response);
         }catch(ConnectionException ex){

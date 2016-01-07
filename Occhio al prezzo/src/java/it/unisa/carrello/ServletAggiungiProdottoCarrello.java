@@ -56,7 +56,8 @@ public class ServletAggiungiProdottoCarrello extends HttpServlet{
         instance.aggiungiProdotto(prod, car);
         prodottiCarr = prodottiCarr + 1;
         session.setAttribute("prodottiCarr", prodottiCarr);
-        RequestDispatcher rs = request.getRequestDispatcher("ricercaProdotto.jsp");
+        session.setAttribute("messaggio", "Prodotto aggiunto con successo");
+        RequestDispatcher rs = request.getRequestDispatcher("visualizzaProdotto.jsp");
         rs.forward(request, response);
         
     }

@@ -42,9 +42,9 @@ public class ServletRicercaPerPuntoVendita extends HttpServlet {
             String puntoVendita = request.getParameter("puntoVendita");
             ArrayList<Prodotto> prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(puntoVendita);
             session.setAttribute("prodotti", prodotti);
-            response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
+            response.sendRedirect("gestioneProdotti.jsp");
         } catch (SQLException ex) {
-            response.sendRedirect("/Occhio_al_prezzo/venditoreLoggato.jsp");
+            response.sendRedirect("venditoreLoggato.jsp");
         }
     }
 

@@ -47,10 +47,10 @@ public class ServletEliminaProdotto extends HttpServlet {
             ArrayList<Prodotto> prodotti = ProdottoManager.getInstance().ricercaProdottiPerPuntoVendita(account.getEmail());
             session.setAttribute("prodotti", prodotti);
             session.setAttribute("messaggio", "Prodotto eliminato con successo");
-            response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
+            response.sendRedirect("gestioneProdotti.jsp");
         } catch (SQLException ex) {
             session.setAttribute("messaggio", "Errore database");
-            response.sendRedirect("/Occhio_al_prezzo/gestioneProdotti.jsp");
+            response.sendRedirect("gestioneProdotti.jsp");
         }
     }
 

@@ -14,8 +14,8 @@
             if((account==null) || (!account.getRuolo().equals("utente"))){
             
         %>
-        <script type="text/javascript">
-            location.href="index.jsp";
+            <script type="text/javascript">
+                location.href="index.jsp";
             </script>
             <%}
             Integer prodottiCarr = ((Integer) session.getAttribute("prodottiCarr"));
@@ -129,9 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							
 						</script>
 				
-				<li><a  href="contatti.jsp">Contatti</a>
-					
-				</li>
+				
 		 </ul> 
 		 <!---->
 		
