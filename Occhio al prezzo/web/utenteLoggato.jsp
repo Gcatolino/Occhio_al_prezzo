@@ -190,19 +190,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-4 sidebar">
 	  		      <h3>Dicono di noi..</h3>
 		  			    <div class="testimonials">
-		  					 <h5>Marco<span><span></span></h5>
-		  					 <p><span class="quotes">Ottimo portale, la aspettavo da tempo un'applicazione così</span><span class="quotes-down"></span></p>
+		  					 <h4>Marco<span></h4>
+                                                         <p><span class="quotes"></span>Ottimo portale, la aspettavo da tempo un'applicazione così!<span class="quotes-down"></span>
 		  				</div>	
 		  				<div class="testimonials">
-		  					 <h5>Ilaria<span></span></h5>
+		  					 <h4>Ilaria</h4>
 		  					 <p><span class="quotes"></span>Semplice da utilizzare e tanto risparmio!<span class="quotes-down"></span></p>
 		  				</div>
 		  				<div class="testimonials">
-		  					 <h5>Bruno<span></span></h5>
+		  					 <h4>Bruno</h4>
 		  					 <p><span class="quotes"></span>Una web application comoda ed efficiente!<span class="quotes-down"></span></p>
 		  				</div>
 		  			
-	  	</div>	
+	  	</div>		
           </div>
                     </div>
                     
